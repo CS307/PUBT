@@ -5,7 +5,7 @@
 <title>The Most Poplular Local Trading Site!</title>
 
 <link href="bootstrap.min.css" rel="stylesheet">
-<link href="resultpage.css" rel="stylesheet">
+<link href="postbookpage.css" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.min.js"
         type="text/javascript"></script>
 <script src="bootstrap.min.js"></script>
@@ -15,8 +15,6 @@ body{padding: 50px;}
 
 </head>
 <body>
-
-
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class=container>
     <div class="navbar-header">
@@ -91,38 +89,37 @@ body{padding: 50px;}
  </div><!-- /.container -->
  </nav>
  
-<body>
-<div class="row">
-  <div class="col-lg-6">
-    <div class="input-group">
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Course <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </div><!-- /btn-group -->
-      <input type="text" class="form-control">
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-  
-<div class="input-group">
-  <h5>Title of the book <span class="label label-default">New</span></h5>
+<div class="container">
+      <form class="form-signin" role="form">
+        <h2 class="form-signin-heading">Post Book</h2>
+        <div class="btn-group">
+			<button type="button" class="btn btn-info">Select course</button>
+				<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+				<span class="caret"></span>
+				<span class="sr-only">Toggle Dropdown</span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<li><a href="#">CS</a></li>
+				<li><a href="#">Math</a></li>
+				<li><a href="#">Something else here</a></li>
+				<li class="divider"></li>
+				<li><a href="#">Separated link</a></li>
+			</ul>
+		</div>
+		<h5>Title of the book:</h5>
+   		<input type="email" class="form-control" placeholder="Display title of the book" required autofocus>
+   		
+        <h5>Price of the book</h5>
+   		<input type="email" class="form-control" placeholder="$" required autofocus>
+   		<h5>Contact info
+   			<span class="label label-warning">Your info will only viewed by the seller</span>
+   		</h5>
+        <input type="" class="form-control" placeholder="Phoner number or email" required>
+        <h5></h5>
+        <button class="btn btn-lg btn-info btn-block" type="submit">Submit</button>
+      </form>
 </div>
-<div class="input-group">
-  <span class="input-group-addon">Price</span>
-  <input type="text" class="form-control" placeholder="">
-</div>
-<div class="input-group">
-  <span class="input-group-addon">Phone number</span>
-  <input type="text" class="form-control" placeholder="">
-</div>
-  <button type="button" class="btn btn-default">Submit</button>
 
-</body>
 
 </body>
 </html>
