@@ -1,0 +1,37 @@
+.checkboxding{
+	margin-top:10px;
+	border-right: 2px solid #D8BFD8;
+	border-top: 2px solid #D8BFD8;
+}
+.navbarding{
+	border-bottom: 2px solid #D8BFD8;
+}
+.h1ding{
+	font: 30px bold Tahoma;
+	margin: 0px;
+	margin-bottom: 5px;
+}
+.mainsectionding{
+	margin-top:10px;
+	border-top: 2px solid #D8BFD8;
+}
+.footerding{
+	clear:both;
+	border-top: 1px solid #D8BFD8;
+	margin: 10px;
+	text-align: center;
+	padding:20px;
+}
+.checkboxcolording{
+	margin:0px;
+	color: #DAA520;
+	font: 10px;
+}
+.checkboxstyleding{
+	margin:0px;
+	padding:0px;
+	margin-left:10px;
+}
+.checkboxfontding{
+	font:100px;
+}
