@@ -35,3 +35,27 @@
 .checkboxfontding{
 	font:100px;
 }
+.imginfoding{
+	font:6px;
+	margin:0px;
+	padding:0px;
+}
+.imgbotding{
+	clear:both;
+	margin-bottom:0px;
+}
+.picboxding{
+	border: 1px solid #ddd;
+	margin-bottom: 10px;
+}
+.thumbnailding {
+display: block;
+padding: 4px;
+margin-bottom: 0px;
+line-height: 1.42857143;
+background-color: #fff;
+border: 1px solid #ddd;
+border-radius: 4px;
+-webkit-transition: all .2s ease-in-out;
+transition: all .2s ease-in-out;
+}
