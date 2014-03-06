@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	return 'Test deploy!';
+	return View::make('mainpage');
 });
 
 Route::get('books', function(){
