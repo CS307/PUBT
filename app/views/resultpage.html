@@ -40,62 +40,39 @@ body{padding: 50px;}
         <li><a href="#">STAT</a></li>
         <li><a href="#">Others</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left" role="search" action="#">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="In format:CS 180">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
-      <ul class="nav navbar-nav navbar-right">	
+      
+      
+      <ul class="nav navbar-nav navbar-right pull-right">	
+		
+		<li class="dropdown" id="menuLogin">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navSignup">Join us<b class="caret"></b></a>
+            <div class="dropdown-menu" style="padding:17px;">
+              <form class="form" id="formSignup" action="#" method="post"> 
+                <input name="username" id="username" type="text" placeholder="Username">
+                <input name="password" id="password" type="password" placeholder="Password"><br>
+                <input name="password" id="passwordconfirm" type="passwordconfirm" placeholder="Confirm Password"><br>
+                <button type="submit" id="btnLogin" class="btn">Sign up</button>
+              </form>
+            </div>
+          </li>
+		
         
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Join us<b class="caret"></b></a>
-          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation" class="dropdown-header">Join the PU Book Trade!</li>
-            <li class="divider"></li>
-            <li>
- 				<div class="input-group">
-  					<input type="text" class="form-control">
-  					<span class="input-group-addon">@purdue.edu</span>
-  				</div>
-  			</li>
-  			<li>
-  				<div class="input-group">
-  					<input type="text" class="form-control" placeholder="Enter Password">  					
-				</div>
-			</li>
-			<li>
-                <div class="input-group">
-  					<input type="text" class="form-control" placeholder="Confirm Password">  					
-				</div>
-			</li>
-			<li>
-				<button type="submit" class="btn btn-default btn-sm">Submit</button>
-			</li>
-			</ul>
-		</li>
-        
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign-in<b class="caret"></b></a>
-          <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation" class="dropdown-header">Sign in to the PU Book Trade!</li>
-            <li class="divider"></li>
-            <li>
- 				<div class="input-group">
-  					<input type="text" class="form-control">
-  					<span class="input-group-addon">@purdue.edu</span>
-  				</div>
-  			</li>
-  			<li>
-  				<div class="input-group">
-  					<input type="text" class="form-control" placeholder="Enter Password">  					
-				</div>
-			</li>
-			<li>
-				<button type="submit" class="btn btn-default btn-sm">Login</button>
-			</li>
-		  </ul>
-		</li>
+        <li class="dropdown" id="menuLogin">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Sign in<b class="caret"></b></a>
+            <div class="dropdown-menu" style="padding:17px;">
+              <form class="form" id="formLogin" action="#" method="post"> 
+                <input name="username" id="username" type="text" placeholder="Username">
+                <input name="password" id="password" type="password" placeholder="Password"><br>
+                <button type="submit" id="btnLogin" class="btn">Login</button>
+              </form>
+            </div>
+          </li>
       </ul>
     </div><!-- /.navbar-collapse -->
  </div><!-- /.container -->
@@ -105,88 +82,82 @@ body{padding: 50px;}
  <div class="row">
   <div class="col-md-2">
 	<aside class=checkboxding>
-		<p class=checkboxcolording>New Release:</p>
+		<p class=checkboxcolording>Conditions:</p>
 			<div class="checkbox">
 				<div class=checkboxstyleding>
 				<label>
 					<input type="checkbox" value="">
-						book1
+						New with tag
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
 					<input type="checkbox" value="">
-						book2
+						Like new
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
 					<input type="checkbox" value="">
-						book3
+						Good condition
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
 					<input type="checkbox" value="">
-						book4
+						Fair condition
 				</label>
 				</div>
 			</div>
 			
-			<p class=checkboxcolording>Math:</p>
+			<p class=checkboxcolording>Price:</p>
 			<div class="checkbox">
 				<div class=checkboxstyleding>
 				<label>
 					<input type="checkbox" value="">
-						book1
+						Under $10
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
 					<input type="checkbox" value="">
-						book2
+						$10 to $20
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
 					<input type="checkbox" value="">
-						book3
+						$20 to $50
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
 					<input type="checkbox" value="">
-						book4
+						$50 to $100
 				</label>
 				</div>
-			</div>
+				<div class=checkboxstyleding>
+				<label>
+					<input type="checkbox" value="">
+						Above $100
+				</label>
+				</div>
+				
+				<div  class="" >
+					<div class="pricebox">
+		    			<form name="price">
+						<input name="_mPrRngCbx" type="hidden" value="1" />
 			
-			<p class=checkboxcolording>Phys:</p>
-			<div class="checkbox">
-				<div class=checkboxstyleding>
-				<label>
-					<input type="checkbox" value="">
-						book1
-				</label>
+				$<input class='price' pattern='\d*' type='text' size='6' maxlength='13' name='_udlo' id='e1-2' value="" /> 
+				<br>to<br> 
+				$<input class='price' pattern='\d*' type='text' size='6' maxlength='13' name='_udhi' id='e1-3' value=""  />  
+				<span class="input-group-btn">
+        			<button class="btn btn-default" type="button">Go!</button>
+      			</span>
+						</form>
+					</div>
 				</div>
-				<div class=checkboxstyleding>
-				<label>
-					<input type="checkbox" value="">
-						book2
-				</label>
-				</div>
-				<div class=checkboxstyleding>
-				<label>
-					<input type="checkbox" value="">
-						book3
-				</label>
-				</div>
-				<div class=checkboxstyleding>
-				<label>
-					<input type="checkbox" value="">
-						book4
-				</label>
-				</div>
+
 			</div>
 	</aside>
   </div>
