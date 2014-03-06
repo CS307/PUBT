@@ -1,5 +1,12 @@
 <?php
 
+    $product_mode = FALSE;
+    $filename = getcwd() . "/mima.dll";
+    $handle = fopen($filename, "r");
+    $mima = fread($handle, filesize($filename));
+    $mima = str_replace("\n","",$mima);
+    fclose($handle);
+
 return array(
 
 	/*
@@ -45,8 +52,8 @@ return array(
 	*/
 
 	'connections' => array(
-
-		'sqlite' => array(
+        
+        'sqlite' => array(
 			'driver'   => 'sqlite',
 			'database' => __DIR__.'/../database/production.sqlite',
 			'prefix'   => '',
@@ -54,10 +61,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'database',
-			'username'  => 'root',
-			'password'  => '',
+			'host'      => 'pubtdb.c5jh4pmruvhx.us-west-2.rds.amazonaws.com',
+			'database'  => 'pubtDB_dev',
+			'username'  => 'pubt',
+			'password'  => $mima,
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
