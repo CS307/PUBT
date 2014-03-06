@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <title>The Most Poplular Local Trading Site!</title>
 
-<link href="bootstrap.min.css" rel="stylesheet">
-<link href="resultpage.css" rel="stylesheet">
+<link href="{{asset('css/bootstrap.min.css')}} " rel="stylesheet">
+<link href="{{asset('css/resultpage.css')}}" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.min.js"
         type="text/javascript"></script>
-<script src="bootstrap.min.js"></script>
+<script src="{{asset('css/bootstrap.min.js')}}"></script>
 <style>
 body{padding: 50px;}
 </style>
@@ -195,66 +195,9 @@ body{padding: 50px;}
   <div class=mainsectionding>
   <h1 class=h1ding>Search Result: </h1>
 	<section>
-		<div class="row">
-		<div class="col-xs-6 col-md-3" class=picboxding>
-			<div class=picboxding>
-			<a href="#" class="thumbnail">
-				<img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="sampleimg.jpg">
-			</a>
-			<div class="caption" class=imginfoding>
-				<h3 class=imginfoding>tasiod</h3>
-				<p class=imginfoding>info1</p>
-				<p class=imginfoding>info2</p>
-				<p>info3</p>
-			</div>
-		</div>
-		</div>
-		<div class="col-xs-6 col-md-3">
-			<a href="#" class="thumbnail">
-				<img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="sampleimg.jpg">
-			</a>
-		</div>
-		<div class="col-xs-6 col-md-3">
-			<a href="#" class="thumbnail">
-				<img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="sampleimg.jpg">
-			</a>
-		</div>
-		<div class="col-xs-6 col-md-3">
-			<a href="#" class="thumbnail">
-				<img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="sampleimg.jpg">
-			</a>
-		</div>
-		</div>
-		<div class="row">
-		<div class="col-xs-6 col-md-3">
-			<a href="#" class="thumbnail">
-				<img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="sampleimg.jpg">
-			</a>
-		</div>
-		<div class="col-xs-6 col-md-3">
-			<a href="bookinfopage.html" class="thumbnail">
-				<img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="sampleimg.jpg">
-			</a>
-		</div>
-		<div class="col-xs-6 col-md-3">
-			<a href="#" class="thumbnail">
-				<img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="sampleimg.jpg">
-			</a>
-		</div>
-		<div class="col-xs-6 col-md-3">
-			<a href="#" class="thumbnail">
-				<img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="sampleimg.jpg">
-			</a>
-		</div>
-		</div>
-		<div class="row">
-		<div class="col-xs-6 col-md-3">
-			<a href="#" class="thumbnail">
-				<img data-src="" alt="sampleimg.jpg" src="sampleimg.jpg">
-			</a>
-		</div>
+
+		@yield('results')
 		
-		</div>
 	</section>
 	</div>
 	<div class="row">

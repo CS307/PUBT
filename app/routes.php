@@ -18,8 +18,8 @@ Route::get('/', function()
 
 Route::get('books', function(){
 	//create();
-	$users = User::all();
-	return View::make('books')->with('books',$users);
+	//$users = User::all();
+	return View::make('results',array('number' => 100));
 });
 
 function create(){
