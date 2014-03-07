@@ -122,18 +122,18 @@
 		</div>
 		
 		<div class="single">
-			<label class="control-label">Discription:</label>
+			<label class="control-label">Description:</label>
 			<div class="controls">
-<input type="text" name="price">
+<input type="text" name="description">
 			<p class="help-inline"></p>
 			</div>
 		</div>
 		</div>	
 		
 		<div class="single">
-		<a href="#" class="btn btn-success" type="post">
-			<i class="glyphicon glyphicon-plus"></i>
-			Submit&Post</a>
+		<button type="submit" class="btn btn-primary" role="post">
+        <i class="glyphicon glyphicon-search"></i>
+        Post</button>
 		</div>
         {{Form::close()}}
 

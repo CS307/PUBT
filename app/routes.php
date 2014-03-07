@@ -24,6 +24,7 @@ Route::get('postPage', function(){
 	return View::make('post_page');
 });
 
+Route::post('postPost', array('uses' => 'PostController@postPost'));
 
 Route::post('postRegister',array('uses' => 'AccountController@postRegister' ));
 
