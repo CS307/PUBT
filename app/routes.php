@@ -29,8 +29,8 @@ Route::get('postPage', function(){
 
 
 
-Route::get('search/{input}',function(){
-	return View::make('results',array('number' => $input));
+Route::get('search=ma',function(){
+	return View::make('results',array('number' => 34));
 
 });
 

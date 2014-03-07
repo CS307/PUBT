@@ -42,62 +42,39 @@ body{padding: 50px;}
         <li><a href="#">STAT</a></li>
         <li><a href="#">Others</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left" role="search" action="#">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="In format:CS 180">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
-      <ul class="nav navbar-nav navbar-right">  
+      
+      
+      <ul class="nav navbar-nav navbar-right pull-right"> 
+    
+    <li class="dropdown" id="menuLogin">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navSignup">Join us<b class="caret"></b></a>
+            <div class="dropdown-menu" style="padding:17px;">
+              <form class="form" id="formSignup" action="#" method="post"> 
+                <input name="username" id="username" type="text" placeholder="Username">
+                <input name="password" id="password" type="password" placeholder="Password"><br>
+                <input name="password" id="passwordconfirm" type="passwordconfirm" placeholder="Confirm Password"><br>
+                <button type="submit" id="btnLogin" class="btn">Sign up</button>
+              </form>
+            </div>
+          </li>
+    
         
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Join us<b class="caret"></b></a>
-          <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation" class="dropdown-header">Join the PU Book Trade!</li>
-            <li class="divider"></li>
-            <li>
-        <div class="input-group">
-            <input type="text" class="form-control">
-            <span class="input-group-addon">@purdue.edu</span>
-          </div>
-        </li>
-        <li>
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Enter Password">           
-        </div>
-      </li>
-      <li>
-                <div class="input-group">
-            <input type="text" class="form-control" placeholder="Confirm Password">           
-        </div>
-      </li>
-      <li>
-        <button type="submit" class="btn btn-default btn-sm">Submit</button>
-      </li>
-      </ul>
-    </li>
-        
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign-in<b class="caret"></b></a>
-          <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation" class="dropdown-header">Sign in to the PU Book Trade!</li>
-            <li class="divider"></li>
-            <li>
-        <div class="input-group">
-            <input type="text" class="form-control">
-            <span class="input-group-addon">@purdue.edu</span>
-          </div>
-        </li>
-        <li>
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Enter Password">           
-        </div>
-      </li>
-      <li>
-        <button type="submit" class="btn btn-default btn-sm">Login</button>
-      </li>
-      </ul>
-    </li>
+        <li class="dropdown" id="menuLogin">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Sign in<b class="caret"></b></a>
+            <div class="dropdown-menu" style="padding:17px;">
+              <form class="form" id="formLogin" action="#" method="post"> 
+                <input name="username" id="username" type="text" placeholder="Username">
+                <input name="password" id="password" type="password" placeholder="Password"><br>
+                <button type="submit" id="btnLogin" class="btn">Login</button>
+              </form>
+            </div>
+          </li>
       </ul>
     </div><!-- /.navbar-collapse -->
  </div><!-- /.container -->
