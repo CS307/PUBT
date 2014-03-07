@@ -29,6 +29,8 @@ Route::post('postRegister',array('uses' => 'AccountController@postRegister' ));
 
 Route::post('postLogin',array('uses' => 'AccountController@postLogin'));
 
+Route::post('postLogout',array('uses' => 'AccountController@getLogout'));
+
 Route::post('search',array('uses' => 'SignupController@search'));
 
 
@@ -56,6 +58,42 @@ Route::get('book_copys',function(){
 	$book_copys = BookCopy::all();
 	return View::make('book_copys',array('book_copys' => $book_copys));
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Route::get('fake', function()

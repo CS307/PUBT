@@ -66,6 +66,13 @@ body{padding: 50px;}
     
         
         <li class="dropdown" id="menuLogin">
+          @if(Auth::check())
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">{{Auth::user()->id}}<b class="caret"></b></a>
+            <div class="dropdown-menu" style="padding:17px;">
+              {{Form::open(array('url'=>'postLogout','method'=>'post'))}}
+                <button type="submit" id="btnLogin" class="btn">Log out</button>
+                {{Form::close()}}
+          @else
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Sign in<b class="caret"></b></a>
             <div class="dropdown-menu" style="padding:17px;">
               {{Form::open(array('url'=>'postLogin','method'=>'post'))}}
@@ -73,6 +80,7 @@ body{padding: 50px;}
                 <input name="password" id="password" type="password" placeholder="Password"><br>
                 <button type="submit" id="btnLogin" class="btn">Login</button>
                 {{Form::close()}}
+          @endif
             </div>
           </li>
       </ul>

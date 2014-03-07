@@ -138,14 +138,13 @@ class AccountController extends AuthorizedController
 		//
 		if ($validator->passes())
 		{
-			echo "in!";
 			// Try to log the user in.
 			//
 			if (Auth::attempt(array('email' => $email, 'password' => $password)))
 			{
 				// Redirect to the users page.
 				//
-				echo "Sucess";//Redirect::to('account')->with('success', 'You have logged in successfully');
+				return Redirect::to('/');//Redirect::to('account')->with('success', 'You have logged in successfully');
 			}
 			else
 			{
@@ -246,6 +245,7 @@ class AccountController extends AuthorizedController
 
 		// Redirect to the users page.
 		//
-		return Redirect::to('account/login')->with('success', 'Logged out with success!');
+		return Redirect::to('/');
+		//return Redirect::to('account/login')->with('success', 'Logged out with success!');
 	}
 }
