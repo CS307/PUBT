@@ -1,5 +1,9 @@
 @extends('base')
 
+@section('base_link')
+<link href="{{asset('css/mainpage.css')}}" rel="stylesheet">
+@stop
+
 @section('base_content')
 <div class="container">
   <div class="navbar-form">

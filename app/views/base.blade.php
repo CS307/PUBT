@@ -5,8 +5,9 @@
 <title>The Most Poplular Local Trading Site!</title>
 
 <link href="{{asset('css/bootstrap.min.css')}} " rel="stylesheet">
-<link href="{{asset('css/resultpage.css')}}" rel="stylesheet">
-<link href="{{asset('css/mainpage.css')}}" rel="stylesheet">
+
+@yield('base_link')
+
 <script src="http://code.jquery.com/jquery-latest.min.js"
         type="text/javascript"></script>
 <script src="{{asset('css/bootstrap.min.js')}}"></script>

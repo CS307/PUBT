@@ -16,11 +16,18 @@ Route::get('/', function()
 	return View::make('mainpage');
 });
 
-Route::get('books', function(){
-	create();
-	//$users = User::all();
+Route::get('resultPage', function(){
 	return View::make('results',array('number' => 100));
 });
+
+Route::get('postPage', function(){
+	return View::make('post');
+});
+
+
+
+
+
 
 Route::get('search/{input}',function(){
 	return View::make('results',array('number' => $input));
