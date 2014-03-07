@@ -60,8 +60,8 @@ input{color:black;}
             <div class="dropdown-menu dropdown-status" style="padding:17px;">
               {{Form::open(array('url'=>'postRegister','method'=>'post'))}}
               <input type="text" name="email" placeholder="Enter email"/>
-              <input type="text" name="password" placeholder="Enter Password"/>
-              <input type="text" name="password_confirmation" placeholder="Confirm Password"/>
+              <input name="password" type="password" placeholder="Enter Password"/>
+              <input name="password_confirmation" type="password" placeholder="Confirm Password"/>
               <button type="submit" id="btnLogin" class="btn">Sign up</button>
               {{Form::close()}}
             </div>
@@ -70,7 +70,7 @@ input{color:black;}
         
         <li class="dropdown" id="menuLogin">
           @if(Auth::check())
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">{{Auth::user()->id}}<b class="caret"></b></a>
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">{{Auth::user()->email}}<b class="caret"></b></a>
             <div class="dropdown-menu" style="padding:17px;">
               {{Form::open(array('url'=>'postLogout','method'=>'post'))}}
                 <button type="submit" id="btnLogin" class="btn">Log out</button>

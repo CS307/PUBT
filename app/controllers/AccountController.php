@@ -220,15 +220,23 @@ class AccountController extends AuthorizedController
 				echo "Exception";
 			}
 
-			// Redirect to the register page.
-			//
-			echo "Login Success!";//Redirect::to('account/register')->with('success', 'Account created with success!');
-			return;
+			// Try to log the user in.
+			if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
+			{
+				// Redirect to the users page.
+				//
+				return Redirect::to('/');//Redirect::to('account')->with('success', 'You have logged in successfully');
+			}
+			else
+			{
+				// Redirect to the login page.
+				echo "Login Failed";//return Redirect::to('account/login')->with('error', 'Email/password invalid.');
+			}
 		}
 
 		// Something went wrong.
 		//
-		echo "Login Failed";//Redirect::to('account/register')->withInput($inputs)->withErrors($validator->getMessages());
+		echo "Register Failed";//Redirect::to('account/register')->withInput($inputs)->withErrors($validator->getMessages());
 	}
 
 	/**

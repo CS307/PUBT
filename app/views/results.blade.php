@@ -15,10 +15,9 @@
 				</a>
 				<div class="caption" class=imginfoding>
 					<h3 class=imginfoding>Price: ${{$search_results[$count]->price}}</h3>
+					<p class=imginfoding>Seller: {{DB::table('users')->where('id',$search_results[$count]->seller_id)->first()->email}}</p>
 					<p class=imginfoding>Condition: {{$search_results[$count]->condition}}</p>
 					<p class=imginfoding>Detail: {{$search_results[$count]->detail}}</p>
-
-					<p class=imginfoding>seller: {{DB::table('users')->where('id',$search_results[$count]->seller_id)->first()->email}}</p>
 				</div>
 		    </div>
 		</div>
