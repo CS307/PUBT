@@ -14,6 +14,7 @@
 <style>
 body{padding: 50px;}
 input{color:black;}
+
 </style>
 </head>
 <body>
@@ -57,7 +58,7 @@ input{color:black;}
     @if(!Auth::check())
     <li class="dropdown" id="menuSignup">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navSignup">Join us<b class="caret"></b></a>
-            <div class="dropdown-menu dropdown-status" style="padding:17px;">
+            <div class="dropdown-menu" style="padding:17px;">
               {{Form::open(array('url'=>'postRegister','method'=>'post'))}}
               <input type="text" name="email" placeholder="Enter email"/>
               <input type="text" name="password" placeholder="Enter Password"/>
