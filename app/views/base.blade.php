@@ -74,11 +74,12 @@ body{padding: 50px;}
         <li class="dropdown" id="menuLogin">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Sign in<b class="caret"></b></a>
             <div class="dropdown-menu" style="padding:17px;">
-              <form class="form" id="formLogin" action="#" method="post"> 
+
+              <!--form class="form" id="formLogin" action="#" method="post"> 
                 <input name="username" id="username" type="text" placeholder="Username">
                 <input name="password" id="password" type="password" placeholder="Password"><br>
                 <button type="submit" id="btnLogin" class="btn">Login</button>
-              </form>
+              </form-->
             </div>
           </li>
       </ul>
