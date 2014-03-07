@@ -52,15 +52,21 @@ body{padding: 50px;}
       
       <ul class="nav navbar-nav navbar-right pull-right"> 
     
-    <li class="dropdown" id="menuLogin">
+    <li class="dropdown" id="menuSignup">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navSignup">Join us<b class="caret"></b></a>
             <div class="dropdown-menu" style="padding:17px;">
-              <form class="form" id="formSignup" action="#" method="post"> 
+              <!--form class="form" id="formSignup" action="#" method="post">
                 <input name="username" id="username" type="text" placeholder="Username">
                 <input name="password" id="password" type="password" placeholder="Password"><br>
                 <input name="password" id="passwordconfirm" type="passwordconfirm" placeholder="Confirm Password"><br>
                 <button type="submit" id="btnLogin" class="btn">Sign up</button>
-              </form>
+              </form-->
+              {{Form::open(array('url'=>'sign_up','method'=>'post'))}}
+              <input type="text" name="username"/>
+              <input type="text" name="password"/>
+              <input type="text" name="confirmpw"/>
+              <button type="submit" />
+              {{Form::close()}}
             </div>
           </li>
     

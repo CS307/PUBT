@@ -21,10 +21,11 @@ Route::get('resultPage', function(){
 });
 
 Route::get('postPage', function(){
-	return View::make('post');
+	return View::make('post_page');
 });
 
 
+Route::post('sign_up',array('uses' => 'SignupController@sign_up'));
 
 
 
