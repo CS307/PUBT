@@ -42,3 +42,14 @@ function create(){
 	$user->save();
 	return $user;
 }
+
+function fakedata(){
+	$i = 0;
+	for(i=0;i<20;i++){
+		$user = new User;
+		$user->email = 'abcd'.$i.'@purdue.edu';
+		$user->password = Hash::make('abcd');
+		$user->save();
+	}
+	return;
+}
