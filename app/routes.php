@@ -27,6 +27,8 @@ Route::get('postPage', function(){
 
 Route::post('sign_up',array('uses' => 'SignupController@sign_up'));
 
+Route::post('search',array('uses' => 'SignupController@search'));
+
 
 
 

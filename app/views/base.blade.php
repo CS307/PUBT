@@ -33,7 +33,7 @@ body{padding: 50px;}
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav ">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="/">Home</a></li>
         <li><a href="#">MA</a></li>
         <li><a href="#">CS</a></li>
         <li><a href="#">ENG</a></li>
@@ -58,14 +58,14 @@ body{padding: 50px;}
               <!--form class="form" id="formSignup" action="#" method="post">
                 <input name="username" id="username" type="text" placeholder="Username">
                 <input name="password" id="password" type="password" placeholder="Password"><br>
-                <input name="password" id="passwordconfirm" type="passwordconfirm" placeholder="Confirm Password"><br>
+                <input name="" id="passwordconfirm" type="passwordconfirm" placeholder="Confirm Password"><br>
                 <button type="submit" id="btnLogin" class="btn">Sign up</button>
               </form-->
               {{Form::open(array('url'=>'sign_up','method'=>'post'))}}
               <input type="text" name="username"/>
-              <input type="text" name="password"/>
+              <input type="text" name="password" placeholder="Confirm Password"/>
               <input type="text" name="confirmpw"/>
-              <button type="submit" />
+              <button type="submit" id="btnLogin" class="btn">Sign up</button>
               {{Form::close()}}
             </div>
           </li>
