@@ -21,7 +21,12 @@ Route::get('resultPage', function(){
 });
 
 Route::get('postPage', function(){
-	return View::make('post_page');
+	if(Auth::check()){
+		return View::make('post_page');
+	}
+	else{
+		return Redirect::to('/');
+	}
 });
 
 Route::post('postPost', array('uses' => 'PostController@postPost'));
