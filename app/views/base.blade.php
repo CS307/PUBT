@@ -55,16 +55,10 @@ body{padding: 50px;}
     <li class="dropdown" id="menuSignup">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navSignup">Join us<b class="caret"></b></a>
             <div class="dropdown-menu" style="padding:17px;">
-              <!--form class="form" id="formSignup" action="#" method="post">
-                <input name="username" id="username" type="text" placeholder="Username">
-                <input name="password" id="password" type="password" placeholder="Password"><br>
-                <input name="" id="passwordconfirm" type="passwordconfirm" placeholder="Confirm Password"><br>
-                <button type="submit" id="btnLogin" class="btn">Sign up</button>
-              </form-->
-              {{Form::open(array('url'=>'sign_up','method'=>'post'))}}
-              <input type="text" name="username"/>
-              <input type="text" name="password" placeholder="Confirm Password"/>
-              <input type="text" name="confirmpw"/>
+              {{Form::open(array('url'=>'postRegister','method'=>'post'))}}
+              <input type="text" name="email" placeholder="Enter email"/>
+              <input type="text" name="password" placeholder="Enter Password"/>
+              <input type="text" name="password_confirmation" placeholder="Confirm Password"/>
               <button type="submit" id="btnLogin" class="btn">Sign up</button>
               {{Form::close()}}
             </div>
@@ -74,12 +68,11 @@ body{padding: 50px;}
         <li class="dropdown" id="menuLogin">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Sign in<b class="caret"></b></a>
             <div class="dropdown-menu" style="padding:17px;">
-
-              <!--form class="form" id="formLogin" action="#" method="post"> 
-                <input name="username" id="username" type="text" placeholder="Username">
+              {{Form::open(array('url'=>'postLogin','method'=>'post'))}}
+              <input name="email" id="username" type="text" placeholder="Email">
                 <input name="password" id="password" type="password" placeholder="Password"><br>
                 <button type="submit" id="btnLogin" class="btn">Login</button>
-              </form-->
+                {{Form::close()}}
             </div>
           </li>
       </ul>

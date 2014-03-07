@@ -19,7 +19,7 @@
 	<!-- </form> -->
 	
 	<form class="navbar-form navbar-left" role="post" action="#">
-		<a href="#" class="btn btn-success" role="post">
+		<a href="/postPage" class="btn btn-success" role="post">
 			<i class="glyphicon glyphicon-plus"></i>
 			Post</a>
 	</form>

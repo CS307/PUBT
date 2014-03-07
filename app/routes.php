@@ -25,7 +25,9 @@ Route::get('postPage', function(){
 });
 
 
-Route::post('sign_up',array('uses' => 'SignupController@sign_up'));
+Route::post('postRegister',array('uses' => 'AccountController@postRegister' ));
+
+Route::post('postLogin',array('uses' => 'AccountController@postLogin'));
 
 Route::post('search',array('uses' => 'SignupController@search'));
 
