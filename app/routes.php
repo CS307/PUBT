@@ -326,7 +326,7 @@ function generateFakeBookCopys(){
 	$book_copy21->book_id = 4;
 	$book_copy21->price = 67;
 	$book_copy21->seller_id = 21;
-	$book_copy21->condition = "Fair condition;
+	$book_copy21->condition = "Fair condition";
 	$book_copy21->detail = "Covers not in best condition but all the pages are there, all the pages are intact.";
 	$book_copy21->expire_date = "2014-03-15";
 	$book_copy21->save();

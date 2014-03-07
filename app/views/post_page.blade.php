@@ -9,11 +9,10 @@
 <div class="container mainsection">
   <h1 class=h1ding>Post your book:</h1>
 	<div class="row-fluid">
-		<form id="user-new-address" action="/logistics/address/" method="post">
+		<!--form id="user-new-address" action="/logistics/address/" method="post">
 	
 		<div class="partinfo">
 			<h3 class="heading-3">Book info:</h3>
-				<input type="hidden" name="country" value="US">
 				
 		<div class="single">
 			<label class="control-label" for="recipient_name">Title:</label>
@@ -78,8 +77,67 @@
 			<i class="glyphicon glyphicon-plus"></i>
 			Submit&Post</a>
 		</div>
+		<form-->
+		{{Form::open(array('url'=>'postPost','method'=>'post'))}}
+              <div class="partinfo">
+			  <h3 class="heading-3">Book info:</h3>
+				
+		<div class="single">
+			<label class="control-label">Title:</label>
+			<div class="controls">
+<input type="text" name="title">
+			<p class="help-inline"></p>
+			</div>
 		</div>
-		</form>
+		<div class="single">
+			<label class="control-label">Author:</label>
+			<div class="controls">
+<input type="text" name="author">
+			<p class="help-inline"></p>
+		</div>
+		</div>
+		
+		<div class="single">
+			<label class="control-label">Co-course Number:</label>
+			<div class="controls">
+<input type="text" name="CN">
+			<p class="help-inline"></p>
+			</div>
+		</div>
+	
+		<div class="single">
+			<label class="control-label">Listing Price:</label>
+			<div class="controls">
+<input type="text" name="price">
+			<p class="help-inline"></p>
+			</div>
+		</div>
+		
+		<div class="single">
+			<label class="control-label">Listing Condition:</label>
+			<div class="controls">
+<input type="text" name="condition">
+			<p class="help-inline"></p>
+			</div>
+		</div>
+		
+		<div class="single">
+			<label class="control-label">Discription:</label>
+			<div class="controls">
+<input type="text" name="price">
+			<p class="help-inline"></p>
+			</div>
+		</div>
+		</div>	
+		
+		<div class="single">
+		<a href="#" class="btn btn-success" type="post">
+			<i class="glyphicon glyphicon-plus"></i>
+			Submit&Post</a>
+		</div>
+        {{Form::close()}}
+
+		</div>
 		</div>
 
 @stop

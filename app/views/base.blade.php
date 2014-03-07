@@ -13,6 +13,7 @@
 <script src="{{asset('css/bootstrap.min.js')}}"></script>
 <style>
 body{padding: 50px;}
+input{color:black;}
 </style>
 </head>
 <body>
