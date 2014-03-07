@@ -139,7 +139,7 @@ function generateFakeBookCopys(){
 	$book_copy9->price = 99999.99;
 	$book_copy9->seller_id = 33;
 	$book_copy9->condition = "Fair condition";
-	$book_copy9->detail = "Comes from my dad Dingzhe Li!Trade in for a GTR";
+	$book_copy9->detail = "Trade in for a GTR";
 	$book_copy9->expire_date = "2014-03-15";
 	$book_copy9->save();
 	
