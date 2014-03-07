@@ -9,89 +9,69 @@
  <div class="row">
   <div class="col-md-2">
 	<aside class=checkboxding>
-		<p class=checkboxcolording>New Release:</p>
+		<p class=checkboxcolording>Price:</p>
 			<div class="checkbox">
 				<div class=checkboxstyleding>
 				<label>
 					<input type="checkbox" value="">
-						book1
+						Under $20
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
 					<input type="checkbox" value="">
-						book2
+						$20 to $50
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
 					<input type="checkbox" value="">
-						book3
+						$50 to $100
+				</label>
+				</div>
+				<div class=checkboxstyleding>
+				<label>
+					<input type="checkbox" value="">		
+						$100 to $200
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
 					<input type="checkbox" value="">
-						book4
+						Above $200
 				</label>
 				</div>
 			</div>
 			
-			<p class=checkboxcolording>Math:</p>
+			<p class=checkboxcolording>Condition:</p>
 			<div class="checkbox">
 				<div class=checkboxstyleding>
 				<label>
 					<input type="checkbox" value="">
-						book1
+						New With Tags
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
 					<input type="checkbox" value="">
-						book2
+						Like New
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
 					<input type="checkbox" value="">
-						book3
+						Good Condition
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
 					<input type="checkbox" value="">
-						book4
+						Fair Condition
 				</label>
 				</div>
 			</div>
 			
-			<p class=checkboxcolording>Phys:</p>
-			<div class="checkbox">
-				<div class=checkboxstyleding>
-				<label>
-					<input type="checkbox" value="">
-						book1
-				</label>
-				</div>
-				<div class=checkboxstyleding>
-				<label>
-					<input type="checkbox" value="">
-						book2
-				</label>
-				</div>
-				<div class=checkboxstyleding>
-				<label>
-					<input type="checkbox" value="">
-						book3
-				</label>
-				</div>
-				<div class=checkboxstyleding>
-				<label>
-					<input type="checkbox" value="">
-						book4
-				</label>
-				</div>
-			</div>
+			
 	</aside>
   </div>
   
