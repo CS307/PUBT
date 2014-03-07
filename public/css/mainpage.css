@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+body{
+	background-image:url("PMU.png");
+	background-size: 100%;
+	background-repeat:no-repeat;
+	
+}
+.slogan{
+	margin: 40px;
+	color: white;
+	text-align: center;
+	
+}
+
+.searchfield{
+	width: 500px;
+	
+	
+}

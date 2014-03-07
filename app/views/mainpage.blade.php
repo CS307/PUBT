@@ -2,15 +2,22 @@
 
 @section('base_content')
 <div class="container">
-		<form action="#" id="searchbox" method="post">
-  			<input type="hidden" name="cx" value="YOUR SEARCH ENGINE ID goes here" />
-  			<input type="hidden" name="ie" value="UTF-8" />
-  			<input type="text" name="q" size="31" />
-  			<a href="#" class="btn btn-inverse btn-large"><i class="icon-white icon-plus"></i>Search</a>
-		</form>
-		<form role="post" action="#">
-			<a href="#" class="btn btn-inverse btn-large"><i class="icon-white icon-plus"></i>Post</a>
-		</form>
-</div>
+  <div class="navbar-form">
+	<form class="navbar-form navbar-left" role="search" action="#">
+        <div class="form-group">
+          <input type="text" class="form-control searchfield" placeholder="In format:CS 180">
+        
+        <button type="submit" class="btn btn-primary" role="search">
+        <i class="glyphicon glyphicon-search"></i>
+        Search</button>
+        </div>
+	</form>
+	
+	<form class="navbar-form navbar-left" role="post" action="#">
+		<a href="#" class="btn btn-success" role="post">
+			<i class="glyphicon glyphicon-plus"></i>
+			Post</a>
+	</form>
+  </div>
 
 @stop

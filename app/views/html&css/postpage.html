@@ -5,6 +5,7 @@
 <title>The Most Poplular Local Trading Site!</title>
 
 <link href="bootstrap.min.css" rel="stylesheet">
+<link href="postpage.css" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.min.js"
         type="text/javascript"></script>
 <script src="bootstrap.min.js"></script>
@@ -78,266 +79,85 @@ body{padding: 50px;}
 </nav>
 
 
-
-<div class="container-fluid" id="user-settings">
-	<div class="row-fluid location-row">
-		<div class="span12">
-			<h1 class="location-heading sofia">
-				My info
-			</h1>
-		</div>
-	</div>
-
-	
+  <div class="container mainsection">
+  <h1 class=h1ding>Post your book:</h1>
 
 
 	<div class="row-fluid">
-		<div class="span7 gutter-large">
-			<form action="/me/settings/" method="post" id="user-my-settings">
-				<label>name</label>
-				<div class="info-first-name sofia"><div class="info-static-value">-</div><input id="first-name" type="text" name="first_name" value="" placeholder="First"></div><div class="info-last-name sofia"><div class="info-static-value"></div><input id="surname" type="text" name="last_name" value="" placeholder="Last"></div>
-
-				<label>email</label>
-				<div class="info-email sofia">
-					<div class="info-static-value">achow9413@yahoo.com</div>
-					<input id="email" type="text" name="email" value="achow9413@yahoo.com">
-				</div>
-
-				<h2 class="heading-5">
-					PayPal
-				</h2>
-				<p>
-					We transfer your earnings to your PayPal account.
-				</p>
-				<label>PayPal account</label>
-				<div class="info-paypal-email sofia">
-					<div class="info-static-value">achow9413@yahoo.com</div>
-					<input id="paypal-account" type="text" name="paypal_email" value="achow9413@yahoo.com" placeholder="email">
-				</div>
-
-				<button type="button" id="edit-info-button" class="btn btn-basic top-margin">
-					Edit
-				</button>
-				<button type="submit" class="btn btn-basic top-margin btn-full">
-					Save changes
-				</button>
-			</form>
-		</div>
-		<div class="span4 offset1 gutter-large">
-			<div id="account-total-value-box">
-				<h2 class="account-total-value-heading sofia">
-					Total Value
-				</h2>
-				<div class="account-total-value-sum sofia">
-					0
-				</div>
-				
-				<a href="/send/top-boxes/"
-				   class="account-total-value-details-link"
-				   >See what you could earn</a>
-				
-			</div>
-
-			
-			<div class="gutter top-gutter">
-				<p class="text-center">
-					Log in easier using Facebook connect.
-				</p>
-				<a href="#"
-				   class="fb-login btn btn-basic btn-full"
-				   onclick="nc.fb.linkFB(); return false;"
-				>Link my Facebook account</a>
-			</div>
-			
-		</div>
-	</div>
-
+		<form id="user-new-address" action="/logistics/address/" method="post">
 	
-
-	<div class="row-fluid">
-		<div class="span12">
-			<h2 class="heading-3">
-				
-					New address
-				
-			</h2>
-			<form id="user-new-address" action="/logistics/address/" method="post">
+		<div class="partinfo">
+			<h3 class="heading-3">Book info:</h3>
 				<input type="hidden" name="country" value="US">
 				
-
-
-<fieldset id="address-form">
-	<div class="control-group">
-		<label class="control-label" for="recipient_name">Your name*</label>
-		<div class="controls">
-			<input type="text" class="input-xlarge" id="recipient_name" name="recipient_name" value="">
+		<div class="single">
+			<label class="control-label" for="recipient_name">Title:</label>
+			<div class="controls">
+			<input type="text" class="input-xlarge" id="recipient_name" name="recipient_name">
+			<p class="help-inline"></p>
+			</div>
+		</div>
+		<div class="single">
+			<label class="control-label" for="recipient_name">Author:</label>
+			<div class="controls">
+			<input type="text" class="input-xlarge" id="author" name="author">
 			<p class="help-inline"></p>
 		</div>
-	</div>
-	<div class="control-group">
-		<label class="control-label" for="recipient_name">Company</label>
-		<div class="controls">
-			<input type="text" class="input-xlarge" id="company" name="company">
-			<p class="help-inline"></p>
 		</div>
-	</div>
-	<div class="control-group">
-		<label class="control-label" for="street1">Street address*</label>
-		<div class="controls">
-			<input type="text" class="input-xlarge" id="street1" name="street1">
+		
+		<div class="single">
+			<label class="control-label" for="phone">Co-course Number:</label>
+			<div class="controls">
+			<input type="text" class="input-xlarge" id="CN" name="CN">
 			<p class="help-inline"></p>
+			</div>
 		</div>
-	</div>
-	<div class="control-group">
-		<div class="controls">
-			<input type="text" class="input-xlarge" id="street2" name="street2">
-			<p class="help-inline"></p>
-		</div>
-	</div>
-	<div class="control-group">
-		<label class="control-label" for="locality">City*</label>
-		<div class="controls">
-			<input type="text" class="input-xlarge" id="locality" name="locality" value="west lafayette" >
-			<p class="help-inline"></p>
-		</div>
-	</div>
 	
-<div class="control-group">
-	<label class="control-label" for="state">State*</label>
-	<div class="controls">
-		<select id="state" name="state">
-			<option value="">Select a state</option>
-			
-			<option value="AL">Alabama</option>
-			
-			<option value="AZ">Arizona</option>
-			
-			<option value="AR">Arkansas</option>
-			
-			<option value="CA">California</option>
-			
-			<option value="CO">Colorado</option>
-			
-			<option value="CT">Connecticut</option>
-			
-			<option value="DE">Delaware</option>
-			
-			<option value="DC">District of Columbia</option>
-			
-			<option value="FL">Florida</option>
-			
-			<option value="GA">Georgia</option>
-			
-			<option value="ID">Idaho</option>
-			
-			<option value="IL">Illinois</option>
-			
-			<option value="IN">Indiana</option>
-			
-			<option value="IA">Iowa</option>
-			
-			<option value="KS">Kansas</option>
-			
-			<option value="KY">Kentucky</option>
-			
-			<option value="LA">Louisiana</option>
-			
-			<option value="ME">Maine</option>
-			
-			<option value="MD">Maryland</option>
-			
-			<option value="MA">Massachusetts</option>
-			
-			<option value="MI">Michigan</option>
-			
-			<option value="MN">Minnesota</option>
-			
-			<option value="MS">Mississippi</option>
-			
-			<option value="MO">Missouri</option>
-			
-			<option value="MT">Montana</option>
-			
-			<option value="NE">Nebraska</option>
-			
-			<option value="NV">Nevada</option>
-			
-			<option value="NH">New Hampshire</option>
-			
-			<option value="NJ">New Jersey</option>
-			
-			<option value="NM">New Mexico</option>
-			
-			<option value="NY">New York</option>
-			
-			<option value="NC">North Carolina</option>
-			
-			<option value="ND">North Dakota</option>
-			
-			<option value="OH">Ohio</option>
-			
-			<option value="OK">Oklahoma</option>
-			
-			<option value="OR">Oregon</option>
-			
-			<option value="PA">Pennsylvania</option>
-			
-			<option value="RI">Rhode Island</option>
-			
-			<option value="SC">South Carolina</option>
-			
-			<option value="SD">South Dakota</option>
-			
-			<option value="TN">Tennessee</option>
-			
-			<option value="TX">Texas</option>
-			
-			<option value="UT">Utah</option>
-			
-			<option value="VT">Vermont</option>
-			
-			<option value="VA">Virginia</option>
-			
-			<option value="WA">Washington</option>
-			
-			<option value="WV">West Virginia</option>
-			
-			<option value="WI">Wisconsin</option>
-			
-			<option value="WY">Wyoming</option>
-			
-		</select>
-		<p class="help-inline"></p>
-	</div>
-</div>
+		<div class="single">
+			<label class="control-label" for="phone">Listing Price:</label>
+			<div class="controls">
+			<input type="text" class="input-xlarge" id="price" name="price">
+			<p class="help-inline"></p>
+			</div>
+		</div>
+		
+		<div class="single">
+			<label class="control-label" for="phone">Condition:</label><br>
+			<div class="btn-group btn-group-lg">
+  				<div class="btn-group">
+    			<button type="button" class="btn btn-default">New with tags</button>
+  				</div>
+  				<div class="btn-group">
+    			<button type="button" class="btn btn-default">Like new</button>
+  				</div>
+  				<div class="btn-group">
+    			<button type="button" class="btn btn-default">Good condition</button>
+  				</div>
+  				<div class="btn-group">
+    			<button type="button" class="btn btn-default">Fair condition</button>
+  				</div>
+			</div>
+		</div>
+		
+		<div class="single">
+			<label class="control-label" for="phone">Discription:</label>
+			<div class="controls">
+			<input type="text" class="input-xlarge" id="price" name="price">
+			<p class="help-inline"></p>
+			</div>
+		</div>
+		</div>
+		
+		
+		
+		<div class="single">
+		<a href="#" class="btn btn-success" type="post">
+			<i class="glyphicon glyphicon-plus"></i>
+			Submit&Post</a>
+		</div>
+		</div>
+		</form>
+		</div>
 
-	<div class="control-group">
-		<label class="control-label" for="zip">Zip code*</label>
-		<div class="controls">
-			<input type="text" class="input-xlarge" id="zip" name="zip">
-			<p class="help-inline"></p>
-		</div>
-	</div>
-	<div class="control-group">
-		<label class="control-label" for="email">E-mail address</label>
-		<div class="controls">
-			<input type="text" class="input-xlarge" id="email" name="email" value="achow9413@yahoo.com">
-			<p class="help-inline"></p>
-		</div>
-	</div>
-	<div class="control-group">
-		<label class="control-label" for="phone">Phone number*</label>
-		<div class="controls">
-			<input type="text" class="input-xlarge" id="phone" name="phone" value="">
-			<p class="help-inline"></p>
-		</div>
-	</div>
-	<button class="btn btn-basic top-margin" type="submit">Add to my addresses</button>
-</fieldset>
-
-			</form>
-		</div>
-	</div>
-</div>
 </body>
 </html>

@@ -1,0 +1,21 @@
+body{
+	margin-left: 50px;
+	color: white;
+	background-image:url("post.png");
+	background-size: 100%;
+	background-repeat:no-repeat;
+	background-position: center;
+	
+}
+.mainsection{
+	margin-top:10px;
+}
+
+.single:{
+	margin: 150px;	
+}
+
+.partinfo{
+	margin-left: 50px;
+	
+}

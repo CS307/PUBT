@@ -6,6 +6,7 @@
 
 <link href="{{asset('css/bootstrap.min.css')}} " rel="stylesheet">
 <link href="{{asset('css/resultpage.css')}}" rel="stylesheet">
+<link href="{{asset('css/mainpage.css')}}" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.min.js"
         type="text/javascript"></script>
 <script src="{{asset('css/bootstrap.min.js')}}"></script>
@@ -32,7 +33,7 @@ body{padding: 50px;}
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav ">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="/search?subject=ma">MA</a></li>
+        <li><a href="#">MA</a></li>
         <li><a href="#">CS</a></li>
         <li><a href="#">ENG</a></li>
         <li><a href="#">PHY</a></li>

@@ -17,7 +17,7 @@ Route::get('/', function()
 });
 
 Route::get('books', function(){
-	//create();
+	create();
 	//$users = User::all();
 	return View::make('results',array('number' => 100));
 });
@@ -27,29 +27,40 @@ Route::get('search/{input}',function(){
 
 });
 
+Route::get('users',function(){
+	$users = User::all();
+	return View::make('books',array('books' => $users));
+});
 
 
 Route::get('fake', function()
 {
-	generateFake();
+	//generateFake();
 });
 
 function create(){
 	$user = new User;
-	$user->email = 'chen769@purdue.edu';
+	$user->email = 'yu282@purdue.edu';
 	$user->password = Hash::make('abcd');
 	$user->cell = '7654910417';
+	try{
 	$user->save();
+	}
+	catch (\Exception $e){}
 	return $user;
 }
 
-function fakedata(){
+function generateFake(){
 	$i = 0;
-	for(i=0;i<20;i++){
+	for($i=0;$i<20;$i++){
 		$user = new User;
-		$user->email = 'abcd'.$i.'@purdue.edu';
+		$user->email = 'li'.$i.'@purdue.edu';
 		$user->password = Hash::make('abcd');
-		$user->save();
+		$user->confirmation = $i;
+		try{
+			$user->save();
+		}
+		catch (\Exception $e){}
 	}
 	return;
 }
