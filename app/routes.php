@@ -22,6 +22,18 @@ Route::get('books', function(){
 	return View::make('results',array('number' => 100));
 });
 
+Route::get('search/{input}',function(){
+	return View::make('results',array('number' => $input));
+
+});
+
+
+
+Route::get('fake', function()
+{
+	generateFake();
+});
+
 function create(){
 	$user = new User;
 	$user->email = 'chen769@purdue.edu';
