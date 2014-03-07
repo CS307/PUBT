@@ -42,16 +42,18 @@ body{padding: 50px;}
         <li><a href="#">STAT</a></li>
         <li><a href="#">Others</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search" action="#">
+        {{Form::open(array('url'=>'search','method'=>'post'))}}
+      <div class="navbar-form navbar-left" role="search" action="#">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="In format:CS 180">
+          <input type="text" class="form-control" name="keyword" placeholder="In format:CS 180">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      
+      </div>
+        {{Form::close()}}
       
       <ul class="nav navbar-nav navbar-right pull-right"> 
     
+    @if(!Auth::check())
     <li class="dropdown" id="menuSignup">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navSignup">Join us<b class="caret"></b></a>
             <div class="dropdown-menu" style="padding:17px;">
@@ -63,7 +65,7 @@ body{padding: 50px;}
               {{Form::close()}}
             </div>
           </li>
-    
+    @endif
         
         <li class="dropdown" id="menuLogin">
           @if(Auth::check())
