@@ -142,6 +142,11 @@ class AccountController extends AuthorizedController
 			//
 			if (Auth::attempt(array('email' => $email, 'password' => $password)))
 			{
+				if(!Auth::user()->confirmed){
+					Auth::logout();
+					echo "Please verify your account!";
+				}
+
 				// Redirect to the users page.
 				//
 				return Redirect::to('/');//Redirect::to('account')->with('success', 'You have logged in successfully');
@@ -213,25 +218,33 @@ class AccountController extends AuthorizedController
 			$user = new User;
 			$user->email = Input::get('email');
 			$user->password = Hash::make(Input::get('password'));
-			$user->confirmation = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 30);
+			$confirmation = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 30);
+			$user->confirmation = $confirmation;
 			try {
 				$user->save();
 			} catch (Exception $e) {
 				echo "Exception";
 			}
 
-			// Try to log the user in.
-			if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
-			{
-				// Redirect to the users page.
-				//
-				return Redirect::to('/');//Redirect::to('account')->with('success', 'You have logged in successfully');
-			}
-			else
-			{
-				// Redirect to the login page.
-				echo "Login Failed";//return Redirect::to('account/login')->with('error', 'Email/password invalid.');
-			}
+			// Send verification email
+			Mail::send('email_verification', array('username'=>Input::get('email'), 'confirmation'=>$confirmation), function($message){
+         		$message->to(Input::get('email').'@purdue.edu', NULL)->subject('Verification Email for boilertrade.us');
+     		});
+
+     		return Redirect::to('/');
+
+			// // Try to log the user in.
+			// if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
+			// {
+			// 	// Redirect to the users page.
+			// 	//
+			// 	return Redirect::to('/');//Redirect::to('account')->with('success', 'You have logged in successfully');
+			// }
+			// else
+			// {
+			// 	// Redirect to the login page.
+			// 	echo "Login Failed";//return Redirect::to('account/login')->with('error', 'Email/password invalid.');
+			// }
 		}
 
 		// Something went wrong.

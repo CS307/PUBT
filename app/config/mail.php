@@ -1,5 +1,12 @@
 <?php
 
+	$product_mode = FALSE;
+    $filename = getcwd() . "/mail_mima.dll";
+    $handle = fopen($filename, "r");
+    $mima = fread($handle, filesize($filename));
+    $mima = str_replace("\n","",$mima);
+    fclose($handle);
+
 return array(
 
 	/*
@@ -28,7 +35,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
+	'host' => 'smtp.gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +61,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
+	'from' => array('address' => 'boilertrade.us@gmail.com', 'name' => 'boilertrade.us Verification E-mail'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +87,7 @@ return array(
 	|
 	*/
 
-	'username' => null,
+	'username' => 'boilertrade.us@gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +100,7 @@ return array(
 	|
 	*/
 
-	'password' => null,
+	'password' => $mima,
 
 	/*
 	|--------------------------------------------------------------------------

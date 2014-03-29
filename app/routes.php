@@ -47,6 +47,18 @@ Route::get('search=ma',function(){
 
 });
 
+
+
+Route::get('verification/code={confirmation}', function($confirmation)
+{
+	DB::table('users')->where('confirmation', $confirmation)->update(array( 'confirmed' => true ));
+    echo "Verification Success!";
+});
+
+
+
+
+
 //Use for testing
 Route::get('users',function(){
 	$users = User::all();
@@ -65,15 +77,21 @@ Route::get('book_copys',function(){
 	return View::make('book_copys',array('book_copys' => $book_copys));
 });
 
+//Use for testing
+// Route::get('test',function(){
+// 	$confirmation = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 30);
+// 	echo $confirmation;
+// 	Mail::send('email_verification', array('confirmation'=>$confirmation), function($message){
+//         $message->to('yu282@purdue.edu', NULL)->subject('Verification Email for boilertrade.us');
+//     });
+// });
 
-
-
-
-
-
-
-
-
+Route::get('add',function(){
+	Schema::table('books', function($table)
+	{
+    	$table->string('pic_url');
+	});
+});
 
 
 
