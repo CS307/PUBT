@@ -1,0 +1,39 @@
+.leftding{
+	margin-top:10px;
+	border: 1px solid #EEAD0E;
+	/*border-top: 1px solid #EEAD0E;*/
+}
+
+.headding{
+	margin-top:10px;
+	border-top: 2px solid #EEAD0E;
+	margin-bottom:20px;
+}
+
+.pheadding{
+	margin:0px;
+	font-size:12px;
+	padding:0px;
+}
+
+.ph2ding{
+	margin:0px;
+	padding:0px;
+	font-size:10px;
+}
+
+.h1ding{
+	font:Arial;
+	font-size: 24px;
+	/*margin: 0px;*/
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.pding{
+	font:bold Arial;
+	font-size: 16px;
+	/*margin: 0px;*/
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
