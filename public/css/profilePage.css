@@ -1,18 +1,40 @@
+body{
+	background-image:url("bg_profile2.jpg");
+	background-size: 100%;
+	background-repeat:no-repeat;
+	
+}
+
 .leftding{
 	margin-top:10px;
 	border: 1px solid #EEAD0E;
 	/*border-top: 1px solid #EEAD0E;*/
+	border-top-right-radius:3px;
+	border-top-left-radius:3px;
+	border-bottom-right-radius:3px;
+	border-bottom-left-radius:3px;
+	background:white;
+}
+
+.topding{
+	margin-top:10px;
 }
 
 .headding{
 	margin-top:10px;
-	border-top: 2px solid #EEAD0E;
+	border-top: 2px solid #FF0000;
 	margin-bottom:20px;
+	padding:0px;
 }
 
 .pheadding{
 	margin:0px;
 	font-size:12px;
+	padding:0px;
+}
+
+.rightding{
+	margin:0px;
 	padding:0px;
 }
 
@@ -28,12 +50,43 @@
 	/*margin: 0px;*/
 	margin-top: 5px;
 	margin-bottom: 5px;
+	margin-left:5px;
 }
 
 .pding{
 	font:bold Arial;
-	font-size: 16px;
+	font-size: 14px;
 	/*margin: 0px;*/
-	margin-top: 10px;
+	margin-top: 5px;
 	margin-bottom: 5px;
+	margin-left:15px;
+	padding:0px;
+}
+
+.panelbodyding{
+	margin-top:0px;
+	margin-bottom:5px;
+	margin-left:10px;
+	margin-right:10px;
+	padding:5px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height:425px;
+}
+
+.footerding{
+	color: #FF0000;
+	clear:both;
+	border-top: 2px solid #FF0000;
+	margin: 10px;
+	text-align: center;
+	padding:20px;
+}
+
+.tbreakding{
+	margin-left:0px;
+	padding:0px;
+	text-align:left;
+	word-wrap:break-word;
+	border-bottom: 1px solid #EEAD0E;
 }
