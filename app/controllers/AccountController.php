@@ -121,7 +121,7 @@ class AccountController extends AuthorizedController
 		// Declare the rules for the form validation.
 		//
 		$rules = array(
-			'email'    => 'Required|Email',
+			'email'    => 'Required',
 			'password' => 'Required'
 		);
 

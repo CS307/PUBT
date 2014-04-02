@@ -78,6 +78,12 @@ Route::get('book_copys',function(){
 });
 
 //Use for testing
+Route::get('profile',function(){
+	//$book_copys = BookCopy::all();
+	return View::make('profilePage');
+});
+
+//Use for testing
 // Route::get('test',function(){
 // 	$confirmation = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 30);
 // 	echo $confirmation;
