@@ -11,9 +11,33 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"
         type="text/javascript"></script>
 <script src="{{asset('css/bootstrap.min.js')}}"></script>
+																		<!--<link rel="stylesheet/less" type="text/css" href="{{asset('less/bootstrap.less')}}">
+																		<script src="{{asset('css/less-1.7.0.min.js')}}" type="text/javascript"></script>-->
 <style>
 body{padding: 50px;}
 input{color:black;}
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #FFF;
+	background-image: -webkit-linear-gradient(top,
+											  #A9A9A9 0%,
+											  #DCDCDC 50%,
+											  #A9A9A9 100%);
+}
 
 </style>
 </head>
@@ -36,8 +60,8 @@ input{color:black;}
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav ">
         <li class="active"><a href="/">Home</a></li>
-        <li><a href="#">MA</a></li>
-        <li><a href="#">CS</a></li>
+        <li><a href="/search/subject=ma">MA</a></li>
+        <li><a href="/search/subject=cs">CS</a></li>
         <li><a href="#">ENG</a></li>
         <li><a href="#">PHY</a></li>
         <li><a href="#">MGMT</a></li>

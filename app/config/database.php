@@ -62,7 +62,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'pubtdb.c5jh4pmruvhx.us-west-2.rds.amazonaws.com',
-			'database'  => 'pubtDB_dev',
+			'database'  => 'pubt_dev',
 			'username'  => 'pubt',
 			'password'  => $mima,
 			'charset'   => 'utf8',
