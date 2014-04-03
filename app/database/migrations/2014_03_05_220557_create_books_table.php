@@ -18,7 +18,11 @@ class CreateBooksTable extends Migration {
             $table->increments('id');
             $table->string('title');
             $table->string('author')->nullable();
-            $table->string('course_id')->nullable();
+            $table->string('isbn')->nullable();
+            $table->string('publisher')->nullable();
+            $table->string('subject')->nullable();
+            $table->integer('course_id');
+            $table->string('pic_url');
             $table->timestamps();
         });
 	}

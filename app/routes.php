@@ -37,13 +37,11 @@ Route::post('postLogin',array('uses' => 'AccountController@postLogin'));
 
 Route::post('postLogout',array('uses' => 'AccountController@getLogout'));
 
-Route::post('search',array('uses' => 'SignupController@search'));
+Route::post('search',array('uses' => 'SearchController@search'));
 
-
-
-
-Route::get('search=ma',function(){
-	return View::make('results',array('number' => 34));
+Route::get('search/subject={subject}',function($subject){
+	$results = DB::table('books')->where('subject',$subject)->get();
+	return View::make('book_results',array('results' => $results));
 
 });
 
@@ -86,12 +84,7 @@ Route::get('book_copys',function(){
 //     });
 // });
 
-Route::get('add',function(){
-	Schema::table('books', function($table)
-	{
-    	$table->string('pic_url');
-	});
-});
+
 
 
 
@@ -122,7 +115,10 @@ Route::get('add',function(){
 
 Route::get('fake', function()
 {
-	//generateFakeBookCopys();
+	Schema::table('books', function($table)
+	{
+    	$table->string('edition')->after('publisher');
+	});
 });
 
 function createUser(){
@@ -137,23 +133,101 @@ function createUser(){
 	return $user;
 }
 
+ function addBook($title, $author, $isbn, $publisher, $edition, $course_id, $course_number, $pic_url){
+ 	$book = new Book;
+ 	echo $title;
+	if(1){
+		$book->title = $title;
+	}
+	else{
+		echo 'Cannot miss title!';
+		return;
+	}
+
+	if($author != 0){
+		$book->title = $title;
+	}
+
+	if($isbn != 0){
+		$book->isbn = $isbn;
+	}
+
+	if($publisher !=0){
+		$book->publisher = $publisher;
+	}
+
+	if($edition!=0){
+		$book->edition = $edition;
+	}
+
+	if(strcmp($course_id, 'NULL')!=0){
+		$book->course_id = $course_id;
+	}
+	else{
+		echo 'Cannot miss course_id!';
+		return;
+	}
+
+	if(strcmp($course_number, 'NULL')!=0){
+		$book->course_number = $course_number;
+	}
+	else{
+		echo 'Cannot miss course_num!';
+		return;
+	}
+
+	if(strcmp($pic_url, 'NULL')!=0){
+		$book->pic_url = $pic_url;
+	}
+	else{
+		echo 'Cannot miss pic_url!';
+		return;
+	}
+	
+	$book->save();
+ }
+
 function generateFakeBook(){
-	$book1 = new Book;
-	$book1->title = "Introduction to Real Analtsis";
-	$book1->author = "Robert G. Bartle";
-	$book1->course_id = "MA 341";
-	$book1->save();
-	//$book2 = new Book;
-	$book1->title = "Linear Algebra";
-	$book1->author = "Richard J. Penney";
-	$book1->course_id = "MA 351";
-	$book1->save();
-	//$book3 = new Book;
-	$book1->title = "Algorithms";
-	$book1->author = "Robert Sedgewick";
-	$book1->course_id = "CS 251";
-	$book1->save();
-	return;
+	$product_mode = FALSE;
+    $filename = getcwd() . "/CSbook.txt";
+    $handle = fopen($filename, "r");
+
+    //$book = new Book;
+	if ($handle) {
+		for($i=0;$i<1;$i++){
+
+			$title = fgets($handle);
+
+			$author = fgets($handle);
+
+			$isbn = fgets($handle);
+
+			$publisher = fgets($handle);
+
+			$edition = fgets($handle);
+
+			$course_id = fgets($handle);
+			$course_id = str_replace("\n","",$course_id);
+
+			$course_number = fgets($handle);
+
+			$pic_url = fgets($handle);
+
+			addBook($title, $author, $isbn, $publisher, $edition, $course_id, $course_number, $pic_url);
+			
+			$blank = fgets($handle);
+		}
+
+    	// while (($line = fgets($handle)) !== false) {
+     //    	// process the line read.
+    	// }
+	} 
+	else {
+    	// error opening the file.
+	}	
+    fclose($handle);
+
+	return Redirect::to('/books');
 }
 
 function generateFakeBookCopys(){
