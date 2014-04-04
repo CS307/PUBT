@@ -56,12 +56,77 @@
     <hr>
     <div class = "buyfollow">
       <div class = "row">
+
+
       <div class = "col-md-7">
         <h3 class = "subtitle">Contact & Buy</h3>
+
+@if(Auth::check())<!--when user is logged in-->
+    
+  @if(Auth::user()->id==$book_copy->seller_id)<!--when user is the seller-->
+
         {{ Form::open(array('url'=>'join_buyerlist','method'=>'post')) }}
         <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
         <input type="hidden" name="buyer_id" value=" {{ Auth::user()->id }} ">
         <input type="hidden" name="email" value=" {{ DB::table('users')->where('id', $book_copy->seller_id)->first()->email }} ">
+
+        <div class = "contactleft controlgroup">
+
+            <span class ="info " style = "padding-left:0;text-align: left;">User who are interested in your book*</span>
+            <div class ="priceinput myinput">
+
+            @for($count=0;$count < count($buyer_list); $count++)
+                @if($count%4==0)
+                    @if($count!=0)
+                        </div>
+                    @endif
+                    <div class="row">
+                @endif
+                <span>{{ $buyer_list[$count]->buyer_id }}</span>
+                <span>{{ $buyer_list[$count]->offer_price }}</span>
+            @endfor
+            </div>
+
+
+
+        </div>
+      </div>
+
+
+      <div class = "col-md-5">
+        <div class="listprice">
+          @if(!$book_copy->soldout)
+            ${{ $book_copy->price }}
+          @else
+            Sold Out
+          @endif
+        </div>
+        <div class ="contactright">
+            <div class="controlgroup">
+              <span class ="info">Offer your price to seller*</span>
+                <div class ="priceinput">
+                  <span class="add-on sofia">$</span>
+                  <input type="text" name="amount" placeholder="-">
+                </div>
+
+            <div class="pricefield">  
+              <button type="submit"class="btn btn-contact" style="margin-top: 10px;"><i class="icon-white icon-plus"></i>Contact&Buy</button>
+              <div class ="info info2">*we will send your offer together your contact information to the seller. You guys will get in touch soon!
+              </div>
+            </div>
+          </div>  
+          {{ Form::close() }}
+        </div>
+      </div>
+
+  @else<!--when user is logged in as buyer-->
+
+
+        {{ Form::open(array('url'=>'join_buyerlist','method'=>'post')) }}
+        <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
+        <input type="hidden" name="buyer_id" value=" {{ Auth::user()->id }} ">
+        <input type="hidden" name="email" value=" {{ DB::table('users')->where('id', $book_copy->seller_id)->first()->email }} ">
+
         <div class = "contactleft">
           <div class="controlgroup">
             <span class ="info " style = "padding-left:0;text-align: left;">Write down your questions toward the item at here*</span>
@@ -83,27 +148,80 @@
           @endif
         </div>
         <div class ="contactright">
-          <form action="#" method="post" class="priceform" autocomplete="off">
-          <div class="controlgroup">
-            <span class ="info">Offer your price to seller*</span>
-            <div class ="priceinput">
-            <span class="add-on sofia">$</span>
-            <input type="text" name="amount" placeholder="-">
-            </div>
+            <div class="controlgroup">
+              <span class ="info">Offer your price to seller*</span>
+                <div class ="priceinput">
+                  <span class="add-on sofia">$</span>
+                  <input type="text" name="amount" placeholder="-">
+                </div>
 
-          <div class="pricefield">  
-            <button type="submit" class="btn btn-contact" style="margin-top: 10px;"><i class="icon-white icon-plus"></i>Contact&Buy
-            </button>
-          <div class ="info info2">*we will send your offer together your contact information to the seller. You guys will get in touch soon!
-          </div>
-          </div>
+            <div class="pricefield">  
+              <button type="submit" class="btn btn-contact" style="margin-top: 10px;"><i class="icon-white icon-plus"></i>Contact&Buy
+              </button>
+              <div class ="info info2">*we will send your offer together your contact information to the seller. You guys will get in touch soon!
+              </div>
+            </div>
           </div>  
-          </form>
           {{ Form::close() }}
         </div>
       </div>
+  @endif
+
+
+
+@else<!--when user is not logged in-->
+
+
+        
+        <div class = "contactleft controlgroup">
+            <span class ="info " style = "padding-left:0;text-align: left;">Write down your questions toward the item at here*</span>
+            <div class ="priceinput myinput">
+              <textarea type="text" name="comment" placeholder="">
+              </textarea>
+            </div>
+        </div>
+      </div>
+
+
+      <div class = "col-md-5">
+        <div class="listprice">
+          @if(!$book_copy->soldout)
+            ${{ $book_copy->price }}
+          @else
+            Sold Out
+          @endif
+        </div>
+        <div class ="contactright">
+            <div class="controlgroup">
+              <span class ="info">Offer your price to seller*</span>
+                <div class ="priceinput">
+                  <span class="add-on sofia">$</span>
+                  <input type="text" name="amount" placeholder="-">
+                </div>
+
+            <div class="pricefield">  
+              <button type="submit" class="btn btn-contact" style="margin-top: 10px;"><i class="icon-white icon-plus"></i>Log in to contact
+              </button>
+              <div class ="info info2">*we will send your offer together your contact information to the seller. You guys will get in touch soon!
+              </div>
+            </div>
+          </div>  
+        
+        </div>
+      </div>
+@endif
+
+
+
     </div>
   </div>
+
+
+
+
+
+
+
 
     <div class = "buyfollow">
      <div class = "row">
@@ -158,7 +276,7 @@
           @endif
         @else
           <a href="#" class="btn btn-contact" style="margin-top: 100px;">
-            Log in for following
+            Log in to follow
           </a>
         @endif
       </div>
