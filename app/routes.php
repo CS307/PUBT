@@ -73,7 +73,7 @@ Route::get('/search/book_id={book_id}', function($book_id){
 
 Route::get('/search/book_copy_id={bc_id}', function($bc_id){
 	$book_copy = DB::table('book_copys')->where('id',$bc_id)->first();
-	return View::make('sellingpage', array('results' => $book_copy));
+	return View::make('sellingpage', array('book_copy' => $book_copy));
 });
 
 Route::get('verification/code={confirmation}', function($confirmation){

@@ -11,14 +11,14 @@
     <div class = "col-md-5 leftpart"> 
      <section>
 
-		<h2>Title: {{ $book->title }}</h2>
+		<h2>Title: {{ DB::table('books')->where('id',$book_copy->book_id)->first()->title }}</h2>
       <h4>corresponding course:
         <span class="label label-info">{{ DB::table('books')->where('id',$book_copy->book_id)->first()->subject.' '.DB::table('books')->where('id',$book_copy->book_id)->first()->course_id }}</span>
       </h4>
       <div class = "row">
         <div class = "col-md-7">
            <a href="#" class="thumbnail">
-           <img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="{{$book->pic_url}}">
+           <img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="{{ DB::table('books')->where('id',$book_copy->book_id)->first()->pic_url }}">
            </a>
         
         <h3 class="heading bold">Item details:</h3>
