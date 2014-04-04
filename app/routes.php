@@ -134,8 +134,22 @@ Route::post('/recover', function(){
 	return Redirect::to('/search/book_copy_id='.$bc_id);
 });
 
+Route::post('/join_buyerlist',function(){
+	$bc_id = Input::get('book_copy_id');
+	$buyer_id = Input::get('buyer_id');
+	$book_copy = DB::table('book_copys')->where('id', $bc_id)->first();
+	$seller_id = $book_copy->seller_id;
+	$book = DB::table('books')->where('id', $book_copys)->first();
+	$seller = DB::('users')->where('id', $seller_id)->first();
+	$buyer = DB::('users')->where('id', $buyer_id)->first();
 
+	// Send email to seller
+	Mail::send('email_buying', array('username'=>$seller->email, 'buyer'=>$buyer, 'book_copy'=>$book_copy, 'comment'=>Input::get('comment'), 'offer_price'=>Input::get('amount')), function($message){
+         $message->to($seller->email.'@purdue.edu', NULL)->subject('Someone wants to buy your selling book!');
+    });
 
+	return Redirect::to('/search/book_copy_id='.$bc_id)
+});
 
 
 

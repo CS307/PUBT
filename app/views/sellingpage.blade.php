@@ -58,12 +58,14 @@
       <div class = "row">
       <div class = "col-md-7">
         <h3 class = "subtitle">Contact & Buy</h3>
-        
+        {{ Form::open(array('url'=>'join_buyerlist','method'=>'post')) }}
+        <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
+        <input type="hidden" name="buyer_id" value=" {{ Auth::user()->id }} ">
         <div class = "contactleft">
           <div class="controlgroup">
             <span class ="info " style = "padding-left:0;text-align: left;">Write down your questions toward the item at here*</span>
             <div class ="priceinput myinput">
-            <textarea type="text" name="amount" placeholder="Hi, seller:"></textarea>
+              <textarea type="text" name="amount" placeholder="Hi, seller:"></textarea>
             </div>
           </div>
         </div>
@@ -79,7 +81,6 @@
           @endif
         </div>
         <div class ="contactright">
-        	{{ Form::open(array('url'=>'postBook','method'=>'post')) }}
           <form action="#" method="post" class="priceform" autocomplete="off">
           <div class="controlgroup">
             <span class ="info">Offer your price to seller*</span>
@@ -89,8 +90,8 @@
             </div>
 
           <div class="pricefield">  
-          <a href="#" class="btn btn-contact" style="margin-top: 10px;"><i class="icon-white icon-plus"></i>Contact&Buy
-          </a>
+            <a href="#" class="btn btn-contact" style="margin-top: 10px;"><i class="icon-white icon-plus"></i>Contact&Buy
+            </a>
           <div class ="info info2">*we will send your offer together your contact information to the seller. You guys will get in touch soon!
           </div>
           </div>
