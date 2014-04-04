@@ -41,10 +41,14 @@ Route::get('/post/book_id={book_id}', function($book_id){
 });
 
 Route::post('postBook',function(){
-	echo "book_id: ".Input::get('book_id');
-	echo "condition: ".Input::get('condition');
-	echo "price: ".Input::get('price');
-	echo "detial: ".Input::get('detail');
+	$book_copy = new BookCopy;
+	$book_copy->book_id = Input::get('book_id');
+	$book_copy->price = Input::get('price');
+	$book_copy->seller_id = Auth::user()->id;
+	$book_copy->condition = Input::get('condition');
+	$book_copy->detail = Input::get('detail');
+	$book_copy->expire_date = "1994-01-30";
+	$book_copy->save();
 });
 
 Route::post('postPost', array('uses' => 'PostController@postPost'));

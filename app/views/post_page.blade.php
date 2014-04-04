@@ -68,6 +68,7 @@
               <td class="value">
                 <input name="condition" type="text" placeholder="new with tags,like new,good condition and fair condition" style = "line-height: 25px; vertical-align: center;">
                 
+<<<<<<< HEAD
                 <!-- <select class="form-control" name="conditionS">
                  <option>New With Tags</option>
                  <option>Like New</option>
@@ -75,6 +76,8 @@
                  <option>Fair Condition</option>
                 </select>
                 <input name="condition" type="hidden" value="{{$_POST['conditionS']}} "> -->
+=======
+>>>>>>> 1bbca001c58b446408819d1c109d328da9e72228
               </td>
               </tr>
 
