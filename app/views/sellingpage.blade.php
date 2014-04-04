@@ -61,11 +61,13 @@
         {{ Form::open(array('url'=>'join_buyerlist','method'=>'post')) }}
         <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
         <input type="hidden" name="buyer_id" value=" {{ Auth::user()->id }} ">
+        <input type="hidden" name="email" value=" {{ DB::table('users')->where('id', $book_copy->seller_id)->first()->email }} ">
         <div class = "contactleft">
           <div class="controlgroup">
             <span class ="info " style = "padding-left:0;text-align: left;">Write down your questions toward the item at here*</span>
             <div class ="priceinput myinput">
-              <textarea type="text" name="amount" placeholder="Hi, seller:"></textarea>
+              <textarea type="text" name="comment" placeholder="">
+              </textarea>
             </div>
           </div>
         </div>
@@ -90,8 +92,8 @@
             </div>
 
           <div class="pricefield">  
-            <a href="#" class="btn btn-contact" style="margin-top: 10px;"><i class="icon-white icon-plus"></i>Contact&Buy
-            </a>
+            <button type="submit" class="btn btn-contact" style="margin-top: 10px;"><i class="icon-white icon-plus"></i>Contact&Buy
+            </button>
           <div class ="info info2">*we will send your offer together your contact information to the seller. You guys will get in touch soon!
           </div>
           </div>
