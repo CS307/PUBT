@@ -111,8 +111,29 @@
       </div>
 
       <div class = "col-md-5">
-        <a href="#" class="btn btn-contact" style="margin-top: 100px;"><i class="icon-white icon-plus"></i>Add Follow
+        @if(Auth::check())
+          @if(!DB::table('follow_list')->where('follower_id',Auth::user()->id)->where('copy_id', $book_copy->id)->first())
+            {{ Form::open(array('url'=>'/follow/book_copy_id='.$book_copy->id, 'method'=>'post')) }}
+            <button type="submit" class="btn btn-contact" style="margin-top: 100px;">
+              <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
+              <input type="hidden" name="follower_id" value=" {{ Auth::user()->id }} ">
+              Add Follow
+            </button>
+            {{ Form::close(); }}
+          @else
+            {{ Form::open(array('url'=>'/unfollow/book_copy_id='.$book_copy->id, 'method'=>'post')) }}
+            <button type="submit" class="btn btn-contact" style="margin-top: 100px;">
+              <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
+              <input type="hidden" name="follower_id" value=" {{ Auth::user()->id }} ">
+              Unfollow {{DB::table('follow_list')->where('follower_id',Auth::user()->id)->where('copy_id', $book_copy->id)->first()->copy_id}}
+            </button>
+            {{ Form::close(); }}
+          @endif
+        @else
+          <a href="#" class="btn btn-contact" style="margin-top: 100px;">
+            Log in for following
           </a>
+        @endif
       </div>
     </div>
     </div>
