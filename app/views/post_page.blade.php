@@ -11,7 +11,29 @@
     <div class = "col-md-5 leftpart"> 
      <section>
 
-		@yield('postbookinfo')
+		<h2>Title: {{ $book->title }}</h2>
+      <h4>corresponding course:
+        <span class="label label-info">{{$book->subject.' '.$book->course_id}}</span>
+      </h4>
+      <div class = "row">
+        <div class = "col-md-7">
+           <a href="#" class="thumbnail">
+           <img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="{{$book->pic_url}}">
+           </a>
+        
+        <h3 class="heading bold">Item details:</h3>
+        </div>
+      <table id="table_item">
+        <tr>
+          <td class="name">Author: </td>
+          <td class="value">{{ $book->author }}</td>
+        </tr>
+        <tr>
+          <td class="name">ISBN: </td>
+          <td class="value">{{ $book->isbn }}</td>
+        </tr>
+      </table>
+      </div>
 		
 	</section>
     </div>
@@ -30,15 +52,13 @@
           <div class="controlgroup">
 
             <table id="table_item">
+              {{ Form::open(array('url'=>'postBook','method'=>'post')) }}
               <tr>
               <td class="name">List Price: </td>
               <td class="value">
                   <div class ="priceinput">
                    <span class="add-on sofia">$</span>
-
-
-                   {{ Form::open(array('url'=>'postBook','method'=>'post')) }}
-                    <input name="price" type="text" placeholder="-" style = "line-height: 25px">
+                    <input name="price" type="text" placeholder="30.00" style = "line-height: 25px; vertical-align: center;">
                   </div>
               </td>
               </tr>
@@ -46,13 +66,15 @@
               <tr>
               <td class="name">Condition: </td>
               <td class="value">
-                <select class="form-control" name="condition">
+                <!-- <input name="condition" type="text" placeholder="new with tags,like new,good condition and fair condition" style = "line-height: 25px; vertical-align: center;"> -->
+                
+                <select class="form-control" name="conditionS">
                  <option>New With Tags</option>
                  <option>Like New</option>
                  <option>Good Condition</option>
                  <option>Fair Condition</option>
                 </select>
-                <input name="condition" type="text" value=" {{ $_POST['condition'] }} ">
+                <input name="condition" type="hidden" value="{{$_POST['conditionS']}} ">
               </td>
               </tr>
 
@@ -65,7 +87,7 @@
               </td>
               </tr>
 
-              <input type="hidden" name="book_id" value=" {{ $book->course_id }} ">
+              <input type="hidden" name="book_id" value=" {{ $book->id }} ">
               </table>
             
           </div>

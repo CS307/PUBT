@@ -19,7 +19,7 @@ Route::get('resultPage', function(){
 	return View::make('results',array('number' => 100));
 });
 
-Route::get('postmiddlepage', function(){
+Route::get('post_middle_page', function(){
 	if(Auth::check()){
 		return View::make('post_middle_page');
 	}
@@ -36,7 +36,15 @@ Route::post('post_select_page',function(){
 });
 
 Route::get('/post/book_id={book_id}', function($book_id){
-	$books = DB::table('books')->where('id',$book_id)->first();
+	$book = DB::table('books')->where('id',$book_id)->first();
+	return View::make('post_page',array('book'=>$book));
+});
+
+Route::post('postBook',function(){
+	echo "book_id: ".Input::get('book_id');
+	echo "condition: ".Input::get('condition');
+	echo "price: ".Input::get('price');
+	echo "detial: ".Input::get('detail');
 });
 
 Route::post('postPost', array('uses' => 'PostController@postPost'));
