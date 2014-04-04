@@ -37,6 +37,11 @@ Route::post('post_select_page',function()
 	return View::make('post_select_page',array('results' => $books));
 });
 
+Route::get('/post/book_id={book_id}', function($book_id)
+{
+	$books = DB::table('books')->where('id',$book_id)->first();
+});
+
 Route::post('postPost', array('uses' => 'PostController@postPost'));
 
 Route::post('postRegister',array('uses' => 'AccountController@postRegister' ));
@@ -57,6 +62,12 @@ Route::get('/search/book_id={book_id}', function($book_id)
 {
 	$book_copys = DB::table('book_copys')->where('book_id',$book_id)->get();
 	return View::make('book_copys_results', array('results' => $book_copys));
+});
+
+Route::get('/search/book_copy_id={bc_id}', function($bc_id)
+{
+	$book_copy = DB::table('book_copys')->where('id',$bc_id)->first();
+	return View::make('sellingpage', array('results' => $book_copy));
 });
 
 Route::get('verification/code={confirmation}', function($confirmation)
