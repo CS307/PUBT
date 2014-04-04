@@ -1,5 +1,5 @@
 <?php
-
+$b;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -128,24 +128,30 @@ Route::post('/soldout', function(){
 	$bc_id = Input::get('book_copy_id');
 	DB::table('book_copys')->where('id', $bc_id)->update(array('soldout' => true));
 
-	// Send emails to all the buyers
-	$book_copy = DB::table('book_copys')->where('id', $bc_id)->first();
-	$book = DB::table('books')->where('id', $book_copy->book_id)->first();
-	$follower_ids = DB::table('follow_list')->where('copy_id', $bc_id)->get()->follower_id;
+	// // Send emails to all the buyers
+	// $book_copy = DB::table('book_copys')->where('id', $bc_id)->first();
+	// echo count($book_copy);
+	// $book = DB::table('books')->where('id', $book_copy->book_id)->first();
+	// $buyerEntrys= DB::table('buyer_list')->where('copy_id', $bc_id)->get();
 	
-	echo count($follower_ids);
+	// echo count($buyerEntrys);
+	// static $buyer;
 
-	foreach ($follower_ids as $follower_id)
-	{
-		echo $follower_id;
-		//$follower = DB::table('users')->where('id',$follower_id)->first();
-	   	//echo $follower->email;
-	   	// Mail::send('email_soldout', array('username'=>$follower->email, 'book'=>$book, 'book_copy'=>$book_copy), function($message){
-     //     	$message->to($follower->email.'@purdue.edu', NULL)->subject('Someone wants to buy your selling book');
-     // 	});
-	}
+	// if(!$buyerEntrys){
+	// 	 	$results = $buyerEntrys; 
+	// 	}
+	// else{
+	//  	$count = 0;
+	//  	foreach ($buyerEntrys as $buyerEntry)
+	//  	{
+	// 		$b = DB::table('users')->where('id',$buyerEntry[]->buyer_id)->first();
+ //    		Mail::send('email_soldout', array('username'=>DB::table('users')->where('id',$buyerEntry->buyer_id)->first()->email, 'book'=>$book, 'book_copy'=>$book_copy), function($message){
+ //     			$message->to(DB::table('users')->where('id',$buyerEntry->buyer_id)->first()->email.'@purdue.edu', NULL)->subject('Someone wants to buy your selling book');
+ // 			});
+	// 	}
+	// }
 	
-	//return Redirect::to('/search/book_copy_id='.$bc_id);
+	return Redirect::to('/search/book_copy_id='.$bc_id);
 });
 
 Route::post('/recover', function(){
@@ -237,10 +243,6 @@ Route::get('profile',function(){
 
 Route::get('fake', function()
 {
-	Schema::table('buyer_list', function($table)
-{
-    $table->double('offer_price',10,2)->after('copy_id');
-});
 });
 
 function createUser(){
