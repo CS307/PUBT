@@ -62,16 +62,16 @@ input{color:black;}
         <li class="active"><a href="/">Home</a></li>
         <li><a href="/search/subject=ma">MA</a></li>
         <li><a href="/search/subject=cs">CS</a></li>
-        <li><a href="#">ENG</a></li>
-        <li><a href="#">PHY</a></li>
-        <li><a href="#">MGMT</a></li>
-        <li><a href="#">STAT</a></li>
+        <li><a href="/search/subject=engl">ENGL</a></li>
+        <li><a href="/search/subject=phy">PHY</a></li>
+        <li><a href="/search/subject=mgmt">MGMT</a></li>
+        <li><a href="/search/subject=stat">STAT</a></li>
         <li><a href="#">Others</a></li>
       </ul>
         {{Form::open(array('url'=>'search','method'=>'post'))}}
       <div class="navbar-form navbar-left" role="search" action="#">
         <div class="form-group">
-          <input type="text" class="form-control" name="keyword" placeholder="In format:CS 180">
+          <input type="text" class="form-control" name="keyword" placeholder="In format:CS 18000">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </div>

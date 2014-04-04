@@ -39,21 +39,30 @@ Route::post('postLogout',array('uses' => 'AccountController@getLogout'));
 
 Route::post('search',array('uses' => 'SearchController@search'));
 
-Route::get('search/subject={subject}',function($subject){
+Route::get('search/subject={subject}',function($subject)
+{
 	$results = DB::table('books')->where('subject',$subject)->get();
 	return View::make('book_results',array('results' => $results));
-
 });
 
-
+Route::get('/search/book_id={book_id}', function($book_id)
+{
+	$book_copys = DB::table('book_copys')->where('book_id',$book_id)->get();
+	return View::make('book_copys_results', array('results' => $book_copys));
+});
 
 Route::get('verification/code={confirmation}', function($confirmation)
 {
 	DB::table('users')->where('confirmation', $confirmation)->update(array( 'confirmed' => true ));
-    echo "Verification Success!";
+    $user = DB::table('users')->where('confirmation', $confirmation)->first();
+    Auth::attempt(array('email' => $user->email, 'password' => $user->password));
+    return Redirect::to('/');
 });
 
-
+Route::get('/search',function()
+{
+	echo $keyword;
+});
 
 
 
