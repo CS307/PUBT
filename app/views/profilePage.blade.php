@@ -40,16 +40,17 @@
 					@for($count=0;$count<count($followingbooks);$count++)		
 						<div class="row no-gutter">
 							<div class="col-sm-6 col-md-3">
-								<a href="#" class="thumbnail">
-									<img data-src="holder.js/240x160" src="{{asset('css/sampleimg.jpg')}}" alt="sampleimg">
+								<a href="/search/book_copy_id={{$followingbooks[$count]->id}}" class="thumbnail">
+									<img data-src="holder.js/240x160" src="{{DB::table('books')->where('id',$followingbooks[$count]->book_id)->first()->pic_url}}" alt="sampleimg">
 								</a>
 							</div>
 							<div class="col-md-9">
 								<div class=tbreakding>
-									<p>Book: {{ DB::table('books')->where('id',$followingbooks[$count]->book_id)->title }}</p>
-									<p>Author: {{ DB::table('books')->where('id',$followingbooks[$count]->book_id)->author }}</p>
-									<p>Course: {{ DB::table('books')->where('id',$followingbooks[$count]->book_id)->subject.' '.DB::table('books')->where('id',$followingbooks[$count]->book_id)->course_id }}</p>
+									<p>Book: {{ DB::table('books')->where('id',$followingbooks[$count]->book_id)->first()->title }}</p>
+									<p>Author: {{ DB::table('books')->where('id',$followingbooks[$count]->book_id)->first()->author }}</p>
+									<p>Course: {{ DB::table('books')->where('id',$followingbooks[$count]->book_id)->first()->subject.' '.DB::table('books')->where('id',$followingbooks[$count]->book_id)->first()->course_id }}</p>
 									<p>Condition: {{ $followingbooks[$count]->condition }}</p>
+									<p>Owner: {{ DB::table('users')->where('id', $followingbooks[$count]->seller_id )->first()->email }}</p>
 								</div>
 							</div>
 						</div>

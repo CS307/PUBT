@@ -86,15 +86,40 @@ Route::get('verification/code={confirmation}', function($confirmation){
 Route::get('profilepage',function(){
 	if(Auth::check()){
 		$user = Auth::user();
-	 	$followingbooks = DB::table('follow_list')->where('follower_id', $user->id)->get();
+	 	$followingEntrys = DB::table('follow_list')->where('follower_id', $user->id)->get();
+	 	if(!$followingEntrys){
+		 	$results = $followingEntrys; 
+		}
+		else{
+		 	$count = 0;
+		 	foreach ($followingEntrys as $followingEntry)
+		 	{
+				$book_copy = DB::table('book_copys')->where('id',$followingEntry->copy_id)->first();
+	    		$results[$count++] = $book_copy;
+			}
+		}
 	 	$sellingbooks = DB::table('book_copys')->where('seller_id', $user->id)->get();
-	 	return View::make('profilePage', array('user' => $user, 'followingbooks' => $followingbooks, 'sellingbooks'=> $sellingbooks));
+	 	return View::make('profilePage', array('user' => $user, 'followingbooks' => $results, 'sellingbooks'=> $sellingbooks));
 	}
 	else{
 		return Redirect::to('/');
 	}
 });
 
+Route::post('/follow/book_copy_id={bc_id}',function($bc_id){
+	$follower_id = Input::get('follower_id');
+	$fl = new FollowList;
+	$fl->follower_id = $follower_id;
+	$fl->copy_id = $bc_id;
+	$fl->save();
+	return Redirect::to('/search/book_copy_id='.$bc_id);
+});
+
+Route::post('/unfollow/book_copy_id={bc_id}',function($bc_id){
+	$follower_id = Input::get('follower_id');
+	DB::table('follow_list')->where('follower_id', $follower_id)->where('copy_id', $bc_id)->delete();
+	return Redirect::to('/search/book_copy_id='.$bc_id);
+});
 
 
 
@@ -167,7 +192,7 @@ Route::get('profile',function(){
 
 Route::get('fake', function()
 {
-	
+
 });
 
 function createUser(){
