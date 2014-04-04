@@ -111,7 +111,9 @@
         <h3 class = subtitle>Add to Follow List</h3>
         <div class = "contactleft">
           <div class="controlgroup">
-            <div class ="info info3">Add to your following list to catch up with this awesome book later!</div>
+            <?php $followers = DB::table('follow_list')->where('copy_id',$book_copy->id)->get(); ?>
+            <div class ="info info3">Add to your following list to catch up with this awesome book later! 
+              <p>Current followers: {{ count($followers) }}</p></div>
             
           </div>
         </div>
