@@ -74,7 +74,8 @@ Route::get('/search/book_id={book_id}', function($book_id){
 
 Route::get('/search/book_copy_id={bc_id}', function($bc_id){
 	$book_copy = DB::table('book_copys')->where('id',$bc_id)->first();
-	return View::make('sellingpage', array('book_copy' => $book_copy));
+	$buyer_list = DB::table('buyer_list')->where('copy_id', $bc_id)->get();
+	return View::make('sellingpage', array('book_copy' => $book_copy, 'buyer_list' => $buyer_list));
 });
 
 Route::get('verification/code={confirmation}', function($confirmation){
@@ -123,10 +124,28 @@ Route::post('/unfollow/book_copy_id={bc_id}',function($bc_id){
 });
 
 Route::post('/soldout', function(){
+	// Mark the book by soldout
 	$bc_id = Input::get('book_copy_id');
 	DB::table('book_copys')->where('id', $bc_id)->update(array('soldout' => true));
-	$buyers_ids = DB::table('buyer_list')->where('copy_id', $bc_id)->get();
-	return Redirect::to('/search/book_copy_id='.$bc_id);
+
+	// Send emails to all the buyers
+	$book_copy = DB::table('book_copys')->where('id', $bc_id)->first();
+	$book = DB::table('books')->where('id', $book_copy->book_id)->first();
+	$follower_ids = DB::table('follow_list')->where('copy_id', $bc_id)->get()->follower_id;
+	
+	echo count($follower_ids);
+
+	foreach ($follower_ids as $follower_id)
+	{
+		echo $follower_id;
+		//$follower = DB::table('users')->where('id',$follower_id)->first();
+	   	//echo $follower->email;
+	   	// Mail::send('email_soldout', array('username'=>$follower->email, 'book'=>$book, 'book_copy'=>$book_copy), function($message){
+     //     	$message->to($follower->email.'@purdue.edu', NULL)->subject('Someone wants to buy your selling book');
+     // 	});
+	}
+	
+	//return Redirect::to('/search/book_copy_id='.$bc_id);
 });
 
 Route::post('/recover', function(){
@@ -140,6 +159,7 @@ Route::post('/join_buyerlist',function(){
 	$buyerList = new BuyerList;
 	$buyerList->buyer_id = Input::get('buyer_id');
 	$buyerList->copy_id = Input::get('book_copy_id');
+	$buyerList->offer_price = Input::get('amount');
 	$buyerList->save();
 	$book_copy = DB::table('book_copys')->where('id', Input::get('book_copy_id'))->first();
 	$book = DB::table('books')->where('id', $book_copy->book_id)->first();
@@ -217,7 +237,10 @@ Route::get('profile',function(){
 
 Route::get('fake', function()
 {
-	DB::table('users')->where('id', 3)->delete();
+	Schema::table('buyer_list', function($table)
+{
+    $table->double('offer_price',10,2)->after('copy_id');
+});
 });
 
 function createUser(){
