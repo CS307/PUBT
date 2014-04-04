@@ -67,21 +67,11 @@
 					<h3 class="panel-title">Selling Books:</h3>
 				</div>
 				<div class=panelbodyding>
-					<a href="#" class="thumbnail">
-								<img data-src="holder.js/240x160" src="{{asset('css/sampleimg.jpg')}}" alt="sampleimg">
-					</a>
-					<a href="#" class="thumbnail">
-								<img data-src="holder.js/240x160" src="{{asset('css/sampleimg.jpg')}}" alt="sampleimg">
-					</a>
-					<a href="#" class="thumbnail">
-								<img data-src="holder.js/240x160" src="{{asset('css/sampleimg.jpg')}}" alt="sampleimg">
-					</a>
-					<a href="#" class="thumbnail">
-								<img data-src="holder.js/240x160" src="{{asset('css/sampleimg.jpg')}}" alt="sampleimg">
-					</a>
-					<a href="#" class="thumbnail">
-								<img data-src="holder.js/240x160" src="{{asset('css/sampleimg.jpg')}}" alt="sampleimg">
-					</a>
+					@for($count=0;$count<count($sellingbooks);$count++)
+						<a href="/search/book_copy_id={{$sellingbooks[$count]->id}}" class="thumbnail">
+							<img data-src="holder.js/240x160" src="{{asset('css/sampleimg.jpg')}}" alt="sampleimg">
+						</a>
+					@endfor
 				</div>
 			</div>
 			</div>
