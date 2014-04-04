@@ -39,7 +39,7 @@ Route::post('post_select_page',function()
 
 Route::get('/post/book_id={book_id}', function($book_id)
 {
-	$books = DB:table('books')->where('id',$book_id)->first();
+	$books = DB::table('books')->where('id',$book_id)->first();
 });
 
 Route::post('postPost', array('uses' => 'PostController@postPost'));
