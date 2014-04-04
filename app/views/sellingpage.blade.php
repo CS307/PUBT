@@ -72,7 +72,7 @@
 
       <div class = "col-md-5">
         <div class="listprice">
-          {{ $book_copy->price }}
+          ${{ $book_copy->price }}
         </div>
         <div class ="contactright">
         	{{ Form::open(array('url'=>'postBook','method'=>'post')) }}

@@ -97,9 +97,12 @@ input{color:black;}
           @if(Auth::check())
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">{{Auth::user()->email}}<b class="caret"></b></a>
             <div class="dropdown-menu" style="padding:17px;">
+              <a href="/profilepage">Profile</a>
               {{Form::open(array('url'=>'postLogout','method'=>'post'))}}
                 <button type="submit" id="btnLogin" class="btn">Log out</button>
                 {{Form::close()}}
+
+
           @else
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Sign in<b class="caret"></b></a>
             <div class="dropdown-menu" style="padding:17px;">

@@ -14,8 +14,8 @@
 					<img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="{{$results[$count]->pic_url}}">
 				</a>
 				<div class="caption" class=imginfoding>
-					<h5 class=imginfoding>{{ $results[$count]->title }}</h5>
-					<p class=imginfoding>Author: {{ $results[$count]->author }}</p>
+					<h5 class=imginfoding style="height: 50px; vertical-align:text-top;">{{ $results[$count]->title }}</h5>
+					<p class=imginfoding style="height: 40px; vertical-align:text-top;">Author: {{ $results[$count]->author }}</p>
 					<p class=imginfoding>Course: {{ $results[$count]->subject.' '.$results[$count]->course_id }}</p>
 					<p class=imginfoding>Edition: {{ $results[$count]->edition }}</p>
 				</div>
