@@ -20,13 +20,21 @@ Route::get('resultPage', function(){
 	return View::make('results',array('number' => 100));
 });
 
-Route::get('postPage', function(){
+Route::get('postmiddlepage', function(){
 	if(Auth::check()){
-		return View::make('post_page');
+		return View::make('post_middle_page');
 	}
 	else{
 		return Redirect::to('/');
 	}
+});
+
+Route::post('post_select_page',function()
+{
+	$keyword = Input::get('keyword');	
+	preg_match('/(?P<subject>[a-zA-Z]+)\s*(?P<number>\d+)/', $keyword, $matches);
+	$books = DB::table('books')->where('subject', $matches['subject'])->where('course_id',$matches['number'])->get();
+	return View::make('post_select_page',array('results' => $books));
 });
 
 Route::post('postPost', array('uses' => 'PostController@postPost'));
@@ -59,10 +67,6 @@ Route::get('verification/code={confirmation}', function($confirmation)
     return Redirect::to('/');
 });
 
-Route::get('/search',function()
-{
-	echo $keyword;
-});
 
 
 

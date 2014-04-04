@@ -60,13 +60,13 @@ input{color:black;}
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav ">
         <li class="active"><a href="/">Home</a></li>
-        <li><a href="/search/subject=ma">MA</a></li>
+        <li><a href="/search/subject=chm">CHM</a></li>
         <li><a href="/search/subject=cs">CS</a></li>
         <li><a href="/search/subject=engl">ENGL</a></li>
-        <li><a href="/search/subject=phy">PHY</a></li>
+        <li><a href="/search/subject=ma">MA</a></li>
         <li><a href="/search/subject=mgmt">MGMT</a></li>
+        <li><a href="/search/subject=phys">PHYS</a></li>
         <li><a href="/search/subject=stat">STAT</a></li>
-        <li><a href="#">Others</a></li>
       </ul>
         {{Form::open(array('url'=>'search','method'=>'post'))}}
       <div class="navbar-form navbar-left" role="search" action="#">

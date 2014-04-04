@@ -16,7 +16,7 @@
           <button type="submit" class="btn btn-primary" role="search">Search</button>
 
           <form class="navbar-form" role="post" action="#">
-		      <a href="/post/{{Input::get("keyword")}}" class="btn btn-success" role="post">
+		      <a href="/postmiddlepage" class="btn btn-success" role="post">
 			     <i class="glyphicon glyphicon-plus"></i>
           Post
         </a>
