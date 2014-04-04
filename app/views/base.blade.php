@@ -84,7 +84,7 @@ input{color:black;}
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navSignup">Join us<b class="caret"></b></a>
             <div class="dropdown-menu" style="padding:17px;">
               {{Form::open(array('url'=>'postRegister','method'=>'post'))}}
-              <input type="text" name="email" placeholder="Enter email"/>
+              <input type="text" name="email" placeholder="Enter email"/ class="form-control"><span class="input-group-addon">@purdue.edu</span>
               <input name="password" type="password" placeholder="Enter Password"/>
               <input name="password_confirmation" type="password" placeholder="Confirm Password"/>
               <button type="submit" id="btnLogin" class="btn">Sign up</button>
