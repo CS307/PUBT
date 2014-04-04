@@ -2,9 +2,9 @@
 
 
 @section('postbookinfo')
-<h2>Title: {{ DB::table('books')->where('id',$book_copy->book_id)->first()->title }}</h2>
+<h2>Title: {{ DB::table('books')->where('id',$book->book_id)->first()->title }}</h2>
       <h4>corresponding course:
-        <span class="label label-info">{{$book_copy->course_id}}</span>
+        <span class="label label-info">{{$book->course_id}}</span>
       </h4>
       <div class = "row">
         <div class = "col-md-7">
@@ -17,12 +17,13 @@
       <table id="table_item">
         <tr>
           <td class="name">Author: </td>
-          <td class="value">{{ DB::table('books')->where('id',$book_copy->book_id)->first()->author }}</td>
+          <td class="value">{{ DB::table('books')->where('id',$book->book_id)->first()->author }}</td>
         </tr>
         <tr>
           <td class="name">ISBN: </td>
-          <td class="value">{{ DB::table('books')->where('id',$book_copy->book_id)->first()->isbn }}</td>
+          <td class="value">{{ DB::table('books')->where('id',$book->book_id)->first()->isbn }}</td>
         </tr>
+        
       </table>
       </div>
 

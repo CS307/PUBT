@@ -11,7 +11,41 @@
     <div class = "col-md-5 leftpart"> 
      <section>
 
-		@yield('bookcopyinfo')
+		<h2>Title: {{ $book->title }}</h2>
+      <h4>corresponding course:
+        <span class="label label-info">{{ DB::table('books')->where('id',$book_copy->book_id)->first()->subject.' '.DB::table('books')->where('id',$book_copy->book_id)->first()->course_id }}</span>
+      </h4>
+      <div class = "row">
+        <div class = "col-md-7">
+           <a href="#" class="thumbnail">
+           <img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="{{$book->pic_url}}">
+           </a>
+        
+        <h3 class="heading bold">Item details:</h3>
+        </div>
+      <table id="table_item">
+        <tr>
+          <td class="name">Author: </td>
+          <td class="value">{{ DB::table('books')->where('id',$book_copy->book_id)->first()->author }}</td>
+        </tr>
+        <tr>
+          <td class="name">ISBN: </td>
+          <td class="value">{{ DB::table('books')->where('id',$book_copy->book_id)->first()->isbn }}</td>
+        </tr>
+        <tr>
+          <td class="name">Condition: </td>
+          <td class="value">{{ $book_copy->condition }}</td>
+        </tr>
+        <tr>
+          <td class="name">Owner: </td>
+          <td class="value">{{ DB::table('users')->where('id',$book_copy->seller_id)->first()->email }}</td>
+        </tr>
+        <tr>
+          <td class="name">Description: </td>
+          <td class="value">{{ $book_copy->detail }}</td>
+        </tr>
+      </table>
+      </div>
 		
 	</section>
     </div>
@@ -38,9 +72,10 @@
 
       <div class = "col-md-5">
         <div class="listprice">
-          $20.00
+          {{ $book_copy->price }}
         </div>
         <div class ="contactright">
+        	{{ Form::open(array('url'=>'postBook','method'=>'post')) }}
           <form action="#" method="post" class="priceform" autocomplete="off">
           <div class="controlgroup">
             <span class ="info">Offer your price to seller*</span>
@@ -57,6 +92,7 @@
           </div>
           </div>  
           </form>
+          {{ Form::close() }}
         </div>
       </div>
     </div>

@@ -66,15 +66,15 @@
               <tr>
               <td class="name">Condition: </td>
               <td class="value">
-                <!-- <input name="condition" type="text" placeholder="new with tags,like new,good condition and fair condition" style = "line-height: 25px; vertical-align: center;"> -->
+                <input name="condition" type="text" placeholder="new with tags,like new,good condition and fair condition" style = "line-height: 25px; vertical-align: center;">
                 
-                <select class="form-control" name="conditionS">
+                <!-- <select class="form-control" name="conditionS">
                  <option>New With Tags</option>
                  <option>Like New</option>
                  <option>Good Condition</option>
                  <option>Fair Condition</option>
                 </select>
-                <input name="condition" type="hidden" value="{{$_POST['conditionS']}} ">
+                <input name="condition" type="hidden" value="{{$_POST['conditionS']}} "> -->
               </td>
               </tr>
 
