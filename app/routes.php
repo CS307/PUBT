@@ -11,8 +11,7 @@
 |
 */
 
-Route::get('/', function()
-{
+Route::get('/', function(){
 	return View::make('mainpage');
 });
 
@@ -29,16 +28,14 @@ Route::get('postmiddlepage', function(){
 	}
 });
 
-Route::post('post_select_page',function()
-{
+Route::post('post_select_page',function(){
 	$keyword = Input::get('keyword');	
 	preg_match('/(?P<subject>[a-zA-Z]+)\s*(?P<number>\d+)/', $keyword, $matches);
 	$books = DB::table('books')->where('subject', $matches['subject'])->where('course_id',$matches['number'])->get();
 	return View::make('post_select_page',array('results' => $books));
 });
 
-Route::get('/post/book_id={book_id}', function($book_id)
-{
+Route::get('/post/book_id={book_id}', function($book_id){
 	$books = DB::table('books')->where('id',$book_id)->first();
 });
 
@@ -52,31 +49,53 @@ Route::post('postLogout',array('uses' => 'AccountController@getLogout'));
 
 Route::post('search',array('uses' => 'SearchController@search'));
 
-Route::get('search/subject={subject}',function($subject)
-{
+Route::get('search/subject={subject}',function($subject){
 	$results = DB::table('books')->where('subject',$subject)->get();
 	return View::make('book_results',array('results' => $results));
 });
 
-Route::get('/search/book_id={book_id}', function($book_id)
-{
+Route::get('/search/book_id={book_id}', function($book_id){
 	$book_copys = DB::table('book_copys')->where('book_id',$book_id)->get();
 	return View::make('book_copys_results', array('results' => $book_copys));
 });
 
-Route::get('/search/book_copy_id={bc_id}', function($bc_id)
-{
+Route::get('/search/book_copy_id={bc_id}', function($bc_id){
 	$book_copy = DB::table('book_copys')->where('id',$bc_id)->first();
 	return View::make('sellingpage', array('results' => $book_copy));
 });
 
-Route::get('verification/code={confirmation}', function($confirmation)
-{
+Route::get('verification/code={confirmation}', function($confirmation){
 	DB::table('users')->where('confirmation', $confirmation)->update(array( 'confirmed' => true ));
     $user = DB::table('users')->where('confirmation', $confirmation)->first();
     Auth::attempt(array('email' => $user->email, 'password' => $user->password));
     return Redirect::to('/');
 });
+
+Route::get('profilepage',function(){
+	if(Auth::check()){
+		$user = Auth::user();
+	 	$followingbooks = DB::table('follow_list')->where('follower_id', $user->id)->get();
+	 	$sellingbooks = DB::table('book_copys')->where('seller_id', $user->id)->get();
+	 	return View::make('profilePage', array('user' => $user, 'followingbooks' => $followingbooks, 'sellingbooks'=> $sellingbooks));
+	}
+	else{
+		return Redirect::to('/');
+	}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -104,15 +123,6 @@ Route::get('profile',function(){
 	//$book_copys = BookCopy::all();
 	return View::make('profilePage');
 });
-
-//Use for testing
-// Route::get('test',function(){
-// 	$confirmation = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 30);
-// 	echo $confirmation;
-// 	Mail::send('email_verification', array('confirmation'=>$confirmation), function($message){
-//         $message->to('yu282@purdue.edu', NULL)->subject('Verification Email for boilertrade.us');
-//     });
-// });
 
 
 
@@ -145,10 +155,7 @@ Route::get('profile',function(){
 
 Route::get('fake', function()
 {
-	Schema::table('books', function($table)
-	{
-    	$table->string('edition')->after('publisher');
-	});
+	
 });
 
 function createUser(){
@@ -161,103 +168,6 @@ function createUser(){
 	}
 	catch (\Exception $e){}
 	return $user;
-}
-
- function addBook($title, $author, $isbn, $publisher, $edition, $course_id, $course_number, $pic_url){
- 	$book = new Book;
- 	echo $title;
-	if(1){
-		$book->title = $title;
-	}
-	else{
-		echo 'Cannot miss title!';
-		return;
-	}
-
-	if($author != 0){
-		$book->title = $title;
-	}
-
-	if($isbn != 0){
-		$book->isbn = $isbn;
-	}
-
-	if($publisher !=0){
-		$book->publisher = $publisher;
-	}
-
-	if($edition!=0){
-		$book->edition = $edition;
-	}
-
-	if(strcmp($course_id, 'NULL')!=0){
-		$book->course_id = $course_id;
-	}
-	else{
-		echo 'Cannot miss course_id!';
-		return;
-	}
-
-	if(strcmp($course_number, 'NULL')!=0){
-		$book->course_number = $course_number;
-	}
-	else{
-		echo 'Cannot miss course_num!';
-		return;
-	}
-
-	if(strcmp($pic_url, 'NULL')!=0){
-		$book->pic_url = $pic_url;
-	}
-	else{
-		echo 'Cannot miss pic_url!';
-		return;
-	}
-	
-	$book->save();
- }
-
-function generateFakeBook(){
-	$product_mode = FALSE;
-    $filename = getcwd() . "/CSbook.txt";
-    $handle = fopen($filename, "r");
-
-    //$book = new Book;
-	if ($handle) {
-		for($i=0;$i<1;$i++){
-
-			$title = fgets($handle);
-
-			$author = fgets($handle);
-
-			$isbn = fgets($handle);
-
-			$publisher = fgets($handle);
-
-			$edition = fgets($handle);
-
-			$course_id = fgets($handle);
-			$course_id = str_replace("\n","",$course_id);
-
-			$course_number = fgets($handle);
-
-			$pic_url = fgets($handle);
-
-			addBook($title, $author, $isbn, $publisher, $edition, $course_id, $course_number, $pic_url);
-			
-			$blank = fgets($handle);
-		}
-
-    	// while (($line = fgets($handle)) !== false) {
-     //    	// process the line read.
-    	// }
-	} 
-	else {
-    	// error opening the file.
-	}	
-    fclose($handle);
-
-	return Redirect::to('/books');
 }
 
 function generateFakeBookCopys(){

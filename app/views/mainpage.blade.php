@@ -10,8 +10,12 @@
 </div>
 <div class="container">
   <div class="navbar-form">
+<<<<<<< HEAD
 
   	{{Form::open(array('url'=>'search','method'=>'post'))}}
+=======
+        {{Form::open(array('url'=>'search','method'=>'post'))}}
+>>>>>>> a06a1aa68ce7c2c1a5cdd4559b8b350163996f1a
         <div class="form-group searchfieldmargin">
           <input type="text" name="keyword" class="searchfieldsize form-control" placeholder="In format:CS 180">
         <button type="submit" class="btn btn-primary" role="search">

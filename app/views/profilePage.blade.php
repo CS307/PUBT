@@ -15,7 +15,7 @@
 				</div>
 			</div>
 			<div class="col-md-11">
-				<p class=pheadding>Welcome, DingYEYE</p>
+				<p class=pheadding>Welcome, {{ $user->email }}</p>
 				<p class=ph2ding>Your are currently logged in.</p>
 			</div>
 		</div>
@@ -36,51 +36,25 @@
 					<h3 class="panel-title">Followed Books:</h3>
 				</div>
 				<div class=panelbodyding>
-					<div class="row no-gutter">
-						<div class="col-sm-6 col-md-3">
-							<a href="#" class="thumbnail">
-								<img data-src="holder.js/240x160" src="{{asset('css/sampleimg.jpg')}}" alt="sampleimg">
-							</a>
-						</div>
-						<div class="col-md-9">
-							<div class=tbreakding>
-								<p>Book: Mother da facker</p>
-								<p>Author: jcjcjcjc</p>
-								<p>Course: CS250</p>
-								<p>Condition: like shit!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1</p>
+					@if(1)			
+					@for($count=0;$count<count($followingbooks);$count++)		
+						<div class="row no-gutter">
+							<div class="col-sm-6 col-md-3">
+								<a href="#" class="thumbnail">
+									<img data-src="holder.js/240x160" src="{{asset('css/sampleimg.jpg')}}" alt="sampleimg">
+								</a>
+							</div>
+							<div class="col-md-9">
+								<div class=tbreakding>
+									<p>Book: {{ DB::table('books')->where('id',$followingbooks[$count]->book_id)->title }}</p>
+									<p>Author: {{ DB::table('books')->where('id',$followingbooks[$count]->book_id)->author }}</p>
+									<p>Course: {{ DB::table('books')->where('id',$followingbooks[$count]->book_id)->subject.' '.DB::table('books')->where('id',$followingbooks[$count]->book_id)->course_id }}</p>
+									<p>Condition: {{ $followingbooks[$count]->condition }}</p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="row no-gutter">
-						<div class="col-sm-6 col-md-3">
-							<a href="#" class="thumbnail">
-								<img data-src="holder.js/240x160" src="{{asset('css/sampleimg.jpg')}}" alt="sampleimg">
-							</a>
-						</div>
-						<div class="col-md-9">
-							<div class=tbreakding>
-								<p>Book: Mother da facker</p>
-								<p>Author: jcjcjcjc</p>
-								<p>Course: CS250</p>
-								<p>Condition: like shit!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1</p>
-							</div>
-						</div>
-					</div>
-					<div class="row no-gutter">
-						<div class="col-sm-6 col-md-3">
-							<a href="#" class="thumbnail">
-								<img data-src="holder.js/240x160" src="{{asset('css/sampleimg.jpg')}}" alt="sampleimg">
-							</a>
-						</div>
-						<div class="col-md-9">
-							<div class=tbreakding>
-								<p>Book: Mother da facker</p>
-								<p>Author: jcjcjcjc</p>
-								<p>Course: CS250</p>
-								<p>Condition: like shit!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1</p>
-							</div>
-						</div>
-					</div>
+					@endfor
+					@endif
 				</div>
 			</div>
 			</div>
