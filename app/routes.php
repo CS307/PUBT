@@ -125,6 +125,7 @@ Route::post('/unfollow/book_copy_id={bc_id}',function($bc_id){
 Route::post('/soldout', function(){
 	$bc_id = Input::get('book_copy_id');
 	DB::table('book_copys')->where('id', $bc_id)->update(array('soldout' => true));
+	$buyers_ids = DB::table('buyer_list')->where('copy_id', $bc_id)->get();
 	return Redirect::to('/search/book_copy_id='.$bc_id);
 });
 
@@ -135,20 +136,21 @@ Route::post('/recover', function(){
 });
 
 Route::post('/join_buyerlist',function(){
-	$bc_id = Input::get('book_copy_id');
-	$buyer_id = Input::get('buyer_id');
-	$book_copy = DB::table('book_copys')->where('id', $bc_id)->first();
-	$seller_id = $book_copy->seller_id;
+
+	$buyerList = new BuyerList;
+	$buyerList->buyer_id = Input::get('buyer_id');
+	$buyerList->copy_id = Input::get('book_copy_id');
+	$buyerList->save();
+	$book_copy = DB::table('book_copys')->where('id', Input::get('book_copy_id'))->first();
 	$book = DB::table('books')->where('id', $book_copy->book_id)->first();
-	$seller = DB::table('users')->where('id', $seller_id)->first();
-	$buyer = DB::table('users')->where('id', $buyer_id)->first();
+	$buyer = DB::table('users')->where('id', Input::get('buyer_id'))->first();
 
-	// Send email to seller
-	Mail::send('email_buying', array('username'=>$seller->email, 'buyer'=>$buyer, 'book_copy'=>$book_copy, 'comment'=>Input::get('comment'), 'offer_price'=>Input::get('amount')), function($message){
-         $message->to($seller->email.'@purdue.edu', NULL)->subject('Someone wants to buy your selling book!');
-    });
+	 // Send email to seller
+	 Mail::send('email_buying', array('username'=>Input::get('email'), 'book'=>$book, 'buyer'=>$buyer, 'book_copy'=>$book_copy, 'comment'=>Input::get('comment'), 'offer_price'=>Input::get('amount')), function($message){
+         $message->to(Input::get('email').'@purdue.edu', NULL)->subject('Someone wants to buy your selling book');
+     });
 
-	return Redirect::to('/search/book_copy_id='.$bc_id);
+	return Redirect::to('/search/book_copy_id='.Input::get('book_copy_id'));
 });
 
 
@@ -215,7 +217,7 @@ Route::get('profile',function(){
 
 Route::get('fake', function()
 {
-	DB::table('book_copys')->where('id', 2)->update(array('price' => 45.67));
+	DB::table('users')->where('id', 3)->delete();
 });
 
 function createUser(){

@@ -1,7 +1,7 @@
 <h1>Hi, {{$username}}!</h1>
  
 <h2>Information of buyer:</h2>
-<p>Email: {{ $buyer->email }}</p>
+<p>Email: {{ $buyer->email }}@purdue.edu</p>
 <p>Cell: {{ $buyer->cell }}</p>
 <h2>Information of book:</h2>
 <p>Title: {{ $book->title }}</p>
