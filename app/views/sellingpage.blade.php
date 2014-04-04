@@ -58,7 +58,7 @@
       <div class = "row">
 
 
-      <div class = "col-md-7">
+      <div class = "col-md-7" style = "height: 200px;">
         <h3 class = "subtitle">Contact & Buy</h3>
 
 @if(Auth::check())<!--when user is logged in-->
@@ -82,7 +82,7 @@
                     @endif
                     <div class="row">
                 @endif
-                <span>{{ $buyer_list[$count]->buyer_id }}</span>
+                <div>{{ DB::table('users')->where('id',$buyer_list[$count]->buyer_id)->first()->email }}@purdue.edu</div>
                 <span>{{ $buyer_list[$count]->offer_price }}</span>
             @endfor
             </div>
@@ -101,7 +101,7 @@
             Sold Out
           @endif
         </div>
-        <div class ="contactright">
+        <!-- <div class ="contactright">
             <div class="controlgroup">
               <span class ="info">Offer your price to seller*</span>
                 <div class ="priceinput">
@@ -116,7 +116,8 @@
             </div>
           </div>  
           {{ Form::close() }}
-        </div>
+        </div> -->
+          {{ Form::close() }}
       </div>
 
   @else<!--when user is logged in as buyer-->
