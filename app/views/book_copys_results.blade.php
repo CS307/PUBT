@@ -11,7 +11,7 @@
 		<div class="col-xs-6 col-md-3" class=picboxding>
 			<div class=picboxding>
 				<a href="/search/book_copy_id={{$results[$count]->id}}" class="thumbnail">
-					<img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="{{asset('css/sampleimg.jpg')}}">
+					<img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="{{DB::table('books')->where('id',$results[$count]->book_id)->first()->pic_url}}">
 				</a>
 				<div class="caption" class=imginfoding>
 					<p class=imginfoding>Price: ${{ $results[$count]->price }}</p>

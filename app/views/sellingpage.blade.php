@@ -72,7 +72,11 @@
 
       <div class = "col-md-5">
         <div class="listprice">
-          ${{ $book_copy->price }}
+          @if(!$book_copy->soldout)
+            ${{ $book_copy->price }}
+          @else
+            Sold Out
+          @endif
         </div>
         <div class ="contactright">
         	{{ Form::open(array('url'=>'postBook','method'=>'post')) }}
@@ -112,7 +116,25 @@
 
       <div class = "col-md-5">
         @if(Auth::check())
-          @if(!DB::table('follow_list')->where('follower_id',Auth::user()->id)->where('copy_id', $book_copy->id)->first())
+          @if(Auth::user()->id==$book_copy->seller_id)
+            @if(!$book_copy->soldout)
+              {{ Form::open(array('url'=>'/soldout', 'method'=>'post')) }}
+                <button type="submit" class="btn btn-contact" style="margin-top: 100px;">
+                  <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
+                  <input type="hidden" name="follower_id" value=" {{ Auth::user()->id }} ">
+                  Sold Out
+                </button>
+              {{ Form::close(); }}
+            @else
+              {{ Form::open(array('url'=>'/recover', 'method'=>'post')) }}
+                <button type="submit" class="btn btn-contact" style="margin-top: 100px;">
+                  <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
+                  <input type="hidden" name="follower_id" value=" {{ Auth::user()->id }} ">
+                  Recover
+                </button>
+              {{ Form::close(); }}
+            @endif
+          @elseif(!DB::table('follow_list')->where('follower_id',Auth::user()->id)->where('copy_id', $book_copy->id)->first())
             {{ Form::open(array('url'=>'/follow/book_copy_id='.$book_copy->id, 'method'=>'post')) }}
             <button type="submit" class="btn btn-contact" style="margin-top: 100px;">
               <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
@@ -125,7 +147,7 @@
             <button type="submit" class="btn btn-contact" style="margin-top: 100px;">
               <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
               <input type="hidden" name="follower_id" value=" {{ Auth::user()->id }} ">
-              Unfollow {{DB::table('follow_list')->where('follower_id',Auth::user()->id)->where('copy_id', $book_copy->id)->first()->copy_id}}
+              Unfollow
             </button>
             {{ Form::close(); }}
           @endif

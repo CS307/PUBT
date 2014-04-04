@@ -49,6 +49,7 @@ Route::post('postBook',function(){
 	$book_copy->detail = Input::get('detail');
 	$book_copy->expire_date = "1994-01-30";
 	$book_copy->save();
+	return Redirect::to('/profilepage');
 });
 
 Route::post('postPost', array('uses' => 'PostController@postPost'));
@@ -121,9 +122,17 @@ Route::post('/unfollow/book_copy_id={bc_id}',function($bc_id){
 	return Redirect::to('/search/book_copy_id='.$bc_id);
 });
 
+Route::post('/soldout', function(){
+	$bc_id = Input::get('book_copy_id');
+	DB::table('book_copys')->where('id', $bc_id)->update(array('soldout' => true));
+	return Redirect::to('/search/book_copy_id='.$bc_id);
+});
 
-
-
+Route::post('/recover', function(){
+	$bc_id = Input::get('book_copy_id');
+	DB::table('book_copys')->where('id', $bc_id)->update(array('soldout' => false));
+	return Redirect::to('/search/book_copy_id='.$bc_id);
+});
 
 
 
@@ -192,7 +201,7 @@ Route::get('profile',function(){
 
 Route::get('fake', function()
 {
-
+	DB::table('book_copys')->where('id', 2)->update(array('price' => 45.67));
 });
 
 function createUser(){

@@ -70,7 +70,7 @@
 				<div class=panelbodyding>
 					@for($count=0;$count<count($sellingbooks);$count++)
 						<a href="/search/book_copy_id={{$sellingbooks[$count]->id}}" class="thumbnail">
-							<img data-src="holder.js/240x160" src="{{asset('css/sampleimg.jpg')}}" alt="sampleimg">
+							<img data-src="holder.js/240x160" src="{{ DB::table('books')->where('id',$sellingbooks[$count]->book_id)->first()->pic_url }}" alt="sampleimg">
 						</a>
 					@endfor
 				</div>
