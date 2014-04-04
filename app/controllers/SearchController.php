@@ -17,24 +17,24 @@ class SearchController extends Controller {
 		//print_r($matches);
 		//$books = DB::select( DB::raw("SELECT * FROM books WHERE course_id = 'MA 341'") );
 
-		$books = DB::table('books')->where('subject', $matches['subject'])->where('course_number',$matches['number'])->get();
-		if(!$books){
-			$results = $books; 
-		}
-		else{
-			$count = 0;
+		$books = DB::table('books')->where('subject', $matches['subject'])->where('course_id',$matches['number'])->get();
+		// if(!$books){
+		// 	$results = $books; 
+		// }
+		// else{
+		// 	$count = 0;
 
-			foreach ($books as $book)
-			{
-				$book_copys = DB::table('book_copys')->where('book_id',$book->id)->get();
-	    		foreach($book_copys as $book_copy)
-	    		{
-	    			$results[$count++] = $book_copy;
-	    		}
-			}
-		}
+		// 	foreach ($books as $book)
+		// 	{
+		// 		$book_copys = DB::table('book_copys')->where('book_id',$book->id)->get();
+	 //    		foreach($book_copys as $book_copy)
+	 //    		{
+	 //    			$results[$count++] = $book_copy;
+	 //    		}
+		// 	}
+		// }
 
-		return View::make('results',array('search_results' => $results));
+		return View::make('book_results',array('results' => $books));
 	}
 
 }

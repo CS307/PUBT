@@ -20,13 +20,21 @@ Route::get('resultPage', function(){
 	return View::make('results',array('number' => 100));
 });
 
-Route::get('postPage', function(){
+Route::get('postmiddlepage', function(){
 	if(Auth::check()){
-		return View::make('post_page');
+		return View::make('post_middle_page');
 	}
 	else{
 		return Redirect::to('/');
 	}
+});
+
+Route::post('post_select_page',function()
+{
+	$keyword = Input::get('keyword');	
+	preg_match('/(?P<subject>[a-zA-Z]+)\s*(?P<number>\d+)/', $keyword, $matches);
+	$books = DB::table('books')->where('subject', $matches['subject'])->where('course_id',$matches['number'])->get();
+	return View::make('post_select_page',array('results' => $books));
 });
 
 Route::post('postPost', array('uses' => 'PostController@postPost'));
@@ -39,20 +47,25 @@ Route::post('postLogout',array('uses' => 'AccountController@getLogout'));
 
 Route::post('search',array('uses' => 'SearchController@search'));
 
-Route::get('search/subject={subject}',function($subject){
+Route::get('search/subject={subject}',function($subject)
+{
 	$results = DB::table('books')->where('subject',$subject)->get();
 	return View::make('book_results',array('results' => $results));
-
 });
 
-
+Route::get('/search/book_id={book_id}', function($book_id)
+{
+	$book_copys = DB::table('book_copys')->where('book_id',$book_id)->get();
+	return View::make('book_copys_results', array('results' => $book_copys));
+});
 
 Route::get('verification/code={confirmation}', function($confirmation)
 {
 	DB::table('users')->where('confirmation', $confirmation)->update(array( 'confirmed' => true ));
-    echo "Verification Success!";
+    $user = DB::table('users')->where('confirmation', $confirmation)->first();
+    Auth::attempt(array('email' => $user->email, 'password' => $user->password));
+    return Redirect::to('/');
 });
-
 
 
 

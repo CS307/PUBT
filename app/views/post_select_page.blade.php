@@ -10,7 +10,7 @@
 		@endif
 		<div class="col-xs-6 col-md-3" class=picboxding>
 			<div class=picboxding>
-				<a href="/search/book_id={{ $results[$count]->id }}" class="thumbnail">
+				<a href="/post/book_id={{ $results[$count]->id }}" class="thumbnail">
 					<img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="{{$results[$count]->pic_url}}">
 				</a>
 				<div class="caption" class=imginfoding>
