@@ -1,11 +1,11 @@
 <?php
 
-	// $product_mode = FALSE;
- //    $filename = getcwd() . "/mail_mima.dll";
- //    $handle = fopen($filename, "r");
- //    $mima = fread($handle, filesize($filename));
- //    $mima = str_replace("\n","",$mima);
- //    fclose($handle);
+    $product_mode = FALSE;
+    $filename = getcwd() . "/mail_mima.dll";
+    $handle = fopen($filename, "r");
+    $mima = fread($handle, filesize($filename));
+    $mima = str_replace("\n","",$mima);
+    fclose($handle);
 
 return array(
 
@@ -100,7 +100,7 @@ return array(
 	|
 	*/
 
-	'password' => "MA341Sucks",
+	'password' => $mima,
 
 	/*
 	|--------------------------------------------------------------------------
