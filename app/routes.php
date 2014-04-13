@@ -63,12 +63,12 @@ Route::post('postLogout',array('uses' => 'AccountController@getLogout'));
 Route::post('search',array('uses' => 'SearchController@search'));
 
 Route::get('search/subject={subject}',function($subject){
-	$results = DB::table('books')->where('subject',$subject)->get();
+	$results = DB::table('books')->where('subject',$subject)->where('title',"!=","TBA")->get();
 	return View::make('book_results',array('results' => $results));
 });
 
 Route::get('/search/book_id={book_id}', function($book_id){
-	$book_copys = DB::table('book_copys')->where('book_id',$book_id)->get();
+	$book_copys = DB::table('book_copys')->where('book_id',$book_id)->where('title',"!=","TBA")->get();
 	return View::make('book_copys_results', array('results' => $book_copys));
 });
 
