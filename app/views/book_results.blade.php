@@ -11,7 +11,11 @@
 		<div class="col-xs-6 col-md-3" class=picboxding>
 			<div class=picboxding>
 				<a href="/search/book_id={{ $results[$count]->id }}" class="thumbnail">
-					<img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="{{$results[$count]->pic_url}}">
+					@if($results[$count]->pic_url == "NO_URL")
+						<img data-src="holder.js/100%x180" alt="Sorry, No Cover" src="http://www.slugbooks.com/images/notavail2.png">
+					@else
+						<img data-src="holder.js/100%x180" alt="Sorry, No Cover" src="{{$results[$count]->pic_url}}">
+					@endif
 				</a>
 				<div class="caption" class=imginfoding>
 					<h5 class=imginfoding style="height: 50px; vertical-align:text-top;">{{ $results[$count]->title }}</h5>
