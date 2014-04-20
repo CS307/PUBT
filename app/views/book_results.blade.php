@@ -10,7 +10,7 @@
 		@endif
 		<div class="col-xs-6 col-md-3" class=picboxding>
 			<div class=picboxding>
-				<a href="/search/book_id={{ $results[$count]->id }}" class="thumbnail imgcontainer">
+				<a href="/{{ $method }}/book_id={{ $results[$count]->id }}" class="thumbnail imgcontainer">
 					@if($results[$count]->pic_url == "NO_URL")
 						<img data-src="holder.js" height="250" alt="Sorry, No Cover" src="http://www.slugbooks.com/images/notavail2.png">
 					@else

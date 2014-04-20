@@ -15,26 +15,6 @@ Route::get('/', function(){
 	return View::make('mainpage');
 });
 
-Route::get('resultPage', function(){
-	return View::make('results',array('number' => 100));
-});
-
-Route::get('post_middle_page', function(){
-	if(Auth::check()){
-		return View::make('post_middle_page');
-	}
-	else{
-		return Redirect::to('/');
-	}
-});
-
-Route::post('post_select_page',function(){
-	$keyword = Input::get('keyword');	
-	preg_match('/(?P<subject>[a-zA-Z]+)\s*(?P<number>\d+)/', $keyword, $matches);
-	$books = DB::table('books')->where('subject', $matches['subject'])->where('course_id',$matches['number'])->get();
-	return View::make('post_select_page',array('results' => $books));
-});
-
 Route::get('/post/book_id={book_id}', function($book_id){
 	$book = DB::table('books')->where('id',$book_id)->first();
 	return View::make('post_page',array('book'=>$book));
@@ -60,15 +40,17 @@ Route::post('postLogin',array('uses' => 'AccountController@postLogin'));
 
 Route::post('postLogout',array('uses' => 'AccountController@getLogout'));
 
-Route::post('search',array('uses' => 'SearchController@search'));
 
-Route::get('search',function(){
-	echo Input::get('keyword');
+Route::post('search',function(){
+	$keyword = Input::get('keyword');
+	preg_match('/(?P<subject>[a-zA-Z]+)\s*(?P<number>\d+)/', $keyword, $matches);
+	$books = DB::table('books')->where('subject', $matches['subject'])->where('course_id',$matches['number'])->get();
+	return View::make('book_results',array('method' => Input::get('button'), 'results' => $books));
 });
 
 Route::get('search/subject={subject}',function($subject){
 	$results = DB::table('books')->where('subject',$subject)->where('title',"!=","TBA")->orderBy('course_id')->get();
-	return View::make('book_results',array('results' => $results));
+	return View::make('book_results',array('method' => 'search', 'results' => $results));
 });
 
 Route::get('/search/book_id={book_id}', function($book_id){
@@ -212,7 +194,6 @@ Route::get('book_copys',function(){
 
 //Use for testing
 Route::get('profile',function(){
-	//$book_copys = BookCopy::all();
 	return View::make('profilePage');
 });
 

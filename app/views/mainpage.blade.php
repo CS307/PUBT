@@ -13,14 +13,8 @@
     {{Form::open(array('url'=>'search','method'=>'post'))}}
         <div class="form-group searchfieldmargin">
           <input type="text" name="keyword" class="searchfieldsize form-control" placeholder="In format:CS 15800">
-        <button type="submit" class="btn btn-primary" role="search">
-        Search</button>
-
-        <form class="navbar-form" role="post" action="#">
-		<a href="/post_middle_page" class="btn btn-success" role="post">
-			<i class="glyphicon glyphicon-plus"></i>
-			Post</a>
-		</form>
+          <button type="submit" class="btn btn-primary" name="button" role="search" value="search">Search</button>
+          <button type="submit" class="btn btn-primary" name="button" role="post" value="post">Post</button>
         </div>
     {{Form::close()}}
 	
