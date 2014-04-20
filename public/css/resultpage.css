@@ -44,6 +44,16 @@
 	clear:both;
 	margin-bottom:0px;
 }
+.imgcontainer{
+	width:fixed;
+	height: 260px;
+}
+.img{
+	width:fixed;
+	height: 100px;
+	padding: 0px auto auto auto;
+	position: relative;
+}
 .picboxding{
 	border: 1px solid #ddd;
 	margin-bottom: 10px;
