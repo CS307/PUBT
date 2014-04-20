@@ -17,9 +17,14 @@
       </h4>
       <div class = "row">
         <div class = "col-md-7">
-           <a href="#" class="thumbnail">
-           <img data-src="holder.js/100%x180" alt="sampleimg.jpg" src="{{ DB::table('books')->where('id',$book_copy->book_id)->first()->pic_url }}">
-           </a>
+          <a href="#" class="thumbnail">
+
+          @if(DB::table('books')->where('id',$book_copy->book_id)->first()->pic_url == "NO_URL")
+            <img data-src="holder.js/100%x180" alt="Sorry, No Cover" src="http://www.slugbooks.com/images/notavail2.png">
+          @else
+            <img data-src="holder.js/100%x180" alt="Sorry, No Cover" src="{{ DB::table('books')->where('id',$book_copy->book_id)->first()->pic_url }}">
+          @endif
+          </a>
         
         <h3 class="heading bold">Item details:</h3>
         </div>

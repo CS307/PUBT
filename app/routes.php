@@ -15,10 +15,6 @@ Route::get('/', function(){
 	return View::make('mainpage');
 });
 
-// Route::get('resultPage', function(){
-// 	return View::make('results',array('number' => 100));
-// });
-
 Route::get('/post/book_id={book_id}', function($book_id){
 	$book = DB::table('books')->where('id',$book_id)->first();
 	return View::make('post_page',array('book'=>$book));
