@@ -70,7 +70,13 @@
               <tr>
               <td class="name">Condition: </td>
               <td class="value">
-                <input name="condition" type="text" placeholder="new with tags,like new,good condition and fair condition" style = "line-height: 25px; vertical-align: center;">
+               <!--  <input name="condition" type="text" placeholder="new with tags,like new,good condition and fair condition" style = "line-height: 25px; vertical-align: center;"> -->
+               <select name="condition">
+                  <option value="New With Tags">New With Tags</option>
+                  <option value="Like New">Like New</option>
+                  <option value="Good Condition">Good Condition</option>
+                  <option value="Fair Condition">Fair Condition</option>
+               </select>
 
               </td>
               </tr>
