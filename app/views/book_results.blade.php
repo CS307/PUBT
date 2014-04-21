@@ -10,18 +10,20 @@
 		@endif
 		<div class="col-xs-6 col-md-3" class=picboxding>
 			<div class=picboxding>
-				<a href="/{{ $method }}/book_id={{ $results[$count]->id }}" class="thumbnail imgcontainer">
-					@if($results[$count]->pic_url == "NO_URL" || $results[$count]->pic_url == "")
-						<img data-src="holder.js" height="250" alt="Sorry, No Cover" src="http://www.slugbooks.com/images/notavail2.png">
-					@else
-						<img data-src="holder.js" height="250" alt="Sorry, No Cover" src="{{$results[$count]->pic_url}}">
-					@endif
-				</a>
-				<div class="caption" class=imginfoding>
-					<h5 class=imginfoding style="height: 50px; vertical-align:text-top;">{{ $results[$count]->title }}</h5>
-					<p class=imginfoding style="height: 40px; vertical-align:text-top;">Author: {{ $results[$count]->author }}</p>
-					<p class=imginfoding>Course: {{ $results[$count]->subject.' '.$results[$count]->course_id }}</p>
-					<p class=imginfoding>Edition: {{ $results[$count]->edition }}</p>
+				<div class="imgcontainer">
+					<a href="/{{ $method }}/book_id={{ $results[$count]->id }}" class="thumbnail imgcontainer">
+						@if($results[$count]->pic_url == "NO_URL" || $results[$count]->pic_url == "")
+							<img data-src="holder.js" max-height="200" alt="Sorry, No Cover" src="http://www.slugbooks.com/images/notavail2.png">
+						@else
+							<img data-src="holder.js" max-height="200" alt="Sorry, No Cover" src="{{$results[$count]->pic_url}}">
+						@endif
+					</a>
+				</div>
+				<div class="caption imginfo">
+					<h5 class=imginfoding style="height: 48px; vertical-align:text-top;"><b>{{ $results[$count]->title }}</b></h5>
+					<p class=imginfoding style="height: 40px; vertical-align:text-top;"><b>Author:</b> {{ $results[$count]->author }}</p>
+					<p class=imginfoding><b>Course:</b> {{ $results[$count]->subject.' '.$results[$count]->course_id }}</p>
+					<p class=imginfoding><b>Edition:</b> {{ $results[$count]->edition }}</p>
 				</div>
 		    </div>
 		</div>

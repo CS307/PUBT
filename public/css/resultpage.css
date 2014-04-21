@@ -37,16 +37,23 @@
 }
 .imginfoding{
 	font:6px;
-	margin:0px;
+	margin: 0px;
 	padding:0px;
+	overflow: hidden;
+}
+.imginfo{
+	font:6px;
+	padding-top:10px;
 }
 .imgbotding{
 	clear:both;
 	margin-bottom:0px;
 }
 .imgcontainer{
-	width:fixed;
-	height: 260px;
+	width: relative;
+	min-height: 200px;
+	max-height: 200px;
+	overflow: hidden;
 }
 .img{
 	width:fixed;
@@ -57,6 +64,8 @@
 .picboxding{
 	border: 1px solid #ddd;
 	margin-bottom: 10px;
+	height: 346px;
+	overflow: hidden;
 }
 .thumbnailding {
 display: block;
