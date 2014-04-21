@@ -27,7 +27,8 @@ Route::post('postBook',function(){
 	$book_copy->seller_id = Auth::user()->id;
 	$book_copy->condition = Input::get('condition');
 	$book_copy->detail = Input::get('detail');
-	$book_copy->expire_date = "1994-01-30";
+	$Date = date('Y-m-d');
+	$book_copy->expire_date = date('Y-m-d', strtotime($Date. ' + 7 days'));
 	$book_copy->save();
 	return Redirect::to('/profilepage');
 });
@@ -54,7 +55,7 @@ Route::get('search/subject={subject}',function($subject){
 });
 
 Route::get('/search/book_id={book_id}', function($book_id){
-	$book_copys = DB::table('book_copys')->where('book_id',$book_id)->get();
+	$book_copys = DB::table('book_copys')->where('book_id',$book_id)->where('expire_date','>=', date('Y-m-d'))->get();
 	return View::make('book_copys_results', array('results' => $book_copys));
 });
 
@@ -228,6 +229,8 @@ Route::get('profile',function(){
 
 Route::get('fake', function()
 {
+	$Date = date('Y-m-d');
+	echo date('Y-m-d', strtotime($Date. ' + 7 days'));
 });
 
 function createUser(){
