@@ -20,8 +20,8 @@
 					</a>
 				</div>
 				<div class="caption imginfo">
-					<h5 class=imginfoding style="height: 48px; vertical-align:text-top;"><b>{{ $results[$count]->title }}</b></h5>
-					<p class=imginfoding style="height: 40px; vertical-align:text-top;"><b>Author:</b> {{ $results[$count]->author }}</p>
+					<h5 class=imginfoding style="height: 32px; vertical-align:text-top;"><b>{{ $results[$count]->title }}</b></h5>
+					<p class=imginfoding style="height: 22px; vertical-align:text-top;"><b>Author:</b> {{ $results[$count]->author }}</p>
 					<p class=imginfoding><b>Course:</b> {{ $results[$count]->subject.' '.$results[$count]->course_id }}</p>
 					<p class=imginfoding><b>Edition:</b> {{ $results[$count]->edition }}</p>
 				</div>
