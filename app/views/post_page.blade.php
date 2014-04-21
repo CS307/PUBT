@@ -18,7 +18,7 @@
       <div class = "row">
         <div class = "col-md-7">
            <a href="#" class="thumbnail">
-           @if($book->pic_url == "NO_URL")
+           @if($book->pic_url == "NO_URL" || $book->pic_url == "")
             <img data-src="holder.js/100%x180" alt="Sorry, No Cover" src="http://www.slugbooks.com/images/notavail2.png">
            @else
             <img data-src="holder.js/100%x180" alt="Sorry, No Cover" src="{{$book->pic_url}}"> 
@@ -70,7 +70,6 @@
               <tr>
               <td class="name">Condition: </td>
               <td class="value">
-               <!--  <input name="condition" type="text" placeholder="new with tags,like new,good condition and fair condition" style = "line-height: 25px; vertical-align: center;"> -->
                <select name="condition">
                   <option value="New With Tags">New With Tags</option>
                   <option value="Like New">Like New</option>
