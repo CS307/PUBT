@@ -1,47 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>The Most Poplular Local Trading Site!</title>
+  <meta charset="UTF-8">
+  <title>The Most Poplular Local Trading Site!</title>
 
-<link href="{{asset('css/bootstrap.min.css')}} " rel="stylesheet">
-<link href="{{asset('css/base.css')}}" rel="stylesheet">
-@yield('base_link')
+  <link href="{{asset('css/bootstrap.min.css')}} " rel="stylesheet">
+  <link href="{{asset('css/base.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
 
-<script src="http://code.jquery.com/jquery-latest.min.js"
-        type="text/javascript"></script>
-<script src="{{asset('css/bootstrap.min.js')}}"></script>
+  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+  <script src="{{asset('css/bootstrap.min.js')}}"></script>
+    @yield('base_link')
 																		<!--<link rel="stylesheet/less" type="text/css" href="{{asset('less/bootstrap.less')}}">
 																		<script src="{{asset('css/less-1.7.0.min.js')}}" type="text/javascript"></script>-->
+
+
 <style>
-body{padding: 50px;}
-input{color:black;}
-::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-	background-color: #F5F5F5;
-	border-radius: 10px;
-}
+  body { font-size: 150%; padding: 50px;}
+    label, input { display:block; }
+    input.text { margin-bottom:12px; width:95%; padding: .4em; }
+    fieldset { padding:0; border:0; margin-top:25px; }
+    h1 { font-size: 1.2em; margin: .6em 0; }
+    div#users-contain { width: 350px; margin: 20px 0; }
+    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+    .ui-dialog .ui-state-error { padding: .3em; }
+    .validateTips { border: 1px solid transparent; padding: 0.3em; }
+  ::-webkit-scrollbar-track
+  {
+	 -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	 background-color: #F5F5F5;
+	 border-radius: 10px;
+  }
 
-::-webkit-scrollbar
-{
-	width: 10px;
-	background-color: #F5F5F5;
-}
+  ::-webkit-scrollbar
+  {
+	 width: 10px;
+	 background-color: #F5F5F5;
+  }
 
-::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	background-color: #FFF;
-	background-image: -webkit-linear-gradient(top,
-											  #A9A9A9 0%,
-											  #DCDCDC 50%,
-											  #A9A9A9 100%);
-}
-
+  ::-webkit-scrollbar-thumb
+  {
+	 border-radius: 10px;
+	 background-color: #FFF;
+	 background-image: -webkit-linear-gradient(top,
+	 										  #A9A9A9 0%,
+	 										  #DCDCDC 50%,
+	 										  #A9A9A9 100%);
+  }
 </style>
+
+
+
+
+
+
+  
 </head>
 <body>
+
+
 
 
 <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
@@ -90,7 +111,7 @@ input{color:black;}
               <button type="submit" id="btnLogin" class="btn">Sign up</button>
               {{Form::close()}}
             </div>
-          </li>
+    </li>
     @endif
         
         <li class="dropdown" id="menuLogin">
