@@ -96,7 +96,7 @@
         <div class="form-group">
           <input type="text" class="form-control" name="keyword" placeholder="In format:CS 18000">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default" name='button' value='search'>Submit</button>
       </div>
         {{Form::close()}}
       
