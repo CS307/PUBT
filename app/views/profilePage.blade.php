@@ -47,7 +47,7 @@
 							<div class="col-md-9">
 								<div class=tbreakding>
 									<a id="tip" href="#">Book: {{ DB::table('books')->where('id',$followingbooks[$count]->book_id)->first()->title }}
-									<span id="tip_info">Book: Composing Yourself: A Student Guide to Introductory Compostion at Purdue</span>
+									<span id="tip_info">Book: {{ DB::table('books')->where('id',$followingbooks[$count]->book_id)->first()->title }}</span>
 									</a>
 									<p>Author: {{ DB::table('books')->where('id',$followingbooks[$count]->book_id)->first()->author }}</p>
 									<p>Course: {{ DB::table('books')->where('id',$followingbooks[$count]->book_id)->first()->subject.' '.DB::table('books')->where('id',$followingbooks[$count]->book_id)->first()->course_id }}</p>
