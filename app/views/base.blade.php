@@ -53,6 +53,16 @@
   }
 </style>
 
+<style type="text/CSS">
+a#tip:link,a#tip:hover {text-decoration:none;color:#000;display:block}
+a#tip span {display:none;text-decoration:none;}
+a#tip:visited {color:#000;text-decoration:underline;}
+a#tip:hover #tip_info {display:block;Max-width: 300px;border:1px solid #696969;border-radius:3px;background:#FFFFFF;
+padding:2px;margin:0px;position:absolute;top:20px;left:150px;font-size:12px; color:#696969}
+</style>
+
+
+
 
 
 
