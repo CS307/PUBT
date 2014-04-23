@@ -1,45 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>The Most Poplular Local Trading Site!</title>
+  <meta charset="UTF-8">
+  <title>The Most Poplular Local Trading Site!</title>
 
-<link href="{{asset('css/bootstrap.min.css')}} " rel="stylesheet">
-<link href="{{asset('css/base.css')}}" rel="stylesheet">
-@yield('base_link')
+  <link href="{{asset('css/bootstrap.min.css')}} " rel="stylesheet">
+  <link href="{{asset('css/base.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
 
-<script src="http://code.jquery.com/jquery-latest.min.js"
-        type="text/javascript"></script>
-<script src="{{asset('css/bootstrap.min.js')}}"></script>
+  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+  <script src="{{asset('css/bootstrap.min.js')}}"></script>
+    @yield('base_link')
 																		<!--<link rel="stylesheet/less" type="text/css" href="{{asset('less/bootstrap.less')}}">
 																		<script src="{{asset('css/less-1.7.0.min.js')}}" type="text/javascript"></script>-->
+
+
 <style>
-body{padding: 50px;}
-input{color:black;}
-::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-	background-color: #F5F5F5;
-	border-radius: 10px;
-}
+  body { font-size: 150%; padding: 50px;}
+    label, input { display:block; }
+    input.text { margin-bottom:12px; width:95%; padding: .4em; }
+    fieldset { padding:0; border:0; margin-top:25px; }
+    h1 { font-size: 1.2em; margin: .6em 0; }
+    div#users-contain { width: 350px; margin: 20px 0; }
+    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+    .ui-dialog .ui-state-error { padding: .3em; }
+    .validateTips { border: 1px solid transparent; padding: 0.3em; }
+  ::-webkit-scrollbar-track
+  {
+	 -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	 background-color: #F5F5F5;
+	 border-radius: 10px;
+  }
 
-::-webkit-scrollbar
-{
-	width: 10px;
-	background-color: #F5F5F5;
-}
+  ::-webkit-scrollbar
+  {
+	 width: 10px;
+	 background-color: #F5F5F5;
+  }
 
-::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	background-color: #FFF;
-	background-image: -webkit-linear-gradient(top,
-											  #A9A9A9 0%,
-											  #DCDCDC 50%,
-											  #A9A9A9 100%);
-}
-
+  ::-webkit-scrollbar-thumb
+  {
+	 border-radius: 10px;
+	 background-color: #FFF;
+	 background-image: -webkit-linear-gradient(top,
+	 										  #A9A9A9 0%,
+	 										  #DCDCDC 50%,
+	 										  #A9A9A9 100%);
+  }
 </style>
+
 <style type="text/CSS">
 a#tip:link,a#tip:hover {text-decoration:none;color:#000;display:block}
 a#tip span {display:none;text-decoration:none;}
@@ -48,7 +61,144 @@ a#tip:hover #tip_info {display:block;Max-width: 300px;border:1px solid #696969;b
 padding:2px;margin:0px;position:absolute;top:20px;left:150px;font-size:12px; color:#696969}
 </style>
 
+
+
+
+
+
+<script>
+  $(function() {
+    var email = $( "#email" ), password = $( "#password" ), pwconfirm = $("#pwconfirm")
+      allFields = $( [] ).add( email ).add( password ).add(pwconfirm),
+      tips = $( ".validateTips" );
+ 
+    function updateTips( t ) {
+      tips
+        .text( t )
+        .addClass( "ui-state-highlight" );
+      setTimeout(function() {
+        tips.removeClass( "ui-state-highlight", 1500 );
+      }, 500 );
+    }
+ 
+    function checkLength( o, n, min, max ) {
+      if ( o.val().length > max || o.val().length < min ) {
+        o.addClass( "ui-state-error" );
+        updateTips( "Length of " + n + " must be between " +
+          min + " and " + max + "." );
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    function checkPw(o, n) {
+      if (o.val()!=n.val()) {
+        n.addClass( "ui-state-error" );
+        updateTips( "Two passwords must be consistent.");
+        return false;
+      } else {
+        return true;
+      }
+
+    }
+ 
+    function checkRegexp( o, regexp, n ) {
+      if ( !( regexp.test( o.val() ) ) ) {
+        o.addClass( "ui-state-error" );
+        updateTips( n );
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+
+ 
+    $( "#signup-form" ).dialog({
+      autoOpen: false,
+      height: 300,
+      width: 350,
+      modal: true,
+      buttons: {
+        "Create an account": function() {
+          var bValid = true;
+          allFields.removeClass( "ui-state-error" );
+ 
+          bValid = bValid && checkLength( email, "email", 6, 80 );
+          bValid = bValid && checkLength( password, "password", 4, 32 );
+          bValid = bValid && checkPw( password, pwconfirm);
+          // From jquery.validate.js (by joern), contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
+          bValid = bValid && checkRegexp( email, /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. Lee123" );
+          bValid = bValid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9" );
+ 
+          if ( bValid ) {
+            $( "#users tbody" ).append( "<tr>" +
+              "<td>" + email.val() + "</td>" +
+              "<td>" + password.val() + "</td>" +
+            "</tr>" );
+            $( this ).dialog( "close" );
+          }
+        },
+        Cancel: function() {
+          $( this ).dialog( "close" );
+        }
+      },
+      close: function() {
+        allFields.val( "" ).removeClass( "ui-state-error" );
+      }
+    });
+ 
+
+
+    $( "#editprice-form").dialog({
+      autoOpen: false,
+      height: 150,
+      width: 250,
+      modal: true,
+      buttons: {
+        "Edit list price": function() {
+          var bValid = true;
+          allFields.removeClass( "ui-state-error" );
+ 
+          bValid = bValid && checkLength( newprice, "email", 0, 80 );
+          // From jquery.validate.js (by joern), contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
+          bValid = bValid && checkRegexp( newprice, /^\d+.?\d*$/, "Please enter valid price" );
+ 
+        },
+        Cancel: function() {
+          $( this ).dialog( "close" );
+        }
+      },
+      close: function() {
+        allFields.val( "" ).removeClass( "ui-state-error" );
+      }
+
+    });
+
+
+    $( "#edit-price")
+      .button()
+      .click(function() {
+        $( "#editprice-form").dialog( "open" );
+      });
+
+
+    $( "#create-user" )
+      .button()
+      .click(function() {
+        $( "#signup-form" ).dialog( "open" );
+      });
+  });
+  </script>
+
+
+
+  
+</head>
 <body>
+
+
 
 
 <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
@@ -82,7 +232,7 @@ padding:2px;margin:0px;position:absolute;top:20px;left:150px;font-size:12px; col
         <div class="form-group">
           <input type="text" class="form-control" name="keyword" placeholder="In format:CS 18000">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default" name='button' value='search'>Submit</button>
       </div>
         {{Form::close()}}
       
@@ -99,7 +249,7 @@ padding:2px;margin:0px;position:absolute;top:20px;left:150px;font-size:12px; col
               <button type="submit" id="btnLogin" class="btn">Sign up</button>
               {{Form::close()}}
             </div>
-          </li>
+    </li>
     @endif
         
         <li class="dropdown" id="menuLogin">

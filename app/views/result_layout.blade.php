@@ -103,11 +103,7 @@
 </div>
 </div>
 
-<div class="row">
-	<footer class=footerding>
-		Copyright: PUBT: Dingzhe Li-Zorak!
-	</footer>
-</div>
+
 
 
 </body>

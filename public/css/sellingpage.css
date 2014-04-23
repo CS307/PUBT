@@ -149,6 +149,30 @@ border-collapse: separate;
 border-spacing: 2px;
 }
 
+div#buyer-list{
+  width: 350px;
+  margin: 10px 0;
+
+}
+
+div#buyer-list table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+}
+
+.ui-widget-header {
+border: 1px solid #aaaaaa;
+background: #cccccc url(images/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x;
+color: #222222;
+font-weight: bold;
+}
+.ui-widget-content {
+border: 1px solid #aaaaaa;
+background: #ffffff url(images/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x;
+color: #222222;
+}
+
 td {
 display: table-cell;
 }

@@ -1,5 +1,5 @@
 <?php
-$b;
+$buyer_email;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -45,7 +45,7 @@ Route::post('postLogout',array('uses' => 'AccountController@getLogout'));
 Route::post('search',function(){
 	$keyword = Input::get('keyword');
 	preg_match('/(?P<subject>[a-zA-Z]+)\s*(?P<number>\d+)/', $keyword, $matches);
-	$books = DB::table('books')->where('subject', $matches['subject'])->where('course_id',$matches['number'])->get();
+	$books = DB::table('books')->where('subject', $matches['subject'])->where('course_id',$matches['number'])->where('title',"!=","TBA")->orderBy('course_id')->get();
 	return View::make('book_results',array('method' => Input::get('button'), 'results' => $books));
 });
 
@@ -115,28 +115,29 @@ Route::post('/soldout', function(){
 	$bc_id = Input::get('book_copy_id');
 	DB::table('book_copys')->where('id', $bc_id)->update(array('soldout' => true));
 
-	// // Send emails to all the buyers
-	// $book_copy = DB::table('book_copys')->where('id', $bc_id)->first();
-	// echo count($book_copy);
-	// $book = DB::table('books')->where('id', $book_copy->book_id)->first();
-	// $buyerEntrys= DB::table('buyer_list')->where('copy_id', $bc_id)->get();
+	// Send emails to all the buyers
+	$book_copy = DB::table('book_copys')->where('id', $bc_id)->first();
+	echo count($book_copy);
+	$book = DB::table('books')->where('id', $book_copy->book_id)->first();
+	$buyerEntrys= DB::table('buyer_list')->where('copy_id', $bc_id)->get();
 	
-	// echo count($buyerEntrys);
-	// static $buyer;
+	echo count($buyerEntrys);
+	global $buyer_email;
 
-	// if(!$buyerEntrys){
-	// 	 	$results = $buyerEntrys; 
-	// 	}
-	// else{
-	//  	$count = 0;
-	//  	foreach ($buyerEntrys as $buyerEntry)
-	//  	{
-	// 		$b = DB::table('users')->where('id',$buyerEntry[]->buyer_id)->first();
- //    		Mail::send('email_soldout', array('username'=>DB::table('users')->where('id',$buyerEntry->buyer_id)->first()->email, 'book'=>$book, 'book_copy'=>$book_copy), function($message){
- //     			$message->to(DB::table('users')->where('id',$buyerEntry->buyer_id)->first()->email.'@purdue.edu', NULL)->subject('Someone wants to buy your selling book');
- // 			});
-	// 	}
-	// }
+	if(!$buyerEntrys){
+		 	$results = $buyerEntrys; 
+		}
+	else{
+	 	$count = 0;
+	 	foreach ($buyerEntrys as $buyerEntry)
+	 	{
+			$buyer_email = DB::table('users')->where('id',$buyerEntry->buyer_id)->first()->email;
+    		Mail::queue('email_soldout', array('username'=>$buyer_email, 'book'=>$book, 'book_copy'=>$book_copy, 'seller'=>Auth::user()->email), function($message){
+     			global $buyer_email;
+     			$message->to($buyer_email.'@purdue.edu', NULL)->subject('Your bidding book has already been sold to others');
+ 			});
+		}
+	}
 	
 	return Redirect::to('/search/book_copy_id='.$bc_id);
 });
@@ -229,8 +230,7 @@ Route::get('profile',function(){
 
 Route::get('fake', function()
 {
-	$Date = date('Y-m-d');
-	echo date('Y-m-d', strtotime($Date. ' + 7 days'));
+	BookCopy::where('expire_date', '1994-01-30')->update(array('expire_date' => '2014-04-21'));
 });
 
 function createUser(){
