@@ -9,37 +9,56 @@
 	<div class="row">
   		<div class="col-md-2">
 			<aside class=checkboxding>
-			{{ Form::open(array('url'=>'test','method'=>'get')) }}
-			<input type="hidden" name="book_id" value=711>
+			{{ Form::open(array('url'=>'#','method'=>'get')) }}
 			<p class=checkboxcolording>Price:</p>
 			<div class="checkbox">
 				<div class=checkboxstyleding>
 				<label>
-					<input type="checkbox" name="price1" value="Under $20">
+					@if($checked[0])
+						<input type="checkbox" name="price1" value="Under $20" checked>
+					@else
+						<input type="checkbox" name="price1" value="Under $20">
+					@endif 
 						Under $20
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
-					<input type="checkbox" name="price2" value="$20 to $50">
+					@if($checked[1])
+						<input type="checkbox" name="price2" value="$20 to $50" checked>
+					@else
+						<input type="checkbox" name="price2" value="$20 to $50">
+					@endif
 						$20 to $50
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
-					<input type="checkbox" name="price3" value="$50 to $100">
+					@if($checked[2])
+						<input type="checkbox" name="price3" value="$50 to $100" checked>
+					@else
+						<input type="checkbox" name="price3" value="$50 to $100">
+					@endif
 						$50 to $100
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
-					<input type="checkbox" name="price4" value="$100 to $200">		
+					@if($checked[3])
+						<input type="checkbox" name="price4" value="$100 to $200" checked>
+					@else
+						<input type="checkbox" name="price4" value="$100 to $200">		
+					@endif
 						$100 to $200
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
-					<input type="checkbox" name="price5" value="Above $200">
+					@if($checked[4])
+						<input type="checkbox" name="price5" value="Above $200" checked>
+					@else
+						<input type="checkbox" name="price5" value="Above $200">
+					@endif
 						Above $200
 				</label>
 				</div>
@@ -49,25 +68,41 @@
 			<div class="checkbox">
 				<div class=checkboxstyleding>
 				<label>
-					<input type="checkbox" name="condition1" value="New With Tags">
+					@if($checked[5])
+						<input type="checkbox" name="condition1" value="New With Tags" checked>
+					@else
+						<input type="checkbox" name="condition1" value="New With Tags">
+					@endif
 						New With Tags
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
-					<input type="checkbox" name="condition2" value="Like New">
+					@if($checked[6])
+						<input type="checkbox" name="condition2" value="Like New" checked>
+					@else
+						<input type="checkbox" name="condition2" value="Like New">
+					@endif
 						Like New
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
-					<input type="checkbox" name="condition3" value="Good Condition">
+					@if($checked[7])
+						<input type="checkbox" name="condition3" value="Good Condition" checked>
+					@else
+						<input type="checkbox" name="condition3" value="Good Condition">
+					@endif
 						Good Condition
 				</label>
 				</div>
 				<div class=checkboxstyleding>
 				<label>
-					<input type="checkbox" name="condition4" value="Fair Condition">
+					@if($checked[8])
+						<input type="checkbox" name="condition4" value="Fair Condition" checked>
+					@else
+						<input type="checkbox" name="condition4" value="Fair Condition">
+					@endif
 						Fair Condition
 				</label>
 				</div>

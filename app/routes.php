@@ -56,11 +56,12 @@ Route::get('search/subject={subject}',function($subject){
 	return View::make('book_results',array('method' => 'search', 'results' => $results));
 });
 
-Route::get('/search/book_id={book_id}', function($book_id){
-	$Date = date('Y-m-d');
-	$book_copys = DB::table('book_copys')->where('book_id',$book_id)->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
-	return View::make('result_layout', array('results' => $book_copys));
-});
+// Route::get('/search/book_id={book_id}', function($book_id){
+// 	$Date = date('Y-m-d');
+// 	$book_copys = DB::table('book_copys')->where('book_id',$book_id)->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
+// 	$checked = array(0,0,0,0,0,0,0,0,0);
+// 	return View::make('result_layout', array('results' => $book_copys,'checked' => $checked));
+// });
 
 Route::get('/search/book_copy_id={bc_id}', function($bc_id){
 	echo Input::get('price');
@@ -171,15 +172,16 @@ Route::post('/join_buyerlist',function(){
 	return Redirect::to('/search/book_copy_id='.Input::get('book_copy_id'));
 });
 
-Route::get('test', function(){
+Route::get('/search/book_id={book_id}', function($book_id){
 	$middle = NULL;
 	$Date = date('Y-m-d');
+	$checked = array(0,0,0,0,0,0,0,0,0);
 	if( Input::get('price1')==NUll&&
 		Input::get('price2')==NUll&&
 		Input::get('price3')==NUll&&
 		Input::get('price4')==NUll&&
 		Input::get('price5')==NUll){
-		$middle = DB::table('book_copys')->where('book_id', 711)->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
+		$middle = DB::table('book_copys')->where('book_id', $book_id)->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
 	}
 	else{
 		$group1 = NULL; 
@@ -187,22 +189,26 @@ Route::get('test', function(){
 		$group3 = NULL;
 		$group4 = NULL;
 		$group5 = NULL;
-		if(Input::get('price1')!=NUll)
-			$group1 = DB::table('book_copys')->where('book_id', 711)->where('price','<', 20)->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
-		echo count($group1);
-		if(Input::get('price2')!=NUll){
-			$group2 = DB::table('book_copys')->where('book_id', 711)->whereBetween('price', array(20, 50))->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
+		if(Input::get('price1')!=NUll){
+			$group1 = DB::table('book_copys')->where('book_id', $book_id)->where('price','<', 20)->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
+			$checked[0] = 1;
 		}
-		echo count($group2);
-		if(Input::get('price3')!=NUll)
-			$group3 = DB::table('book_copys')->where('book_id', 711)->whereBetween('price', array(50, 100))->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
-		echo count($group3);
-		if(Input::get('price4')!=NUll)
-			$group4 = DB::table('book_copys')->where('book_id', 711)->whereBetween('price', array(100, 200))->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
-		echo count($group4);
-		if(Input::get('price5')!=NUll)
-			$group5 = DB::table('book_copys')->where('book_id', 711)->where('price','>', 200)->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
-		echo count($group5);
+		if(Input::get('price2')!=NUll){
+			$group2 = DB::table('book_copys')->where('book_id', $book_id)->whereBetween('price', array(20, 50))->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
+			$checked[1] = 1;
+		}
+		if(Input::get('price3')!=NUll){
+			$group3 = DB::table('book_copys')->where('book_id', $book_id)->whereBetween('price', array(50, 100))->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
+			$checked[2] = 1;
+		}
+		if(Input::get('price4')!=NUll){
+			$group4 = DB::table('book_copys')->where('book_id', $book_id)->whereBetween('price', array(100, 200))->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
+			$checked[3] = 1;
+		}
+		if(Input::get('price5')!=NUll){
+			$group5 = DB::table('book_copys')->where('book_id', $book_id)->where('price','>', 200)->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
+			$checked[4] = 1;
+		}
 		$count = 0;
 		for($i=0;$i<count($group1);$i++)
 			$middle[$count++] = $group1[$i];
@@ -216,8 +222,16 @@ Route::get('test', function(){
 			$middle[$count++] = $group5[$i];
 	}
 	if(Input::get('condition1')==NULL&&Input::get('condition2')==NULL&&Input::get('condition3')==NULL&&Input::get('condition4')==NULL){
-			return View::make('result_layout', array('results' => $middle));
+			return View::make('result_layout', array('results' => $middle, 'checked' => $checked));
 	}
+	if(Input::get('condition1')!=NULL)
+		$checked[5] = 1;
+	if(Input::get('condition2')!=NULL)
+		$checked[6] = 1;
+	if(Input::get('condition3')!=NULL)
+		$checked[7] = 1;
+	if(Input::get('condition4')!=NULL)
+		$checked[8] = 1;
 	$results = NULL;
 	$count = 0;
 	for($i=0;$i<count($middle);$i++){
@@ -226,7 +240,7 @@ Route::get('test', function(){
 				$results[$count++] = $middle[$i];
 		}
 	}
-	return View::make('result_layout', array('results' => $results));
+	return View::make('result_layout', array('results' => $results, 'checked' => $checked));
 });
 
 
@@ -290,8 +304,10 @@ Route::get('profile',function(){
 
 Route::get('fake', function()
 {
-	$Date = date('Y-m-d');
-	echo date('Y-m-d', strtotime($Date. ' -2 days'));
+	Schema::table('book_copys', function($table)
+	{
+		$table->string('actual_buyer')->nullable();
+	});
 });
 
 function createUser(){
