@@ -53,6 +53,16 @@
   }
 </style>
 
+<style type="text/CSS">
+a#tip:link,a#tip:hover {text-decoration:none;color:#000;display:block}
+a#tip span {display:none;text-decoration:none;}
+a#tip:visited {color:#000;text-decoration:underline;}
+a#tip:hover #tip_info {display:block;Max-width: 300px;border:1px solid #696969;border-radius:3px;background:#FFFFFF;
+padding:2px;margin:0px;position:absolute;top:20px;left:150px;font-size:12px; color:#696969}
+</style>
+
+
+
 
 
 
@@ -217,7 +227,7 @@
         <li><a href="/search/subject=phys">PHYS</a></li>
         <li><a href="/search/subject=stat">STAT</a></li>
       </ul>
-        {{Form::open(array('url'=>'search','method'=>'post'))}}
+        {{Form::open(array('url'=>'mainRequest','method'=>'get'))}}
       <div class="navbar-form navbar-left" role="search" action="#">
         <div class="form-group">
           <input type="text" class="form-control" name="keyword" placeholder="In format:CS 18000">

@@ -110,7 +110,7 @@ body{
 .tbreakding{
 	margin-left:5px;
 	padding:0px;
-	text-align:left;
+	
 	word-wrap:break-word;
 	border-bottom: 1px solid #EEAD0E;
 }
@@ -132,3 +132,24 @@ body{
 
 /* only for column content visible */
 .col-lg-1>div {background-color:#ddd;}
+
+.picding{
+	vertical-align: middle;
+	text-align: center;
+	max-height:135px;
+	max-width:135px;
+	border:#A9A9A9 1px solid;
+	border-top-right-radius:3px;
+	border-top-left-radius:3px;
+	border-bottom-right-radius:3px;
+	border-bottom-left-radius:3px;
+	width: expression(this.height >135 ? (135*(this.width/this.height)): auto);
+	height: expression(this.height >135 ? 135: auto);
+	margin:2px;
+	padding:2px;
+}
+
+.buttonding{
+	
+	
+}

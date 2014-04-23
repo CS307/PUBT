@@ -10,7 +10,7 @@
 </div>
 <div class="container">
   <div class="navbar-form">
-    {{Form::open(array('url'=>'search','method'=>'post'))}}
+    {{Form::open(array('url'=>'mainRequest','method'=>'get'))}}
         <div class="form-group searchfieldmargin">
           <input type="text" name="keyword" class="searchfieldsize form-control" placeholder="In format:CS 15800">
           <button type="submit" class="btn btn-primary" name="button" role="search" value="search">Search</button>
