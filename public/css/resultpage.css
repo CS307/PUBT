@@ -44,6 +44,7 @@
 .imginfo{
 	font:6px;
 	padding-top:10px;
+	max-width:200px;
 }
 .imgbotding{
 	clear:both;
@@ -54,6 +55,7 @@
 	min-height: 200px;
 	max-height: 200px;
 	overflow: hidden;
+	max-width:200px;
 }
 .img{
 	width:fixed;
@@ -62,11 +64,20 @@
 	position: relative;
 }
 .picboxding{
-	border: 1px solid #ddd;
-	margin-bottom: 10px;
-	height: 310px;
+	margin-bottom: 20px;
+	width: 300px;
+	max-height: 440px;
 	overflow: hidden;
 }
+.picboxding2{
+	border:1px solid #ddd;
+}
+.picding{
+	max-height:300px;
+	max-width: 300px;
+	overflow: hidden;
+}
+
 .thumbnailding {
 display: block;
 padding: 4px;
@@ -79,3 +90,11 @@ border-radius: 4px;
 transition: all .2s ease-in-out;
 }
 
+.topicding{
+margin-left:110px;
+padding-left:0px;
+padding-bottom:10px;
+border-bottom:1px solid #EEAD0E;
+margin-bottom:20px;
+margin-top:15px;
+}
