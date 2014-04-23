@@ -56,13 +56,6 @@ Route::get('search/subject={subject}',function($subject){
 	return View::make('book_results',array('method' => 'search', 'results' => $results));
 });
 
-// Route::get('/search/book_id={book_id}', function($book_id){
-// 	$Date = date('Y-m-d');
-// 	$book_copys = DB::table('book_copys')->where('book_id',$book_id)->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
-// 	$checked = array(0,0,0,0,0,0,0,0,0);
-// 	return View::make('result_layout', array('results' => $book_copys,'checked' => $checked));
-// });
-
 Route::get('/search/book_copy_id={bc_id}', function($bc_id){
 	echo Input::get('price');
 	$book_copy = DB::table('book_copys')->where('id',$bc_id)->first();
@@ -240,7 +233,7 @@ Route::get('/search/book_id={book_id}', function($book_id){
 				$results[$count++] = $middle[$i];
 		}
 	}
-	return View::make('result_layout', array('results' => $results, 'checked' => $checked));
+	return View::make('book_copys_results', array('results' => $results, 'checked' => $checked));
 });
 
 
