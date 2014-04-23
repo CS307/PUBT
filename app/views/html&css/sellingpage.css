@@ -306,14 +306,26 @@ border-spacing: 2px;
 
 div#buyer-list{
   width: 220px;
-  margin: 10px 0;
-
 }
 
 div#buyer-list table {
 border-collapse: collapse;
 width: 100%;
 text-align: left;
+}
+
+div#buyer-list table tbody {
+height: 50px;
+overflow: auto;
+}
+
+div#buyer-list table tbody tr {
+padding: 2em 0;
+}
+
+tbody{
+max-height: 40px;
+overflow: auto;
 }
 
 .ui-widget-header {
