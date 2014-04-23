@@ -1,0 +1,10 @@
+#hintboxding{
+	display:none;
+	position:absolute;
+	font-size: 12px;
+	background-color: #161616;
+	color:#fff;
+	border:1px solid red;
+	padding:8px;
+	border-radius:5px;
+}
