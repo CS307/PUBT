@@ -61,7 +61,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'boilertrade.us@gmail.com', 'name' => 'boilertrade.us Verification E-mail'),
+	'from' => array('address' => 'boilertrade.us@gmail.com', 'name' => 'BoilerTrade.us'),
 
 	/*
 	|--------------------------------------------------------------------------

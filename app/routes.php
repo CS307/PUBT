@@ -112,14 +112,14 @@ Route::post('/soldout', function(){
 	// Mark the book by soldout
 	$bc_id = Input::get('book_copy_id');
 	DB::table('book_copys')->where('id', $bc_id)->update(array('soldout' => true));
+	// Set the actual buyer of book_copy
+	DB::table('book_copys')->where('id', $bc_id)->update(array('actual_buyer' => Input::get('actual_buyer_email')));
 
-	// Send emails to all the buyers
+	// Get some info used to send email
 	$book_copy = DB::table('book_copys')->where('id', $bc_id)->first();
-	echo count($book_copy);
 	$book = DB::table('books')->where('id', $book_copy->book_id)->first();
 	$buyerEntrys= DB::table('buyer_list')->where('copy_id', $bc_id)->get();
 	
-	echo count($buyerEntrys);
 	global $buyer_email;
 
 	if(!$buyerEntrys){
@@ -130,10 +130,20 @@ Route::post('/soldout', function(){
 	 	foreach ($buyerEntrys as $buyerEntry)
 	 	{
 			$buyer_email = DB::table('users')->where('id',$buyerEntry->buyer_id)->first()->email;
-    		Mail::queue('email_soldout', array('username'=>$buyer_email, 'book'=>$book, 'book_copy'=>$book_copy, 'seller'=>Auth::user()->email), function($message){
-     			global $buyer_email;
-     			$message->to($buyer_email.'@purdue.edu', NULL)->subject('Your bidding book has already been sold to others');
- 			});
+			echo Input::get('actual_buyer_id');
+			echo $buyerEntry->buyer_id;
+			if($buyerEntry->buyer_id == Input::get('actual_buyer_id')){
+				Mail::queue('email_soldto', array('username'=>$buyer_email, 'title'=>$book->title,'price'=>$buyerEntry->offer_price, 'seller'=>Auth::user()->email), function($message){
+	     			global $buyer_email;
+	     			$message->to($buyer_email.'@purdue.edu', NULL)->subject('Congratulations, the seller  select you as the buyer');
+	 			});
+			}
+			else{
+	    		Mail::queue('email_soldout', array('username'=>$buyer_email, 'book'=>$book, 'book_copy'=>$book_copy, 'seller'=>Auth::user()->email), function($message){
+	     			global $buyer_email;
+	     			$message->to($buyer_email.'@purdue.edu', NULL)->subject('Your bidding book has already been sold to others');
+	 			});
+	 		}
 		}
 	}
 	
@@ -143,7 +153,18 @@ Route::post('/soldout', function(){
 Route::post('/recover', function(){
 	$bc_id = Input::get('book_copy_id');
 	DB::table('book_copys')->where('id', $bc_id)->update(array('soldout' => false));
+	DB::table('book_copys')->where('id', $bc_id)->update(array('actual_buyer' => ''));
 	return Redirect::to('/search/book_copy_id='.$bc_id);
+});
+
+Route::post('/extend',function(){
+	$Date = date('Y-m-d');
+	DB::table('book_copys')->where('id', Input::get('book_copy_id'))->update(array('expire_date' => date('Y-m-d', strtotime($Date. ' + 7 days'))));
+	return Redirect::to('/search/book_copy_id='.Input::get('book_copy_id'));
+});
+
+Route::post('/soldto', function(){
+	echo Input::get('actual_buyer_email');
 });
 
 Route::post('/join_buyerlist',function(){

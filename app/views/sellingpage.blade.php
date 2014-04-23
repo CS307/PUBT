@@ -74,11 +74,11 @@
 
 
 
-        {{ Form::open(array('url'=>'join_buyerlist','method'=>'post')) }}
+        <!-- {{ Form::open(array('url'=>'join_buyerlist','method'=>'post')) }}
         <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
         <input type="hidden" name="buyer_id" value=" {{ Auth::user()->id }} ">
         <input type="hidden" name="email" value=" {{ DB::table('users')->where('id', $book_copy->seller_id)->first()->email }} ">
-        <input type="hidden" name="actual_buyer" value=" {{ DB::table('book_copy')->where('id', $book_copy->id)->first()->actual_buyer }} ">
+        <input type="hidden" name="actual_buyer" value=" {{ DB::table('book_copys')->where('id', $book_copy->id)->first()->actual_buyer }} "> -->
 
         <div class = "contactleft controlgroup" style = "margin-top: 0px">
           <!--
@@ -102,7 +102,8 @@
             know!
           </p>
           <div id="buyer-list">
-            @if($book_copy->soldout)<!--if the book is sold-out, then display the buyer's email-->
+            
+            @if($book_copy->soldout)
                 <table id="users" class="ui-widget-content">
                   <thead>
                     <tr class="ui-widget-header ">
@@ -111,11 +112,11 @@
                   </thead>
                   <tbody>
                       <tr class="ui-widget-content">
-                        <td>$book_copy->actual_buyer</td>
+                        <td>{{$book_copy->actual_buyer}}</td>
                       </tr>
                   </tbody>
                 </table>  
-            @elseif<!--when the book is not sold-out, then display all the potential buyers -->
+            @else<!--when the book is not sold-out, then display all the potential buyers -->
                 <table id="users" class="ui-widget-content">
                   <thead>
                     <tr class="ui-widget-header ">
@@ -143,6 +144,7 @@
                               <button type="submit" class="btn btn-contact btn-xs">
                                 <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
                                 <input type="hidden" name="actual_buyer_email" value=" {{ DB::table('users')->where('id',$buyer_list[$count]->buyer_id)->first()->email }} ">
+                                <input type="hidden" name="actual_buyer_id" value=" {{ $buyer_list[$count]->buyer_id }}">
                                 soldTo
                               </button>
                             {{ Form::close(); }}
@@ -195,7 +197,7 @@
           </div>  
           {{ Form::close() }}
         </div> -->
-          {{ Form::close() }}
+         <!--  {{ Form::close() }} -->
       </div>
 
   @else<!--when user is logged in as buyer-->
@@ -354,14 +356,13 @@
 
            <div class = "col-md-5">
                 @if(!$book_copy->soldout)
-                  <!-- {{ Form::open(array('url'=>'/soldout', 'method'=>'post')) }}
+                  {{ Form::open(array('url'=>'/extend', 'method'=>'post')) }}
                     <button type="submit" class="btn btn-contact" style="margin-top: 100px;">
                       <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
-                      <input type="hidden" name="follower_id" value=" {{ Auth::user()->id }} ">
-                      Sold Out
+                      Extend
                     </button>
                   {{ Form::close(); }}
- -->                @else
+                @else
                   {{ Form::open(array('url'=>'/recover', 'method'=>'post')) }}
                     <button type="submit" class="btn btn-contact" style="margin-top: 100px;">
                       <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
