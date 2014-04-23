@@ -1,6 +1,7 @@
-@extends('result_layout')
+@extends('base')
 
-@section('results')
+@section('base_content')
+	<h1>Choose the book you want to search for: </h1>
 	@for($count=0;$count < count($results);$count++)
 		@if($count%4==0)
 			@if($count!=0)

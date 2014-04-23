@@ -7,17 +7,7 @@
 @section('base_content')
 <div class=container>
 		<div>
-<!-- 			<div class="col-md-1">
-				<div class="media">
-					<a class="pull-right" href="#">
-						<img height="31" width="66" class="media-object" src="{{asset('css/logo.jpg')}}" alt="...">
-					</a>
-				</div>
-			</div> -->
-<!-- 			<div class="col-md-11">
-				<p class=pheadding>Welcome, {{ $user->email }}</p>
-				<p class=ph2ding>Your are currently logged in.</p>
-			</div> -->
+
 		</div>
 	<div class="row">
 	
@@ -78,12 +68,5 @@
 			</div>
 		</div>
 	</div>
-	
-	
-	<!-- <div class="row">
-		<footer class=footerding>
-			Copyright: PUBT: Dingzhe Li-Zorak!
-		</footer>
-	</div> -->
 </div>
 @stop

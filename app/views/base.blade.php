@@ -217,7 +217,7 @@
         <li><a href="/search/subject=phys">PHYS</a></li>
         <li><a href="/search/subject=stat">STAT</a></li>
       </ul>
-        {{Form::open(array('url'=>'search','method'=>'post'))}}
+        {{Form::open(array('url'=>'mainRequest','method'=>'get'))}}
       <div class="navbar-form navbar-left" role="search" action="#">
         <div class="form-group">
           <input type="text" class="form-control" name="keyword" placeholder="In format:CS 18000">
