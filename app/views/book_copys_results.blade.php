@@ -114,12 +114,10 @@
   
   	<div class="col-md-10">
   		<div class=mainsectionding>
-<<<<<<< HEAD
-  		<h1 class=h1ding>Search Result:</h1>
-=======
-  		<h1 class=h1ding>Search Result:<br>
-		<p>	No Results </p>
->>>>>>> 905960620be0061758294e846bea716828afb865
+  		<h1 class=h1ding>Search Result: </h1>
+  		@if(count($results)==0)
+  		No Result
+  		@endif
 		@for($count=0;$count < count($results);$count++)
 			@if($count%4==0)
 				@if($count!=0)
@@ -128,11 +126,11 @@
 				<div class="row">
 			@endif
 			<div class="col-xs-6 col-md-3">
-				<div class=picboxding>
-					<a href="/search/book_copy_id={{$results[$count]->id}}" class="thumbnail">							
-						<img data-src="holder.js/100%x180" maxheight="200" alt="sampleimg.jpg" src="{{DB::table('books')->where('id',$results[$count]->book_id)->first()->pic_url}}">
+				<div class="picboxding imgcontainer2">
+					<a href="/search/book_copy_id={{$results[$count]->id}}" class="imgcontainer2 thumbnail">							
+						<img data-src="holder.js" alt="sampleimg.jpg" src="{{DB::table('books')->where('id',$results[$count]->book_id)->first()->pic_url}}">
 					</a>
-					<div class="caption" class=imginfoding>
+					<div class="caption imginfo2" class=imginfoding>
 						<p class=imginfoding>Price: ${{ $results[$count]->price }}</p>
 						<p class=imginfoding>Seller: {{ DB::table('users')->where('id',$results[$count]->seller_id)->first()->email }}</p>
 						<p class=imginfoding>Condition: {{ $results[$count]->condition }}</p>
