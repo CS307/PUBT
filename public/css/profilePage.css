@@ -163,4 +163,24 @@ body{
 	margin:2px;
 	padding:2px;
 }
+.touxiang{
+	border:1px solid #ddd;
+	padding:3px;
+	max-height:250px;
+	width:auto;
+}
+.aligncenter {
+ clear: both;
+ display: block;
+ margin:auto;
+}
+.border{
+	border-top:1px solid #EEAD0E;
+	margin-top:0px;
+	margin-bottom:20px;
+	margin-left:20px;
+	margin-right:20px;
+	padding:0px;
+	
+}
 
