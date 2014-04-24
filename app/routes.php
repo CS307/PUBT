@@ -108,6 +108,13 @@ Route::post('/unfollow/book_copy_id={bc_id}',function($bc_id){
 	return Redirect::to('/search/book_copy_id='.$bc_id);
 });
 
+Route::post('/unfollow',function(){
+	$bc_id = Input::get('book_copy_id');
+	$follower_id = Input::get('follower_id');
+	DB::table('follow_list')->where('follower_id', $follower_id)->where('copy_id', $bc_id)->delete();
+	return Redirect::to('/profilepage');
+});
+
 Route::post('/soldout', function(){
 	// Mark the book by soldout
 	$bc_id = Input::get('book_copy_id');

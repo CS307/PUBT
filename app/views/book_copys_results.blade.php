@@ -114,7 +114,12 @@
   
   	<div class="col-md-10">
   		<div class=mainsectionding>
+<<<<<<< HEAD
   		<h1 class=h1ding>Search Result:</h1>
+=======
+  		<h1 class=h1ding>Search Result:<br>
+		<p>	No Results </p>
+>>>>>>> 905960620be0061758294e846bea716828afb865
 		@for($count=0;$count < count($results);$count++)
 			@if($count%4==0)
 				@if($count!=0)

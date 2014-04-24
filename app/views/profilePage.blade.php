@@ -43,7 +43,11 @@
 									<p>Course: {{ DB::table('books')->where('id',$followingbooks[$count]->book_id)->first()->subject.' '.DB::table('books')->where('id',$followingbooks[$count]->book_id)->first()->course_id }}</p>
 									<p>Condition: {{ $followingbooks[$count]->condition }}
 									<div class="btn-group btn-group-xs pull-right buttonding">
-										<button type="button" class="btn btn-default">Unfollow</button>
+									{{Form::open(array('url'=>'/unfollow','method'=>'post'))}}
+										<input type="hidden" name="book_copy_id" value="{{$followingbooks[$count]->id}}">
+										<input type="hidden" name="follower_id" value="{{Auth::user()->id}}">
+										<button type="submit" class="btn btn-info btn-xs">Unfollow</button>
+									{{Form::close()}}
 									</div></p>
 									<p>Owner: {{ DB::table('users')->where('id', $followingbooks[$count]->seller_id )->first()->email }}</p>
 									

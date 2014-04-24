@@ -6,6 +6,9 @@
 
 @section('base_content')
 	<h1 class="topicding">Choose the book you want to search for: </h1>
+	@if(count($results)==0)
+	Sorry, no record of the books correponding to that course
+	@endif
 	@for($count=0;$count < count($results);$count++)
 		@if($count%5==0)
 			@if($count!=0)
