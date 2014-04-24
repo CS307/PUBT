@@ -14,9 +14,10 @@
 		<div class="col-md-3">
 			<aside class=leftding>
 				<h1 class=h1ding>Personal Infomations: </h1>
-				<p class=pding>Name:</p>
-				<p class=pding>Major:</p>
-				<p class=pding>Phone Number:</p>
+				<div class="border"></div>
+				<img class="touxiang aligncenter" src="http://www.freelander.net.cn/app/Public/images/default_top.jpg" alt="img">
+				<p class=pding>Name: {{Auth::user()->email}}</p>
+				<p class=pding>Email addr: {{Auth::user()->email}}@purdue.edu</p>
 			</aside>
 		</div>
 		<div class="col-md-7">
