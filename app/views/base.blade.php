@@ -198,7 +198,6 @@ padding:2px;margin:0px;position:absolute;top:20px;left:150px;font-size:12px; col
 </head>
 <body>
 
-<button id="create-user">sign up</button>
 
 
 <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
@@ -241,11 +240,18 @@ padding:2px;margin:0px;position:absolute;top:20px;left:150px;font-size:12px; col
     @if(!Auth::check())
     <li class="dropdown" id="menuSignup">
           <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navSignup">Join us<b class="caret"></b></a>
-            <div class="dropdown-menu dropdownMenu">
+            <div class="dropdown-menu dropdownMenu" style="width:230px">
               {{Form::open(array('url'=>'postRegister','method'=>'post'))}}
-              <input type="text" name="email" placeholder="Career account"/ class="form-control"><span class="input-group-addon">@purdue.edu</span>
-              <input name="password" type="password" placeholder="Enter Password"/>
-              <input name="password_confirmation" type="password" placeholder="Confirm Password"/>
+              <div class="input-group button">
+                <input class="form-control" type="text" name="email" placeholder="PUaccount"/>
+                <span class="input-group-addon">@purdue.edu</span>
+              </div>
+              <div class="button">
+              <input class="form-control" name="password" type="password" placeholder="Enter Password"/>
+              </div>
+              <div class="button">
+              <input class="form-control" name="password_confirmation" type="password" placeholder="Confirm Password"/>
+            </div>
               <button type="submit" id="btnLogin" class="btn">Sign up</button>
               {{Form::close()}}
             </div>
@@ -255,19 +261,27 @@ padding:2px;margin:0px;position:absolute;top:20px;left:150px;font-size:12px; col
         <li class="dropdown" id="menuLogin">
           @if(Auth::check())
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">{{Auth::user()->email}}<b class="caret"></b></a>
-            <div class="dropdown-menu" style="padding:17px;">
-              <a href="/profilepage">Profile</a>
-              {{Form::open(array('url'=>'postLogout','method'=>'post'))}}
-                <button type="submit" id="btnLogin" class="btn">Log out</button>
+            <div class="dropdown-menu dropdownMenu" style="padding:17px;">
+                <div class="button">
+                <a href="/profilepage">
+                  <button class="btn btn-primary" style="width:90%">Profile</button>
+                </a>
+              </div>
+                {{Form::open(array('url'=>'postLogout','method'=>'post'))}}
+                <button type="submit" id="btnLogin" class="btn btn-danger" style="width:90%">Log out</button>
                 {{Form::close()}}
 
 
           @else
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Sign in<b class="caret"></b></a>
-            <div class="dropdown-menu" style="padding:17px;">
+            <div class="dropdown-menu dropdownMenu" style="padding:17px;">
               {{Form::open(array('url'=>'postLogin','method'=>'post'))}}
-              <input name="email" id="username" type="text" placeholder="Email">
-                <input name="password" id="password" type="password" placeholder="Password"><br>
+                <div class="button">
+                <input class="form-control button" name="email" id="username" type="text" placeholder="Email">
+                </div>
+                <div class="button">
+                <input class="form-control button" name="password" id="password" type="password" placeholder="Password"><br>
+                </div>
                 <button type="submit" id="btnLogin" class="btn">Login</button>
                 {{Form::close()}}
           @endif

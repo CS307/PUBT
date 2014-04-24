@@ -112,7 +112,7 @@
                   </thead>
                   <tbody>
                       <tr class="ui-widget-content">
-                        <td>{{$book_copy->actual_buyer}}</td>
+                        <td>{{$book_copy->actual_buyer}}@purdue.edu</td>
                       </tr>
                   </tbody>
                 </table>  
