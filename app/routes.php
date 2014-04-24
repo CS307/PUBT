@@ -202,7 +202,7 @@ Route::get('/search/book_id={book_id}', function($book_id){
 		Input::get('price3')==NUll&&
 		Input::get('price4')==NUll&&
 		Input::get('price5')==NUll){
-		$middle = DB::table('book_copys')->where('book_id', $book_id)->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
+		$middle = DB::table('book_copys')->where('book_id', $book_id)->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->where('soldout','0')->get();
 	}
 	else{
 		$group1 = NULL; 
@@ -211,23 +211,23 @@ Route::get('/search/book_id={book_id}', function($book_id){
 		$group4 = NULL;
 		$group5 = NULL;
 		if(Input::get('price1')!=NUll){
-			$group1 = DB::table('book_copys')->where('book_id', $book_id)->where('price','<', 20)->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
+			$group1 = DB::table('book_copys')->where('book_id', $book_id)->where('price','<', 20)->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->where('soldout','0')->get();
 			$checked[0] = 1;
 		}
 		if(Input::get('price2')!=NUll){
-			$group2 = DB::table('book_copys')->where('book_id', $book_id)->whereBetween('price', array(20, 50))->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
+			$group2 = DB::table('book_copys')->where('book_id', $book_id)->whereBetween('price', array(20, 50))->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->where('soldout','0')->get();
 			$checked[1] = 1;
 		}
 		if(Input::get('price3')!=NUll){
-			$group3 = DB::table('book_copys')->where('book_id', $book_id)->whereBetween('price', array(50, 100))->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
+			$group3 = DB::table('book_copys')->where('book_id', $book_id)->whereBetween('price', array(50, 100))->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->where('soldout','0')->get();
 			$checked[2] = 1;
 		}
 		if(Input::get('price4')!=NUll){
-			$group4 = DB::table('book_copys')->where('book_id', $book_id)->whereBetween('price', array(100, 200))->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
+			$group4 = DB::table('book_copys')->where('book_id', $book_id)->whereBetween('price', array(100, 200))->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->where('soldout','0')->get();
 			$checked[3] = 1;
 		}
 		if(Input::get('price5')!=NUll){
-			$group5 = DB::table('book_copys')->where('book_id', $book_id)->where('price','>', 200)->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->get();
+			$group5 = DB::table('book_copys')->where('book_id', $book_id)->where('price','>', 200)->where('expire_date','>', date('Y-m-d', strtotime($Date. ' -2 days')))->where('soldout','0')->get();
 			$checked[4] = 1;
 		}
 		$count = 0;
