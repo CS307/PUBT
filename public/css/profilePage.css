@@ -86,6 +86,21 @@ body{
 	margin-left:15px;
 	padding:0px;
 }
+.imgcontainerding{
+	width: relative;
+	min-height: 149px;
+	max-height: 150px;
+	max-width:120px;
+	overflow: hidden;
+	margin-bottom:0px;
+}
+
+.expdate{
+	font-size:10px;
+	margin-bottom:20px;
+	padding:0px;
+	border-bottom:1px solid #EEAD0E;
+}
 
 .panelbodyding{
 	margin-top:0px;
@@ -149,7 +164,3 @@ body{
 	padding:2px;
 }
 
-.buttonding{
-	
-	
-}
