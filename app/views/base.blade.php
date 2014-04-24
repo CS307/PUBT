@@ -198,8 +198,6 @@ padding:2px;margin:0px;position:absolute;top:20px;left:150px;font-size:12px; col
 </head>
 <body>
 
-<button id="create-user">sign up</button>
-
 
 <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
   <div class=container>

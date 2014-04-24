@@ -46,6 +46,11 @@
 	padding-top:10px;
 	max-width:200px;
 }
+.imginfo2{
+	font:6px;
+	padding-top:0px;
+	max-width:210px;
+}
 .imgbotding{
 	clear:both;
 	margin-bottom:0px;
@@ -56,6 +61,13 @@
 	max-height: 200px;
 	overflow: hidden;
 	max-width:200px;
+}
+.imgcontainer2{
+	width: relative;
+	min-height: 200px;
+	max-height: 220px;
+	overflow: hidden;
+	max-width:210px;
 }
 .img{
 	width:fixed;
