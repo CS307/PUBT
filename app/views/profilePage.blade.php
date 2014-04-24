@@ -77,7 +77,7 @@
 						</a>
 					</div>
 					<div class="expdate">
-					<p style="margin:0px;">Exp. date: {{$sellingbooks[$count]->expire_date}}</p>
+					<p style="margin:0px;"><b>Exp. date: {{$sellingbooks[$count]->expire_date}}</b></p>
 					</div>
 					@endfor
 				

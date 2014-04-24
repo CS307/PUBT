@@ -2,10 +2,10 @@
  
 <p>You have got the book:</p>
 <p>{{ $title }}</p>
-<p>with price: {{ $price }}
+<p>with price: ${{ $price }}
 
 <p>from:</p>
-<p>Owner: {{ $seller }}</p>
+<p>{{ $seller }}</p>
 
 <p>Now you can contact him/she to discuss the detail!</p>
 <p>Thanks for using Boiler Trade again!!</p>

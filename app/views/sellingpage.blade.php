@@ -169,7 +169,7 @@
             Sold Out
           @endif
         </div>
-
+<!--                                  change price pop-up
         <div class ="contactright">
           <form action="#" method="post" class="priceform" autocomplete="off">
           <div class="controlgroup">
@@ -181,6 +181,8 @@
           </div>  
           </form>
         </div>
+-->
+
         <!-- <div class ="contactright">
             <div class="controlgroup">
               <span class ="info">Offer your price to seller*</span>
@@ -242,9 +244,9 @@
         <div class ="contactright">
             <div class="controlgroup">
               <span class ="info">Offer your price to seller*</span>
-                <div class ="priceinput">
-                  <span class="add-on sofia">$</span>
-                  <input type="text" name="amount" placeholder="-">
+                <div class ="priceinput input-group" style="margin-left:47px;">
+                  <span class="input-group-addon">$</span>
+                  <input class="form-control" type="text" name="amount" placeholder="-" style="width: 80px;border-radius-right:1em;">
                 </div>
 
             <div class="pricefield">  
@@ -295,9 +297,9 @@
         <div class ="contactright">
             <div class="controlgroup">
               <span class ="info">Offer your price to seller*</span>
-                <div class ="priceinput">
-                  <span class="add-on sofia">$</span>
-                  <input type="text" name="amount" placeholder="-">
+                <div class ="priceinput input-group" style="margin-left:47px;">
+                  <span class="input-group-addon">$</span>
+                  <input class="form-control" type="text" name="amount" placeholder="-" style="width: 80px;border-radius-right:1em;">
                 </div>
 
             <div class="pricefield">  
@@ -338,9 +340,10 @@
         </div>
       </div> -->
 
-        @if(Auth::check())
-          @if(Auth::user()->id==$book_copy->seller_id)<!--when user is seller-->
+        @if(Auth::check())<!--when user is logged in 1-->
+          
             <div class = "col-md-7">
+          @if(Auth::user()->id==$book_copy->seller_id)<!--when user is seller 1.2-->
               <h3 class = subtitle>Status</h3>
               <div class = "contactleft" style="margin-top:10px;">
                 <div class="controlgroup">
@@ -353,46 +356,81 @@
                 </div>
               </div>
             </div>
+          @else<!--when user is buyer 1.2-->
+              <h3 class = subtitle>Follow</h3>
+              <div class = "contactleft" style="margin-top:10px;">
+                <div class="controlgroup">
+                  <?php $followers = DB::table('follow_list')->where('copy_id',$book_copy->id)->get(); ?>
+                  <div class ="info info3">
+                    <p>Current followers: {{ count($followers) }}</p>
+                    <p>Expire date: {{ $book_copy->expire_date }}</p>
+                    Add to your following list to catch up with this awesome book later!
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+
+          @endif
+
 
            <div class = "col-md-5">
-                @if(!$book_copy->soldout)
+                @if(!$book_copy->soldout && Auth::user()->id==$book_copy->seller_id)<!--when book is not sold 1.3-->
                   {{ Form::open(array('url'=>'/extend', 'method'=>'post')) }}
-                    <button type="submit" class="btn btn-contact" style="margin-top: 100px;">
+                    <button type="submit" class="btn btn-contact" style="margin-top: 50px;">
                       <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
                       Extend
                     </button>
                   {{ Form::close(); }}
-                @else
+
+                @elseif($book_copy->soldout && Auth::user()->id==$book_copy->seller_id)<!--when book is sold out 1.3-->
                   {{ Form::open(array('url'=>'/recover', 'method'=>'post')) }}
-                    <button type="submit" class="btn btn-contact" style="margin-top: 100px;">
+                    <button type="submit" class="btn btn-contact" style="margin-top: 50px;">
                       <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
                       <input type="hidden" name="follower_id" value=" {{ Auth::user()->id }} ">
                       Recover
                     </button>
                   {{ Form::close(); }}
-                @endif
-              @elseif(!DB::table('follow_list')->where('follower_id',Auth::user()->id)->where('copy_id', $book_copy->id)->first())
-                {{ Form::open(array('url'=>'/follow/book_copy_id='.$book_copy->id, 'method'=>'post')) }}
-                <button type="submit" class="btn btn-contact" style="margin-top: 100px;">
-                  <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
-                  <input type="hidden" name="follower_id" value=" {{ Auth::user()->id }} ">
-                  Add Follow
-                </button>
-                {{ Form::close(); }}
-              @else
-                {{ Form::open(array('url'=>'/unfollow/book_copy_id='.$book_copy->id, 'method'=>'post')) }}
-                <button type="submit" class="btn btn-contact" style="margin-top: 100px;">
-                  <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
-                  <input type="hidden" name="follower_id" value=" {{ Auth::user()->id }} ">
-                  Unfollow
-                </button>
-                {{ Form::close(); }}
+
+                @elseif(!DB::table('follow_list')->where('follower_id',Auth::user()->id)->where('copy_id', $book_copy->id)->first()
+                        && Auth::user()->id!=$book_copy->seller_id)
+                  {{ Form::open(array('url'=>'/follow/book_copy_id='.$book_copy->id, 'method'=>'post')) }}
+                  <button type="submit" class="btn btn-contact" style="margin-top: 50px;">
+                    <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
+                    <input type="hidden" name="follower_id" value=" {{ Auth::user()->id }} ">
+                    Add Follow
+                  </button>
+                  {{ Form::close(); }}
+              @else<!--when book is followed, display unfollow button-->
+                  {{ Form::open(array('url'=>'/unfollow/book_copy_id='.$book_copy->id, 'method'=>'post')) }}
+                  <button type="submit" class="btn btn-contact" style="margin-top: 50px;">
+                    <input type="hidden" name="book_copy_id" value=" {{ $book_copy->id }} ">
+                    <input type="hidden" name="follower_id" value=" {{ Auth::user()->id }} ">
+                    Unfollow
+                  </button>
+                  {{ Form::close(); }}
               @endif
-            @else<!--when user is not logged in-->
-              <a href="#" class="btn btn-contact" style="margin-top: 100px;">
+          @else<!--when user is not logged in1-->
+          <div class = "col-md-7">
+              <h3 class = subtitle>Follow</h3>
+              <div class = "contactleft" style="margin-top:10px;">
+                <div class="controlgroup">
+                  <?php $followers = DB::table('follow_list')->where('copy_id',$book_copy->id)->get(); ?>
+                  <div class ="info info3">
+                    <p>Current followers: {{ count($followers) }}</p>
+                    <p>Expire date: {{ $book_copy->expire_date }}</p>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+
+            <div class = "col-md-5">
+              <a href="#" class="btn btn-contact" style="margin-top: 50px;">
                 Log in to follow
               </a>
-            @endif
+            </div>
+          @endif
           </div>
     </div>
     </div>

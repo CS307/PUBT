@@ -12,7 +12,7 @@
   <div class="navbar-form">
     {{Form::open(array('url'=>'mainRequest','method'=>'get'))}}
         <div class="form-group searchfieldmargin">
-          <input type="text" name="keyword" class="searchfieldsize form-control" placeholder="In format:CS 15800" style="width: 280px;">
+          <input type="text" name="keyword" class="searchfieldsize form-control" placeholder="Format:MA or CS 18000" style="width: 280px;">
 
           <button type="submit" class="btn btn-primary" name="button" role="search" value="search">
           <span class="glyphicon"></span>

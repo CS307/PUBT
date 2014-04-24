@@ -2,7 +2,6 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <link rel="shortcut icon" href="css/tablogo.png"><!--logo on the tab-->
   <title>The Most Poplular Local Trading Site!</title>
 
   <link href="{{asset('css/bootstrap.min.css')}} " rel="stylesheet">
@@ -11,6 +10,7 @@
   <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
+   <link rel="shortcut icon" href="css/tablogo.png"><!--logo on the tab-->
 
   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
   <script src="{{asset('css/bootstrap.min.js')}}"></script>
@@ -228,7 +228,7 @@ padding:2px;margin:0px;position:absolute;top:20px;left:150px;font-size:12px; col
         {{Form::open(array('url'=>'mainRequest','method'=>'get'))}}
       <div class="navbar-form navbar-left" role="search" action="#">
         <div class="form-group">
-          <input type="text" class="form-control" name="keyword" placeholder="In format:CS 18000">
+          <input type="text" class="form-control" name="keyword" placeholder="Format:MA or CS 18000" style="width: 180px;">
         </div>
         <button type="submit" class="btn btn-default" name='button' value='search'>Submit</button>
       </div>
