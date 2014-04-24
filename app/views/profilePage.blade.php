@@ -67,12 +67,19 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">Selling Books:</h3>
 				</div>
-				<div class=panelbodyding>
+				<div class="panelbodyding">
+				
 					@for($count=0;$count<count($sellingbooks);$count++)
-						<a href="/search/book_copy_id={{$sellingbooks[$count]->id}}" class="thumbnail">
-							<img data-src="holder.js/240x160" src="{{ DB::table('books')->where('id',$sellingbooks[$count]->book_id)->first()->pic_url }}" alt="sampleimg">
+					<div class="imgcontainerding">
+						<a href="/search/book_copy_id={{$sellingbooks[$count]->id}}" class="imgcontainerding thumbnail">
+							<img data-src="holder.js" src="{{ DB::table('books')->where('id',$sellingbooks[$count]->book_id)->first()->pic_url }}" alt="sampleimg">
 						</a>
+					</div>
+					<div class="expdate">
+					<p style="margin:0px;">Exp. date: {{$sellingbooks[$count]->expire_date}}</p>
+					</div>
 					@endfor
+				
 				</div>
 			</div>
 			</div>
