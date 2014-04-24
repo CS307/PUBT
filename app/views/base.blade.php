@@ -198,11 +198,6 @@ padding:2px;margin:0px;position:absolute;top:20px;left:150px;font-size:12px; col
 </head>
 <body>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 905960620be0061758294e846bea716828afb865
-
 <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
   <div class=container>
     <div class="navbar-header">
