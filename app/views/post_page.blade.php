@@ -60,10 +60,11 @@
               <tr>
               <td class="name">List Price: </td>
               <td class="value">
-                  <div class ="priceinput">
-                   <span class="add-on sofia">$</span>
-                    <input name="price" type="text" placeholder="30.00" style = "line-height: 25px; vertical-align: center;">
+                  <div class ="priceinput input-group">
+                   <span class="input-group-addon">$</span>
+                   <input name="price" type="text" placeholder="30.00" style = "line-height: 25px; vertical-align: center; width: 70px;margin-left:-2px; border-radius-right:1em;">
                   </div>
+
               </td>
               </tr>
         

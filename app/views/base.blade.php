@@ -239,7 +239,7 @@ padding:2px;margin:0px;position:absolute;top:20px;left:150px;font-size:12px; col
     @if(!Auth::check())
     <li class="dropdown" id="menuSignup">
           <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navSignup">Join us<b class="caret"></b></a>
-            <div class="dropdown-menu dropdownMenu" style="width:230px">
+            <div class="dropdown-menu dropdownMenu" style="width:242px">
               {{Form::open(array('url'=>'postRegister','method'=>'post'))}}
               <div class="input-group button">
                 <input class="form-control" type="text" name="email" placeholder="PUaccount"/>
@@ -251,7 +251,7 @@ padding:2px;margin:0px;position:absolute;top:20px;left:150px;font-size:12px; col
               <div class="button">
               <input class="form-control" name="password_confirmation" type="password" placeholder="Confirm Password"/>
             </div>
-              <button type="submit" id="btnLogin" class="btn">Sign up</button>
+              <button type="submit" id="btnLogin" class="btn btn-success">Sign up</button>
               {{Form::close()}}
             </div>
     </li>
@@ -260,7 +260,7 @@ padding:2px;margin:0px;position:absolute;top:20px;left:150px;font-size:12px; col
         <li class="dropdown" id="menuLogin">
           @if(Auth::check())
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">{{Auth::user()->email}}<b class="caret"></b></a>
-            <div class="dropdown-menu dropdownMenu" style="padding:17px;">
+            <div class="dropdown-menu dropdownMenu" style="padding:17px; width:80px">
                 <div class="button">
                 <a href="/profilepage">
                   <button class="btn btn-primary" style="width:90%">Profile</button>
@@ -276,12 +276,14 @@ padding:2px;margin:0px;position:absolute;top:20px;left:150px;font-size:12px; col
             <div class="dropdown-menu dropdownMenu" style="padding:17px;">
               {{Form::open(array('url'=>'postLogin','method'=>'post'))}}
                 <div class="button">
-                <input class="form-control button" name="email" id="username" type="text" placeholder="Email">
+                <input class="form-control button" name="email" id="username" type="text" placeholder="PUaccount">
                 </div>
                 <div class="button">
                 <input class="form-control button" name="password" id="password" type="password" placeholder="Password"><br>
                 </div>
-                <button type="submit" id="btnLogin" class="btn">Login</button>
+                <button type="submit" id="btnLogin" class="btn btn-warning">
+                  Login
+                </button>
                 {{Form::close()}}
           @endif
             </div>
