@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <link rel="shortcut icon" href="css/tablogo.png"><!--logo on the tab-->
   <title>The Most Poplular Local Trading Site!</title>
 
   <link href="{{asset('css/bootstrap.min.css')}} " rel="stylesheet">
