@@ -149,13 +149,14 @@ class AccountController extends AuthorizedController
 
 				// Redirect to the users page.
 				//
-				return Redirect::to('/');//Redirect::to('account')->with('success', 'You have logged in successfully');
+				return Redirect::to('/profilepage');//Redirect::to('account')->with('success', 'You have logged in successfully');
 			}
 			else
 			{
 				// Redirect to the login page.
 				//
 				echo "Failed";//return Redirect::to('account/login')->with('error', 'Email/password invalid.');
+				return Redirect::to('/');
 			}
 			return;
 		}
